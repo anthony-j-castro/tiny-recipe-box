@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "lint": "eslint .",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "typecheck": "tsc"
   },
   "devDependencies": {
     "@anthony-j-castro/eslint-config": "github:anthony-j-castro/eslint-config#semver:1.1.0",
