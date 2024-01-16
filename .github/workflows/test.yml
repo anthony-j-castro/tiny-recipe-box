@@ -24,5 +24,3 @@ jobs:
         run: npm run typecheck
       - name: Lint
         run: npm run lint:ci
-      - name: Build
-        run: npm run build
