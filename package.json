@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "lint": "eslint .",
+    "lint:ci": "eslint . --quiet",
     "start": "webpack serve --mode development",
     "typecheck": "tsc"
   },
