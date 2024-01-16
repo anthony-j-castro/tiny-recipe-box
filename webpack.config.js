@@ -1,6 +1,7 @@
 const path = require("node:path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+// eslint-disable-next-line no-console
 console.log("TEST!", process.env.GITHUB_SHA);
 
 module.exports = {
