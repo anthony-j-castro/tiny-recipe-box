@@ -1,6 +1,8 @@
 const path = require("node:path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+console.log("TEST!", process.env.GITHUB_SHA);
+
 module.exports = {
   entry: "./src/client/index.tsx",
   output: {
