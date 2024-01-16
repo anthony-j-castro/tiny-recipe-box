@@ -58,6 +58,7 @@ export const VersionText = styled.p`
 
 export const CommitLink = styled.a`
   font-family: monospace;
+  color: inherit;
   text-decoration: none;
 
   &:visited {
