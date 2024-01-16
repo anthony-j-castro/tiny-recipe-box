@@ -1,15 +1,13 @@
 const path = require("node:path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-// eslint-disable-next-line no-console
-console.log("TEST!", process.env.GITHUB_SHA);
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/client/index.tsx",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "build"),
-    publicPath: "./",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -35,6 +33,7 @@ module.exports = {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
+    new webpack.EnvironmentPlugin({ GITHUB_SHA: null }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
