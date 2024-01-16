@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "lint": "eslint .",
     "lint:ci": "eslint . --quiet",
     "start": "webpack serve --mode development",
