@@ -1,4 +1,5 @@
 const path = require("node:path");
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
@@ -34,6 +35,17 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({ GITHUB_SHA: null }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public"),
+          to: path.resolve(__dirname, "build"),
+          globOptions: {
+            ignore: [path.resolve(__dirname, "public", "index.html")],
+          },
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
