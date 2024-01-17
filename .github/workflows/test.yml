@@ -22,5 +22,7 @@ jobs:
         run: npm ci
       - name: Typecheck
         run: npm run typecheck
+      - name: Check for uncommitted Prettier changes
+        run: npm run prettier:ci
       - name: Lint
         run: npm run lint:ci

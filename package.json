@@ -7,6 +7,8 @@
     "build": "webpack --mode production",
     "lint": "eslint .",
     "lint:ci": "eslint . --quiet",
+    "prettier": "prettier . --write",
+    "prettier:ci": "prettier . --check",
     "start": "webpack serve --mode development",
     "typecheck": "tsc --noEmit"
   },
