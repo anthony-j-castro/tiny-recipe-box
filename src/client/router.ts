@@ -15,17 +15,18 @@ const indexRoute = new Route({
   component: App,
 });
 
+const routeTree = rootRoute.addChildren([indexRoute]);
+
 const notFoundRoute = new NotFoundRoute({
   getParentRoute: () => rootRoute,
   component: App,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, notFoundRoute]);
-
 const history = createBrowserHistory();
 
 const router = new Router({
   history,
+  notFoundRoute,
   routeTree,
 });
 
