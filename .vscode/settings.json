@@ -6,5 +6,5 @@
   "typescript.validate.enable": true,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
-  },
+  }
 }
