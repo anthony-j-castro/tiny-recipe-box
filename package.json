@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@anthony-j-castro/eslint-config": "github:anthony-j-castro/eslint-config#semver:1.1.0",
+    "@anthony-j-castro/prettier-config": "github:anthony-j-castro/prettier-config#semver:1.0.0",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@typescript-eslint/eslint-plugin": "6.19.0",
