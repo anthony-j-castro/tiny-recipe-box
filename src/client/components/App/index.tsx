@@ -11,7 +11,7 @@ import {
   Wrapper,
 } from "./styled";
 
-const AgreementRequired = () => {
+const App = () => {
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
         long: config.GITHUB_COMMIT_SHA,
@@ -47,4 +47,4 @@ const AgreementRequired = () => {
   );
 };
 
-export default AgreementRequired;
+export default App;
