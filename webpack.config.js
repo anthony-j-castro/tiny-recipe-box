@@ -3,6 +3,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+
 module.exports = {
   entry: "./src/client/index.tsx",
   output: {
@@ -34,7 +36,10 @@ module.exports = {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
-    new webpack.EnvironmentPlugin({ GITHUB_SHA: null }),
+    new webpack.EnvironmentPlugin({
+      GITHUB_SHA: null,
+      GOOGLE_ANALYTICS_MEASUREMENT_ID: undefined,
+    }),
     new CopyPlugin({
       patterns: [
         {

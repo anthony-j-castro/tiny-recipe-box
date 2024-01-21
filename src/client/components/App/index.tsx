@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import analytics from "~/client/analytics";
 import config from "~/config";
 import {
   AnimatedBackground,
@@ -12,6 +13,10 @@ import {
 } from "./styled";
 
 const App = () => {
+  useEffect(() => {
+    analytics.page({ title: "Index" });
+  }, []);
+
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
         long: config.GITHUB_COMMIT_SHA,
@@ -35,6 +40,9 @@ const App = () => {
               Version:{" "}
               <CommitLink
                 href={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
+                onClick={() => {
+                  analytics.track("clicked_commit_link");
+                }}
                 target="_blank"
               >
                 {shaData.short}
