@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin({
       GITHUB_SHA: null,
-      GOOGLE_ANALYTICS_MEASUREMENT_ID: undefined,
+      GOOGLE_ANALYTICS_MEASUREMENT_ID: null,
     }),
     new CopyPlugin({
       patterns: [
