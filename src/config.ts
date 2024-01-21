@@ -11,8 +11,9 @@ const configDecoder: Decoder<Config> = exact({
 });
 
 const config = {
-  GITHUB_COMMIT_SHA: process.env.GITHUB_SHA,
-  GOOGLE_ANALYTICS_MEASUREMENT_ID: process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID,
+  GITHUB_COMMIT_SHA: process.env.GITHUB_SHA || null,
+  GOOGLE_ANALYTICS_MEASUREMENT_ID:
+    process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID || null,
 };
 
 export default configDecoder.verify(config);
