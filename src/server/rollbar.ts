@@ -1,7 +1,8 @@
 import Rollbar from "rollbar";
+import config from "~/config";
 
 const rollbarConfig = {
-  accessToken: "5da525f1eb8d44d1b61c21df3bb14654",
+  accessToken: config.ROLLBAR_ACCESS_TOKEN,
   environment: "development",
 };
 

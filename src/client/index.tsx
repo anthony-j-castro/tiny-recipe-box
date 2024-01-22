@@ -4,11 +4,12 @@ import { RouterProvider } from "@tanstack/react-router";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import router from "~/client/router";
+import config from "~/config";
 import "modern-normalize";
 import "~/client/index.css";
 
 const rollbarConfig = {
-  accessToken: "5da525f1eb8d44d1b61c21df3bb14654",
+  accessToken: config.ROLLBAR_ACCESS_TOKEN,
   captureUncaught: true,
   captureUnhandledRejections: true,
   environment: "development",
