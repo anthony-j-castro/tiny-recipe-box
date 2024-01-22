@@ -2,7 +2,10 @@ const path = require("node:path");
 
 module.exports = {
   env: { browser: true, node: true },
-  extends: ["@anthony-j-castro/eslint-config"],
+  extends: [
+    "@anthony-j-castro/eslint-config",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+  ],
   rules: {
     quotes: [
       "error",
