@@ -2,6 +2,7 @@ import { either, jsonObject, undefined_ } from "decoders";
 import { HTTPMethod } from "http-method-enum";
 import { StatusCode } from "status-code-enum";
 import { getDatabase } from "~/server/database";
+import rollbar from "~/server/rollbar";
 import { APIResponse, RouteHandler } from "~/server/types";
 
 const PARAMETER = "([^/]*)";
@@ -78,8 +79,14 @@ export async function handleRequest(
           matches === null ||
           matches.length - 1 !== route.parameters.length
         ) {
-          // Should be impossible, log to Rollbar
-          console.error(matches);
+          rollbar.error(
+            "Impossible condition met: API route matched but parameters don't match.",
+            {
+              path,
+              extractedParameters: matches,
+              routeParameters: route.parameters,
+            },
+          );
           throw new Error("Something happened!");
         }
 
@@ -113,9 +120,17 @@ export async function handleRequest(
       }
     }
 
-    console.log("NOT FOUND");
+    rollbar.error("Bad request to API", {
+      method,
+      path,
+      body,
+    });
 
-    return { status: StatusCode.ClientErrorNotFound, body: JSON.stringify({}) };
+    // Alow no body
+    return {
+      status: StatusCode.ClientErrorBadRequest,
+      body: JSON.stringify({}),
+    };
   } catch (error) {
     return {
       status: StatusCode.ServerErrorInternal,
