@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import analytics from "~/client/analytics";
+import useGetMe from "~/client/hooks/api/useGetMe";
 import config from "~/config";
 import {
   AnimatedBackground,
@@ -23,6 +24,10 @@ const App = () => {
         short: config.GITHUB_COMMIT_SHA.substring(0, 7),
       }
     : undefined;
+
+  const { data, error } = useGetMe();
+
+  console.log("RESPONSE DATA", data, error);
 
   return (
     <Wrapper>

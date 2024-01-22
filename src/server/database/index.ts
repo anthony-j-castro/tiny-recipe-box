@@ -1,6 +1,7 @@
 import Dexie, { DexieOptions } from "dexie";
+import { v4 as uuidv4 } from "uuid";
 
-const DATABASE_NAME = "TinyRecipeBoxDB";
+const DATABASE_NAME = "TinyRecipeBoxDB_";
 
 type User = {
   createdAt: Date;
@@ -15,6 +16,10 @@ export class AppDatabase extends Dexie {
 
     this.version(1).stores({
       users: "&id",
+    });
+
+    this.on("populate", () => {
+      this.users.add({ createdAt: new Date(), id: uuidv4() });
     });
   }
 }
