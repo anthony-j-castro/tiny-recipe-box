@@ -3,6 +3,13 @@ const path = require("node:path");
 module.exports = {
   env: { browser: true, node: true },
   extends: ["@anthony-j-castro/eslint-config"],
+  rules: {
+    quotes: [
+      "error",
+      "double",
+      { allowTemplateLiterals: false, avoidEscape: true },
+    ],
+  },
   settings: {
     "import/resolver": {
       alias: {

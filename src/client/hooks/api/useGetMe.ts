@@ -17,7 +17,7 @@ const useGetMe = () => {
   return useQuery({
     queryKey: ["me"],
     queryFn: async () => {
-      const response = await fetch(`/me`);
+      const response = await fetch("/me");
 
       await handleErrorResponse(response, "Error fetching current user.");
 
