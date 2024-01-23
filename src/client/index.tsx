@@ -27,7 +27,7 @@ root.render(
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
-        </QueryClientProvider>{" "}
+        </QueryClientProvider>
       </ErrorBoundary>
     </RollbarProvider>
   </React.StrictMode>,

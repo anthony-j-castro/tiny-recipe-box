@@ -40,6 +40,8 @@ module.exports = {
       GITHUB_SHA: null,
       GOOGLE_ANALYTICS_MEASUREMENT_ID: null,
       ROLLBAR_ACCESS_TOKEN: undefined,
+      SIMULATED_LATENCY_MILLISECONDS: 0,
+      SIMULATED_LATENCY_TOLERANCE_MILLISECONDS: 0,
     }),
     new CopyPlugin({
       patterns: [

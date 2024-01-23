@@ -4,6 +4,7 @@ import { StatusCode } from "status-code-enum";
 import { getDatabase } from "~/server/database";
 import rollbar from "~/server/rollbar";
 import { APIResponse, RouteHandler } from "~/server/types";
+import simulateLatency from "~/server/utils/simulateLatency";
 
 const PARAMETER = "([^/]*)";
 const SLASH = "\\/";
@@ -110,6 +111,8 @@ export async function handleRequest(
         //const parsedBody = typeof body === "string" ? JSON.parse(body) : {};
         const parsedBody = either(jsonObject, undefined_).verify(body);
 
+        await simulateLatency();
+
         const db = getDatabase();
         const response = await route.handler(db, params, parsedBody);
 
@@ -120,7 +123,7 @@ export async function handleRequest(
       }
     }
 
-    rollbar.error("Bad request to API", {
+    rollbar.error("Bad request to API.", {
       method,
       path,
       body,

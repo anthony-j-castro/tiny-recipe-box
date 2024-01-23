@@ -6,11 +6,23 @@ module.exports = {
     "@anthony-j-castro/eslint-config",
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
+  plugins: ["unused-imports"],
   rules: {
+    "@typescript-eslint/no-unused-vars": "off",
     quotes: [
       "error",
       "double",
       { allowTemplateLiterals: false, avoidEscape: true },
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
     ],
   },
   settings: {
