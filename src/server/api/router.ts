@@ -99,8 +99,6 @@ export async function handleRequest(
           params[param] = matches[index + 1];
         });
 
-        // TODO: What if body is an object?
-        //const parsedBody = typeof body === "string" ? JSON.parse(body) : {};
         const parsedBody = either(jsonObject, undefined_).verify(body);
 
         await simulateLatency();
@@ -110,7 +108,7 @@ export async function handleRequest(
 
         return {
           status: response.status,
-          body: JSON.stringify(response.body),
+          ...(response.body ? { body: JSON.stringify(response.body) } : {}),
         };
       }
     }
@@ -121,7 +119,6 @@ export async function handleRequest(
       body,
     });
 
-    // Alow no body
     return {
       status: StatusCode.ClientErrorBadRequest,
       body: JSON.stringify({
