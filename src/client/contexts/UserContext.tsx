@@ -48,6 +48,4 @@ export const UserProvider = ({ children }: Props) => {
   );
 };
 
-export const useUserContext = () => {
-  return useContext(UserContext);
-};
+export const useUserContext = () => useContext(UserContext);

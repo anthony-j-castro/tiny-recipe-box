@@ -11,18 +11,16 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Interstitial = ({ children }: Props) => {
-  return (
-    <Wrapper>
-      <ContentContainer>
-        <AnimatedBackground data-background="true" />
-        <Content>
-          <Logo />
-          {children}
-        </Content>
-      </ContentContainer>
-    </Wrapper>
-  );
-};
+const Interstitial = ({ children }: Props) => (
+  <Wrapper>
+    <ContentContainer>
+      <AnimatedBackground data-background="true" />
+      <Content>
+        <Logo />
+        {children}
+      </Content>
+    </ContentContainer>
+  </Wrapper>
+);
 
 export default Interstitial;
