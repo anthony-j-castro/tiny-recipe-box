@@ -6,9 +6,8 @@ module.exports = {
     "@anthony-j-castro/eslint-config",
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
-  plugins: ["sort-destructure-keys", "unused-imports"],
+  plugins: ["sort-destructure-keys"],
   rules: {
-    "@typescript-eslint/no-unused-vars": "off",
     quotes: [
       "error",
       "double",
@@ -17,15 +16,6 @@ module.exports = {
     "sort-destructure-keys/sort-destructure-keys": [
       "error",
       { caseSensitive: false },
-    ],
-    "unused-imports/no-unused-vars": [
-      "error",
-      {
-        vars: "all",
-        varsIgnorePattern: "^_",
-        args: "after-used",
-        argsIgnorePattern: "^_",
-      },
     ],
   },
   settings: {
