@@ -1,4 +1,3 @@
-import { useRollbar } from "@rollbar/react";
 import { useQuery } from "@tanstack/react-query";
 import { meResponseDecoder } from "~/client/decoders/meResponse";
 import useSafelyParseJsonResponse from "~/client/hooks/useSafelyParseJsonResponse";

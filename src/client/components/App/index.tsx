@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import analytics from "~/client/analytics";
 import { useUserContext } from "~/client/contexts/UserContext";
-import useGetMe from "~/client/hooks/api/useGetMe";
 import config from "~/config";
 import {
   AnimatedBackground,
