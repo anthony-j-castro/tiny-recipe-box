@@ -12,8 +12,8 @@ export type RouteHandlerResponse<T> = {
 
 export type RouteHandler<T> = (
   db: AppDatabase,
-  parameters: Partial<Record<string, string>>,
-  payload: unknown,
+  parameters?: Partial<Record<string, string>>,
+  payload?: unknown,
 ) => Promise<RouteHandlerResponse<T>>;
 
 export type APIResponse = {

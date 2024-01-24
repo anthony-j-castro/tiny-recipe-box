@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { RouteHandler } from "~/server/types";
 
 type CurrentUser = {
-  createdAt: string;
+  createdAt: Date;
   userId: string;
 };
 
@@ -30,7 +30,7 @@ export const getMe: RouteHandler<CurrentUser> = async (db) => {
   }
 
   const currentUser = {
-    createdAt: users[0].createdAt.toISOString(),
+    createdAt: users[0].createdAt,
     userId: users[0].id,
   };
 
@@ -47,6 +47,6 @@ export const createMe: RouteHandler<CurrentUser> = async (db) => {
 
   return {
     status: StatusCode.SuccessCreated,
-    body: { createdAt: createdAt.toISOString(), userId: id },
+    body: { createdAt: createdAt, userId: id },
   };
 };
