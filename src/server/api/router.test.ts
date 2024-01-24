@@ -12,9 +12,16 @@ describe("server/router", () => {
       });
 
       defineRoute(HTTPMethod.GET, "/test", handler);
+
       expect(() => {
         defineRoute(HTTPMethod.GET, "/test", handler);
-      }).toThrow("Handler already exists for GET /test..");
+      }).toThrow("Handler already exists for GET /test.");
+
+      defineRoute(HTTPMethod.POST, "/test", handler);
+
+      expect(() => {
+        defineRoute(HTTPMethod.POST, "/test", handler);
+      }).toThrow("Handler already exists for POST /test.");
     });
   });
 });
