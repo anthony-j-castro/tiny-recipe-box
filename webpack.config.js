@@ -39,9 +39,9 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       GITHUB_SHA: null,
       GOOGLE_ANALYTICS_MEASUREMENT_ID: null,
-      ROLLBAR_ACCESS_TOKEN: undefined,
-      SIMULATED_LATENCY_MILLISECONDS: 0,
-      SIMULATED_LATENCY_TOLERANCE_MILLISECONDS: 0,
+      ROLLBAR_ACCESS_TOKEN: null,
+      SIMULATED_LATENCY_MILLISECONDS: null,
+      SIMULATED_LATENCY_TOLERANCE_MILLISECONDS: null,
     }),
     new CopyPlugin({
       patterns: [
