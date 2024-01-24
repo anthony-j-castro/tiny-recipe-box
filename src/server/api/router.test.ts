@@ -14,7 +14,7 @@ describe("server/router", () => {
       defineRoute(HTTPMethod.GET, "/test", handler);
       expect(() => {
         defineRoute(HTTPMethod.GET, "/test", handler);
-      }).toThrow("Handler already exists for GET /test.");
+      }).toThrow("Handler already exists for GET /test..");
     });
   });
 });
