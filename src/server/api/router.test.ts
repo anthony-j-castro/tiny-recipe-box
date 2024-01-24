@@ -1,11 +1,20 @@
 import HTTPMethod from "http-method-enum";
 import StatusCode from "status-code-enum";
-import { defineRoute } from "~/server/api/router";
 import { RouteHandler } from "~/server/types";
 
 describe("server/router", () => {
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
+  afterAll(() => {
+    jest.resetModules();
+  });
+
   describe("defineRoute", () => {
-    it("throws an error on duplicate routes", () => {
+    it("throws an error on duplicate routes", async () => {
+      const { defineRoute } = await import("~/server/api/router");
+
       const handler: RouteHandler<unknown> = async () => ({
         status: StatusCode.SuccessOK,
         body: {},
