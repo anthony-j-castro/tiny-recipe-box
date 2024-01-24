@@ -12,12 +12,12 @@
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "~/*": ["*"]
+      "~/*": ["*"],
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES6",
   },
-  "include": ["src"]
+  "include": ["src"],
 }
