@@ -35,7 +35,7 @@ export function defineRoute(
   let pathRegex = "";
 
   if (pathParts[0] !== "") {
-    throw new Error("Check the route");
+    throw new Error('API path must begin with a "/".');
   }
 
   pathParts.forEach((part, index) => {
