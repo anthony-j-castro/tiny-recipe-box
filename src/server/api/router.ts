@@ -62,11 +62,17 @@ export function defineRoute(
   };
 }
 
-export async function handleRequest(
-  method: HTTPMethod,
-  path: string,
-  body: unknown,
-): Promise<APIResponse> {
+export async function handleRequest({
+  body,
+  headers,
+  method,
+  path,
+}: {
+  body?: unknown;
+  method: HTTPMethod;
+  path: string;
+  headers?: HeadersInit | undefined;
+}): Promise<APIResponse> {
   try {
     const theRoutes = routes[method];
 
@@ -104,7 +110,12 @@ export async function handleRequest(
         await simulateLatency();
 
         const db = getDatabase();
-        const response = await route.handler(db, params, parsedBody);
+        const response = await route.handler({
+          db,
+          parameters: params,
+          headers,
+          payload: parsedBody,
+        });
 
         return {
           status: response.status,

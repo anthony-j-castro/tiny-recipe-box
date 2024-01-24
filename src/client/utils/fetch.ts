@@ -9,11 +9,16 @@ const fetch = async (
   resource: string,
   init: RequestInit = { method: "GET" },
 ) => {
-  const { body, method = "GET" } = init;
+  const { body, headers, method = "GET" } = init;
 
   assertIsHTTPMethod(method);
 
-  const response = await api.handleRequest(method, resource, body);
+  const response = await api.handleRequest({
+    method,
+    path: resource,
+    headers,
+    body,
+  });
 
   return new Response(response.body, { status: response.status });
 };

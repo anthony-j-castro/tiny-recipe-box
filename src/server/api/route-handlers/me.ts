@@ -7,7 +7,7 @@ type CurrentUser = {
   userId: string;
 };
 
-export const getMe: RouteHandler<CurrentUser> = async (db) => {
+export const getMe: RouteHandler<CurrentUser> = async ({ db }) => {
   const users = await db.users.toArray();
 
   if (users.length === 0) {
@@ -37,7 +37,7 @@ export const getMe: RouteHandler<CurrentUser> = async (db) => {
   return { status: StatusCode.SuccessOK, body: currentUser };
 };
 
-export const createMe: RouteHandler<CurrentUser> = async (db) => {
+export const createMe: RouteHandler<CurrentUser> = async ({ db }) => {
   const createdAt = new Date();
   const id = uuidv4();
 

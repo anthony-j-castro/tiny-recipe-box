@@ -10,11 +10,17 @@ export type RouteHandlerResponse<T> = {
   body?: T | ErrorResponseBody;
 };
 
-export type RouteHandler<T> = (
-  db: AppDatabase,
-  parameters?: Partial<Record<string, string>>,
-  payload?: unknown,
-) => Promise<RouteHandlerResponse<T>>;
+export type RouteHandler<T> = ({
+  db,
+  headers,
+  parameters,
+  payload,
+}: {
+  headers?: HeadersInit;
+  db: AppDatabase;
+  parameters?: Partial<Record<string, string>>;
+  payload?: unknown;
+}) => Promise<RouteHandlerResponse<T>>;
 
 export type APIResponse = {
   status: StatusCode;

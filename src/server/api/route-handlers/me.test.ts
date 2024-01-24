@@ -33,7 +33,7 @@ describe("server/api/route-handlers/me", () => {
 
       await db.users.add(user);
 
-      const meResponse = await getMe(db);
+      const meResponse = await getMe({ db });
 
       expect(meResponse).toEqual({
         status: StatusCode.SuccessOK,
@@ -48,7 +48,7 @@ describe("server/api/route-handlers/me", () => {
       const { getDatabase } = await import("~/server/database");
       const db = getDatabase();
 
-      const meResponse = await getMe(db);
+      const meResponse = await getMe({ db });
 
       expect(meResponse).toEqual({
         status: StatusCode.ClientErrorNotFound,
@@ -67,7 +67,7 @@ describe("server/api/route-handlers/me", () => {
         { createdAt: new Date(), id: uuidv4() },
       ]);
 
-      const meResponse = await getMe(db);
+      const meResponse = await getMe({ db });
 
       expect(meResponse).toEqual({
         status: StatusCode.ServerErrorInternal,
@@ -91,7 +91,7 @@ describe("server/api/route-handlers/me", () => {
     it("returns a new user", async () => {
       const { getDatabase } = await import("~/server/database");
       const db = getDatabase();
-      const meResponse = await createMe(db);
+      const meResponse = await createMe({ db });
 
       expect(meResponse).toEqual({
         status: StatusCode.SuccessCreated,

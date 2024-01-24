@@ -63,11 +63,10 @@ describe("server/router", () => {
 
       defineRoute(HTTPMethod.GET, "/test/path", handler);
 
-      const response = await handleRequest(
-        HTTPMethod.GET,
-        "/test/path",
-        undefined,
-      );
+      const response = await handleRequest({
+        method: HTTPMethod.GET,
+        path: "/test/path",
+      });
 
       expect(response).toEqual({
         status: StatusCode.SuccessOK,
@@ -86,11 +85,10 @@ describe("server/router", () => {
 
       defineRoute(HTTPMethod.POST, "/no/content/path", handler);
 
-      const response = await handleRequest(
-        HTTPMethod.POST,
-        "/no/content/path",
-        undefined,
-      );
+      const response = await handleRequest({
+        method: HTTPMethod.POST,
+        path: "/no/content/path",
+      });
 
       expect(response).toEqual({
         status: StatusCode.SuccessNoContent,
@@ -100,11 +98,10 @@ describe("server/router", () => {
     it("returns a bad request error when path doesn't match any routes", async () => {
       const { handleRequest } = await import("~/server/api/router");
 
-      const response = await handleRequest(
-        HTTPMethod.GET,
-        "/bad/path",
-        undefined,
-      );
+      const response = await handleRequest({
+        method: HTTPMethod.GET,
+        path: "/bad/path",
+      });
 
       expect(response).toEqual({
         status: StatusCode.ClientErrorBadRequest,
@@ -125,11 +122,10 @@ describe("server/router", () => {
 
       defineRoute(HTTPMethod.GET, "/test/path", handler);
 
-      const response = await handleRequest(
-        HTTPMethod.GET,
-        "/test/path",
-        undefined,
-      );
+      const response = await handleRequest({
+        method: HTTPMethod.GET,
+        path: "/test/path",
+      });
 
       expect(response).toEqual({
         status: StatusCode.ServerErrorInternal,

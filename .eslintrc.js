@@ -8,6 +8,7 @@ module.exports = {
   ],
   plugins: ["sort-destructure-keys"],
   rules: {
+    "arrow-body-style": ["error", "as-needed"],
     quotes: [
       "error",
       "double",
