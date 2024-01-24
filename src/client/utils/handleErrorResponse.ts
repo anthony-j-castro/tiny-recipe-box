@@ -1,4 +1,5 @@
 import { Decoder, object, string } from "decoders";
+import { APIError } from "~/client/errors";
 
 type ErrorResponse = {
   message: string;
@@ -18,9 +19,13 @@ const handleErrorResponse = async (
 
       const errorResponse = errorResponseDecoder.verify(responseJson);
 
-      throw new Error(errorResponse.message);
+      throw new APIError(errorResponse.message);
     } catch (error) {
-      if (!defaultErrorMessage) {
+      if (error instanceof APIError) {
+        throw error;
+      }
+
+      if (defaultErrorMessage) {
         throw new Error(defaultErrorMessage);
       }
 

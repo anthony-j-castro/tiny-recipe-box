@@ -1,16 +1,20 @@
 import { StatusCode } from "status-code-enum";
 import { AppDatabase } from "~/server/database";
 
-export type RouteHandlerResponse = {
-  status: StatusCode;
-  body?: unknown;
+type ErrorResponseBody = {
+  message: string;
 };
 
-export type RouteHandler = (
+export type RouteHandlerResponse<T> = {
+  status: StatusCode;
+  body?: T | ErrorResponseBody;
+};
+
+export type RouteHandler<T> = (
   db: AppDatabase,
   parameters: Partial<Record<string, string>>,
   payload: unknown,
-) => Promise<RouteHandlerResponse>;
+) => Promise<RouteHandlerResponse<T>>;
 
 export type APIResponse = {
   status: StatusCode;

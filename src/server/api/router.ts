@@ -14,7 +14,7 @@ type RoutesMap = Partial<
     HTTPMethod,
     {
       [path: string]: {
-        handler: RouteHandler;
+        handler: RouteHandler<unknown>;
         parameters: string[];
         regex: string;
       };
@@ -27,7 +27,7 @@ const routes: RoutesMap = {};
 export function defineRoute(
   method: HTTPMethod,
   path: string,
-  handler: RouteHandler,
+  handler: RouteHandler<unknown>,
 ): void {
   const pathParts = path.split("/");
 
@@ -56,8 +56,6 @@ export function defineRoute(
     ...routes[method],
     [path]: { handler, regex: pathRegex, parameters },
   };
-
-  console.log(routes);
 }
 
 export async function handleRequest(
@@ -67,7 +65,7 @@ export async function handleRequest(
 ): Promise<APIResponse> {
   try {
     const theRoutes = routes[method];
-    console.log("Handling:", method, path);
+
     for (const key in theRoutes) {
       const route = theRoutes[key];
       const regex = new RegExp(route.regex);
@@ -80,32 +78,22 @@ export async function handleRequest(
           matches === null ||
           matches.length - 1 !== route.parameters.length
         ) {
-          rollbar.error(
+          const impossibleErrorMessage =
+            "Impossible condition met: API route matched but parameters don't match.";
+          rollbar.error(impossibleErrorMessage, {
+            path,
+            extractedParameters: matches,
+            routeParameters: route.parameters,
+          });
+          throw new Error(
             "Impossible condition met: API route matched but parameters don't match.",
-            {
-              path,
-              extractedParameters: matches,
-              routeParameters: route.parameters,
-            },
           );
-          throw new Error("Something happened!");
         }
 
         const params: Record<string, string> = {};
         route.parameters.forEach((param, index) => {
           params[param] = matches[index + 1];
         });
-
-        console.log(
-          "MATCH",
-          method,
-          path,
-          params,
-          route.regex,
-          route.parameters,
-          "BODY",
-          body,
-        );
 
         // TODO: What if body is an object?
         //const parsedBody = typeof body === "string" ? JSON.parse(body) : {};
@@ -132,7 +120,9 @@ export async function handleRequest(
     // Alow no body
     return {
       status: StatusCode.ClientErrorBadRequest,
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        message: `Cannot process ${method} request to ${path}.`,
+      }),
     };
   } catch (error) {
     return {

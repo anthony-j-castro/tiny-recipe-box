@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import analytics from "~/client/analytics";
+import { useUserContext } from "~/client/contexts/UserContext";
 import useGetMe from "~/client/hooks/api/useGetMe";
 import config from "~/config";
 import {
@@ -18,16 +19,14 @@ const App = () => {
     analytics.page({ title: "Index" });
   }, []);
 
+  const { userId } = useUserContext();
+
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
         long: config.GITHUB_COMMIT_SHA,
         short: config.GITHUB_COMMIT_SHA.substring(0, 7),
       }
     : undefined;
-
-  const { data, error } = useGetMe();
-
-  console.log("RESPONSE DATA", data, error);
 
   return (
     <Wrapper>
@@ -40,6 +39,7 @@ const App = () => {
             This site and accompanying browser extension are still in
             development and will be coming soon.
           </Paragraph>
+          <div>User ID: {userId}</div>
           {shaData ? (
             <VersionText>
               Version:{" "}

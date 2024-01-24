@@ -1,29 +1,33 @@
+import { useRollbar } from "@rollbar/react";
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, datelike, object, uuidv4 } from "decoders";
+import { meResponseDecoder } from "~/client/decoders/meResponse";
+import useSafelyParseJsonResponse from "~/client/hooks/useSafelyParseJsonResponse";
 import fetch from "~/client/utils/fetch";
 import handleErrorResponse from "~/client/utils/handleErrorResponse";
 
-type MeResponse = {
-  createdAt: Date;
-  userId: string;
-};
+const GENERIC_ERROR_MESSAGE = "Error fetching current user.";
 
-const meResponseDecoder: Decoder<MeResponse> = object({
-  createdAt: datelike,
-  userId: uuidv4,
-});
+export const getQueryKey = () => ["me"];
 
 const useGetMe = () => {
+  const parseJson = useSafelyParseJsonResponse();
+
   return useQuery({
-    queryKey: ["me"],
+    queryKey: getQueryKey(),
     queryFn: async () => {
       const response = await fetch("/me");
 
-      await handleErrorResponse(response, "Error fetching current user.");
+      await handleErrorResponse(response, GENERIC_ERROR_MESSAGE);
 
-      const responseJson = await response.json();
+      const responseJson = await parseJson(response);
 
-      return meResponseDecoder.verify(responseJson);
+      try {
+        const me = meResponseDecoder.verify(responseJson);
+
+        return me;
+      } catch (error) {
+        throw new Error(GENERIC_ERROR_MESSAGE);
+      }
     },
   });
 };
