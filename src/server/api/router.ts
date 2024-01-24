@@ -52,6 +52,10 @@ export function defineRoute(
 
   pathRegex += "$";
 
+  if (routes[method] !== undefined) {
+    throw new Error(`Duplicate handler detected for ${method} ${path}.`);
+  }
+
   routes[method] = {
     ...routes[method],
     [path]: { handler, regex: pathRegex, parameters },

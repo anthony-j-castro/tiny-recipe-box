@@ -1,10 +1,5 @@
 import Rollbar from "rollbar";
-import config from "~/config";
-
-const rollbarConfig = {
-  accessToken: config.ROLLBAR_ACCESS_TOKEN,
-  environment: "development",
-};
+import { rollbarConfig } from "~/shared/rollbar";
 
 const rollbar = new Rollbar(rollbarConfig);
 

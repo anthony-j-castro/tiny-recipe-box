@@ -5,16 +5,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
-import config from "~/config";
+import { rollbarConfig } from "~/shared/rollbar";
 import "modern-normalize";
 import "~/client/index.css";
-
-const rollbarConfig = {
-  accessToken: config.ROLLBAR_ACCESS_TOKEN,
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-  environment: "development",
-};
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false, retry: false } },
