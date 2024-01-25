@@ -34,18 +34,18 @@ describe("server/router", () => {
         body: {},
       });
 
-      defineRoute(HTTPMethod.GET, "/test", handler);
+      defineRoute(HTTPMethod.GET, "/test/path/1", handler);
       defineRoute(HTTPMethod.GET, "/test/path/2", handler);
 
       expect(() => {
-        defineRoute(HTTPMethod.GET, "/test", handler);
-      }).toThrow("Handler already exists for GET /test.");
+        defineRoute(HTTPMethod.GET, "/test/path/1", handler);
+      }).toThrow("Handler already exists for GET /test/path/1.");
 
-      defineRoute(HTTPMethod.POST, "/test", handler);
+      defineRoute(HTTPMethod.POST, "/test/path/1", handler);
 
       expect(() => {
-        defineRoute(HTTPMethod.POST, "/test", handler);
-      }).toThrow("Handler already exists for POST /test.");
+        defineRoute(HTTPMethod.POST, "/test/path/1", handler);
+      }).toThrow("Handler already exists for POST /test/path/1.");
     });
   });
 
