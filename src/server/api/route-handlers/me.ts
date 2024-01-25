@@ -22,7 +22,7 @@ export const getMe: RouteHandler<CurrentUser> = async ({
 
   if (user === undefined) {
     // This should also be impossible, since the previous check also
-    // means this user should be in the databse.
+    // means this user should be in the database.
     throw new Error("Authenticated user not found.");
   }
 

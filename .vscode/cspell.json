@@ -5,6 +5,7 @@
     "comlink",
     "datelike",
     "dexie",
+    "indexeddb",
     "rollbar",
     "tanstack",
     "typecheck",
