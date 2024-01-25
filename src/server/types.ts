@@ -11,13 +11,15 @@ export type RouteHandlerResponse<T> = {
 };
 
 export type RouteHandler<T> = ({
+  currentUserId,
   db,
   headers,
   parameters,
   payload,
 }: {
-  headers?: HeadersInit;
+  currentUserId?: string;
   db: AppDatabase;
+  headers?: HeadersInit;
   parameters?: Partial<Record<string, string>>;
   payload?: unknown;
 }) => Promise<RouteHandlerResponse<T>>;

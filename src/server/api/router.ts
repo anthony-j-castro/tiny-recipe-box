@@ -52,7 +52,7 @@ export function defineRoute(
 
   pathRegex += "$";
 
-  if (routes[method] !== undefined) {
+  if (routes[method]?.[path] !== undefined) {
     throw new Error(`Handler already exists for ${method} ${path}.`);
   }
 

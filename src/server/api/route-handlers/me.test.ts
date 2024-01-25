@@ -33,7 +33,7 @@ describe("server/api/route-handlers/me", () => {
 
       await db.users.add(user);
 
-      const meResponse = await getMe({ db });
+      const meResponse = await getMe({ db, currentUserId: user.id });
 
       expect(meResponse).toEqual({
         status: StatusCode.SuccessOK,
@@ -44,38 +44,31 @@ describe("server/api/route-handlers/me", () => {
       });
     });
 
-    it("returns a not found error when 0 records exist", async () => {
+    it("throws an error when no current user ID is passed in", async () => {
       const { getDatabase } = await import("~/server/database");
       const db = getDatabase();
 
-      const meResponse = await getMe({ db });
-
-      expect(meResponse).toEqual({
-        status: StatusCode.ClientErrorNotFound,
-        body: {
-          message: "User not found.",
-        },
-      });
+      await expect(getMe({ db })).rejects.toThrow(
+        "No authenticated user provided.",
+      );
     });
 
-    it("returns a server error when > 1 records exist", async () => {
+    it("throws an error when the current user ID doesn't exist in the database", async () => {
       const { getDatabase } = await import("~/server/database");
       const db = getDatabase();
 
-      await db.users.bulkAdd([
-        { createdAt: new Date(), id: uuidv4() },
-        { createdAt: new Date(), id: uuidv4() },
-      ]);
+      const user = {
+        createdAt: new Date(),
+        id: uuidv4(),
+      };
 
-      const meResponse = await getMe({ db });
+      await db.users.add(user);
 
-      expect(meResponse).toEqual({
-        status: StatusCode.ServerErrorInternal,
-        body: {
-          message:
-            "Cannot determine current user. Unexpected number of users found.",
-        },
-      });
+      const unusedUserId = uuidv4();
+
+      await expect(getMe({ db, currentUserId: unusedUserId })).rejects.toThrow(
+        "Authenticated user not found.",
+      );
     });
   });
 

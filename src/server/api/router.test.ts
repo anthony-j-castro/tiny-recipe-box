@@ -35,6 +35,7 @@ describe("server/router", () => {
       });
 
       defineRoute(HTTPMethod.GET, "/test", handler);
+      defineRoute(HTTPMethod.GET, "/test/path/2", handler);
 
       expect(() => {
         defineRoute(HTTPMethod.GET, "/test", handler);

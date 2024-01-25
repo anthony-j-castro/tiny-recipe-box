@@ -7,31 +7,28 @@ type CurrentUser = {
   userId: string;
 };
 
-export const getMe: RouteHandler<CurrentUser> = async ({ db }) => {
-  const users = await db.users.toArray();
-
-  if (users.length === 0) {
-    return {
-      status: StatusCode.ClientErrorNotFound,
-      body: {
-        message: "User not found.",
-      },
-    };
+export const getMe: RouteHandler<CurrentUser> = async ({
+  currentUserId,
+  db,
+}) => {
+  if (currentUserId === undefined) {
+    // This should be impossible to reach under normal circumstances,
+    // as the user was already authenticated and passed in by the
+    // auth middleware.
+    throw new Error("No authenticated user provided.");
   }
 
-  if (users.length > 1) {
-    return {
-      status: StatusCode.ServerErrorInternal,
-      body: {
-        message:
-          "Cannot determine current user. Unexpected number of users found.",
-      },
-    };
+  const user = await db.users.get(currentUserId);
+
+  if (user === undefined) {
+    // This should also be impossible, since the previous check also
+    // means this user should be in the databse.
+    throw new Error("Authenticated user not found.");
   }
 
   const currentUser = {
-    createdAt: users[0].createdAt,
-    userId: users[0].id,
+    createdAt: user.createdAt,
+    userId: user.id,
   };
 
   return { status: StatusCode.SuccessOK, body: currentUser };
