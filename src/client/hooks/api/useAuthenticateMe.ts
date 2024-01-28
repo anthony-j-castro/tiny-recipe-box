@@ -1,10 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { object, uuidv4 } from "decoders";
+import { throwAPIError } from "~/client/errors";
 import useSafelyParseJsonResponse from "~/client/hooks/useSafelyParseJsonResponse";
 import fetch from "~/client/utils/fetch";
-import handleErrorResponse from "~/client/utils/handleErrorResponse";
-
-const GENERIC_ERROR_MESSAGE = "Error authenticating user.";
 
 const authenticateResponseDecoder = object({
   userId: uuidv4,
@@ -19,7 +17,9 @@ const useAuthenticateMe = () => {
     mutationFn: async () => {
       const response = await fetch("/authenticate", { method: "POST" });
 
-      await handleErrorResponse(response, GENERIC_ERROR_MESSAGE);
+      if (!response.ok) {
+        await throwAPIError(response);
+      }
 
       const responseJson = await parseJson(response);
 
@@ -28,7 +28,7 @@ const useAuthenticateMe = () => {
 
         return userId;
       } catch (error) {
-        throw new Error(GENERIC_ERROR_MESSAGE);
+        throw new Error("Error authenticating user.");
       }
     },
   });

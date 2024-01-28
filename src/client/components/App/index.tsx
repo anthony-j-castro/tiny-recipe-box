@@ -9,6 +9,8 @@ import {
   ContentContainer,
   Logo,
   Paragraph,
+  UserId,
+  UserIdText,
   VersionText,
   Wrapper,
 } from "./styled";
@@ -38,7 +40,9 @@ const App = () => {
             This site and accompanying browser extension are still in
             development and will be coming soon.
           </Paragraph>
-          <div>User ID: {userId}</div>
+          <UserIdText>
+            User ID: <UserId>{userId}</UserId>
+          </UserIdText>
           {shaData ? (
             <VersionText>
               Version:{" "}

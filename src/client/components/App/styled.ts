@@ -49,8 +49,19 @@ export const Paragraph = styled.p`
   margin: 16px 0 0;
 `;
 
-export const VersionText = styled.p`
+export const UserIdText = styled.p`
   margin: 48px 0 0;
+  color: #818188;
+  font-size: 12px;
+  text-align: right;
+`;
+
+export const UserId = styled.span`
+  font-family: monospace;
+`;
+
+export const VersionText = styled.p`
+  margin: 16px 0 0;
   color: #818188;
   font-size: 12px;
   text-align: right;

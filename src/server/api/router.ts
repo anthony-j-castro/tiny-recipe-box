@@ -73,6 +73,8 @@ export async function handleRequest({
   path: string;
   headers?: HeadersInit | undefined;
 }): Promise<APIResponse> {
+  await simulateLatency();
+
   try {
     const theRoutes = routes[method];
 
@@ -90,14 +92,14 @@ export async function handleRequest({
         ) {
           const impossibleErrorMessage =
             "Impossible condition met: API route matched but parameters don't match.";
+
           rollbar.error(impossibleErrorMessage, {
             path,
             extractedParameters: matches,
             routeParameters: route.parameters,
           });
-          throw new Error(
-            "Impossible condition met: API route matched but parameters don't match.",
-          );
+
+          throw new Error(impossibleErrorMessage);
         }
 
         const params: Record<string, string> = {};
@@ -107,9 +109,8 @@ export async function handleRequest({
 
         const parsedBody = either(jsonObject, undefined_).verify(body);
 
-        await simulateLatency();
-
         const db = getDatabase();
+
         const response = await route.handler({
           db,
           parameters: params,

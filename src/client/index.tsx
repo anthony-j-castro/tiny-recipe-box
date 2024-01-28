@@ -6,6 +6,7 @@ import * as ReactDOM from "react-dom/client";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
 import { rollbarConfig } from "~/shared/rollbar";
+import InitializationRequired from "~/client/components/InitializationRequired";
 import "modern-normalize";
 import "~/client/index.css";
 
@@ -20,9 +21,11 @@ root.render(
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <UserProvider>
-            <RouterProvider router={router} />
-          </UserProvider>
+          <InitializationRequired>
+            <UserProvider>
+              <RouterProvider router={router} />
+            </UserProvider>
+          </InitializationRequired>
         </QueryClientProvider>
       </ErrorBoundary>
     </RollbarProvider>

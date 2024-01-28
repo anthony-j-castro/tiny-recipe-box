@@ -30,5 +30,5 @@ export const authMiddleware: <T>(handler: RouteHandler<T>) => RouteHandler<T> =
       return unauthorizedResponse;
     }
 
-    return handler({ db, headers, parameters, payload });
+    return handler({ currentUserId, db, headers, parameters, payload });
   };

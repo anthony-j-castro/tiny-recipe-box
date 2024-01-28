@@ -27,6 +27,8 @@ export const initializeDatabase = (dexieOptions?: DexieOptions) => {
   return database;
 };
 
+export const getDatabaseExists = () => Dexie.exists(DATABASE_NAME);
+
 export const getDatabase = () => {
   if (!database) {
     throw new Error("Database has not been initialized.");

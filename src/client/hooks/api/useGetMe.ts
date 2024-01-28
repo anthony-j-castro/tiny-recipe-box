@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import { AUTH_HEADER } from "~/client/constants";
 import { meResponseDecoder } from "~/client/decoders/meResponse";
+import { throwAPIError } from "~/client/errors";
 import useSafelyParseJsonResponse from "~/client/hooks/useSafelyParseJsonResponse";
+import { getUserId } from "~/client/storage";
 import fetch from "~/client/utils/fetch";
-import handleErrorResponse from "~/client/utils/handleErrorResponse";
 
-const GENERIC_ERROR_MESSAGE = "Error fetching current user.";
+export const QUERY_KEY_PREFIX = "me";
 
-export const getQueryKey = () => ["me"];
+export const getQueryKey = () => [QUERY_KEY_PREFIX];
 
 const useGetMe = () => {
   const parseJson = useSafelyParseJsonResponse();
@@ -14,9 +16,15 @@ const useGetMe = () => {
   return useQuery({
     queryKey: getQueryKey(),
     queryFn: async () => {
-      const response = await fetch("/me");
+      const response = await fetch("/me", {
+        headers: {
+          [AUTH_HEADER]: getUserId() ?? "",
+        },
+      });
 
-      await handleErrorResponse(response, GENERIC_ERROR_MESSAGE);
+      if (!response.ok) {
+        await throwAPIError(response);
+      }
 
       const responseJson = await parseJson(response);
 
@@ -25,7 +33,7 @@ const useGetMe = () => {
 
         return me;
       } catch (error) {
-        throw new Error(GENERIC_ERROR_MESSAGE);
+        throw new Error("Error fetching current user.");
       }
     },
   });

@@ -9,6 +9,7 @@
     "rollbar",
     "tanstack",
     "typecheck",
+    "usehooks",
     "uuidv"
   ]
 }

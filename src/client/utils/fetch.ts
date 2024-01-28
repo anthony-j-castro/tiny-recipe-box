@@ -1,9 +1,5 @@
-import { wrap } from "comlink";
 import assertIsHTTPMethod from "~/client/utils/assertIsHTTPMethod";
-import { APIWorker } from "~/server/worker";
-
-const worker = new Worker(new URL("~/server/worker.ts", import.meta.url));
-const api = wrap<APIWorker>(worker);
+import worker from "~/client/worker";
 
 const fetch = async (
   resource: string,
@@ -13,7 +9,7 @@ const fetch = async (
 
   assertIsHTTPMethod(method);
 
-  const response = await api.handleRequest({
+  const response = await worker.handleRequest({
     method,
     path: resource,
     headers,
