@@ -3,10 +3,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import InitializationRequired from "~/client/components/InitializationRequired";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
 import { rollbarConfig } from "~/shared/rollbar";
-import InitializationRequired from "~/client/components/InitializationRequired";
 import "modern-normalize";
 import "~/client/index.css";
 
