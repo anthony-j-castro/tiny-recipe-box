@@ -61,7 +61,7 @@ export const UserId = styled.span`
 `;
 
 export const VersionText = styled.p`
-  margin: 16px 0 0;
+  margin: 4px 0 0;
   color: #818188;
   font-size: 12px;
   text-align: right;
