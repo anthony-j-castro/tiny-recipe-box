@@ -7,18 +7,6 @@ module.exports = {
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
   plugins: ["sort-destructure-keys"],
-  rules: {
-    "arrow-body-style": ["error", "as-needed"],
-    quotes: [
-      "error",
-      "double",
-      { allowTemplateLiterals: false, avoidEscape: true },
-    ],
-    "sort-destructure-keys/sort-destructure-keys": [
-      "error",
-      { caseSensitive: false },
-    ],
-  },
   settings: {
     "import/resolver": {
       alias: {
