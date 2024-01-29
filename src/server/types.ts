@@ -17,8 +17,8 @@ export type RouteHandler<T> = ({
   parameters,
   payload,
 }: {
-  currentUserId?: string;
   db: AppDatabase;
+  currentUserId?: string;
   headers?: HeadersInit;
   parameters?: Partial<Record<string, string>>;
   payload?: unknown;

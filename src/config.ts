@@ -12,9 +12,9 @@ import {
 type Config = {
   GITHUB_COMMIT_SHA: string | null;
   GOOGLE_ANALYTICS_MEASUREMENT_ID: string | null;
-  ROLLBAR_ACCESS_TOKEN?: string | undefined;
   SIMULATED_LATENCY_MILLISECONDS: number;
   SIMULATED_LATENCY_TOLERANCE_MILLISECONDS: number;
+  ROLLBAR_ACCESS_TOKEN?: string | undefined;
 };
 
 const configDecoder: Decoder<Config> = exact({
