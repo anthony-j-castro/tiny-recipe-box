@@ -4,6 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+      time: "18:00"
+      timezone: "America/New_York"
     groups:
       typescript-eslint:
         patterns:
@@ -12,3 +14,5 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+      time: "18:00"
+      timezone: "America/New_York"
