@@ -5,7 +5,7 @@ import {
   Router,
   createBrowserHistory,
 } from "@tanstack/react-router";
-import App from "./components/App";
+import App from "~/client/components/App";
 
 const rootRoute = new RootRoute();
 

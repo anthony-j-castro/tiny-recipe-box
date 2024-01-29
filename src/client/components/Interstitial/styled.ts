@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+  width: 100%;
   max-width: 600px;
   margin: 16px;
   position: relative;
@@ -43,40 +44,4 @@ export const Logo = styled(BaseLogo)`
   display: block;
   max-width: 200px;
   margin-bottom: 24px;
-`;
-
-export const Paragraph = styled.p`
-  margin: 16px 0 0;
-`;
-
-export const UserIdText = styled.p`
-  margin: 48px 0 0;
-  color: #818188;
-  font-size: 12px;
-  text-align: right;
-`;
-
-export const UserId = styled.span`
-  font-family: monospace;
-`;
-
-export const VersionText = styled.p`
-  margin: 4px 0 0;
-  color: #818188;
-  font-size: 12px;
-  text-align: right;
-`;
-
-export const CommitLink = styled.a`
-  font-family: monospace;
-  color: inherit;
-  text-decoration: none;
-
-  &:visited {
-    color: inherit;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;

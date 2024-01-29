@@ -26,3 +26,5 @@ jobs:
         run: npm run prettier:ci
       - name: Lint
         run: npm run lint:ci
+      - name: Run unit tests
+        run: npm run test

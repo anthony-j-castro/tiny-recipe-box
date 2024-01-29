@@ -1,0 +1,15 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "comlink",
+    "datelike",
+    "dexie",
+    "indexeddb",
+    "rollbar",
+    "tanstack",
+    "typecheck",
+    "usehooks",
+    "uuidv"
+  ]
+}
