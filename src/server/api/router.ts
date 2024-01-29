@@ -68,9 +68,9 @@ export async function handleRequest({
   method,
   path,
 }: {
-  body?: unknown;
   method: HTTPMethod;
   path: string;
+  body?: unknown;
   headers?: HeadersInit | undefined;
 }): Promise<APIResponse> {
   await simulateLatency();
