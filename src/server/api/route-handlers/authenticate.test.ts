@@ -1,5 +1,4 @@
 import { IDBKeyRange, indexedDB } from "fake-indexeddb";
-import StatusCode from "status-code-enum";
 import { v4 as uuidv4 } from "uuid";
 import { authenticateMe } from "./authenticate";
 
@@ -36,7 +35,7 @@ describe("server/api/route-handlers/authenticate", () => {
       const meResponse = await authenticateMe({ db });
 
       expect(meResponse).toEqual({
-        status: StatusCode.SuccessOK,
+        status: 200,
         body: {
           userId: user.id,
         },
@@ -50,7 +49,7 @@ describe("server/api/route-handlers/authenticate", () => {
       const meResponse = await authenticateMe({ db });
 
       expect(meResponse).toEqual({
-        status: StatusCode.ClientErrorNotFound,
+        status: 404,
         body: {
           message: "User not found.",
         },
@@ -69,7 +68,7 @@ describe("server/api/route-handlers/authenticate", () => {
       const meResponse = await authenticateMe({ db });
 
       expect(meResponse).toEqual({
-        status: StatusCode.ServerErrorInternal,
+        status: 500,
         body: {
           message:
             "Cannot determine current user. Unexpected number of users found.",

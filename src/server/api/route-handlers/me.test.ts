@@ -1,5 +1,4 @@
 import { IDBKeyRange, indexedDB } from "fake-indexeddb";
-import StatusCode from "status-code-enum";
 import { v4 as uuidv4 } from "uuid";
 import { createMe, getMe } from "./me";
 
@@ -36,7 +35,7 @@ describe("server/api/route-handlers/me", () => {
       const meResponse = await getMe({ db, currentUserId: user.id });
 
       expect(meResponse).toEqual({
-        status: StatusCode.SuccessOK,
+        status: 200,
         body: {
           createdAt: user.createdAt,
           userId: user.id,
@@ -87,7 +86,7 @@ describe("server/api/route-handlers/me", () => {
       const meResponse = await createMe({ db });
 
       expect(meResponse).toEqual({
-        status: StatusCode.SuccessCreated,
+        status: 201,
         body: {
           createdAt: new Date(),
           userId: expect.any(String),

@@ -70,7 +70,7 @@ describe("server/router", () => {
       });
 
       expect(response).toEqual({
-        status: StatusCode.SuccessOK,
+        status: 200,
         body: JSON.stringify({ message: "OK" }),
       });
     });
@@ -92,7 +92,7 @@ describe("server/router", () => {
       });
 
       expect(response).toEqual({
-        status: StatusCode.SuccessNoContent,
+        status: 204,
       });
     });
 
@@ -105,7 +105,7 @@ describe("server/router", () => {
       });
 
       expect(response).toEqual({
-        status: StatusCode.ClientErrorBadRequest,
+        status: 400,
         body: JSON.stringify({
           message: "Cannot process GET request to /bad/path.",
         }),
@@ -129,7 +129,7 @@ describe("server/router", () => {
       });
 
       expect(response).toEqual({
-        status: StatusCode.ServerErrorInternal,
+        status: 500,
         body: JSON.stringify({ message: "An unknown error occurred." }),
       });
     });
