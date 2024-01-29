@@ -17,9 +17,21 @@ class APIError extends BaseError {
   }
 }
 
+export class UnauthorizedError extends APIError {
+  constructor(message: string) {
+    super(StatusCode.ClientErrorUnauthorized, message);
+  }
+}
+
 export class NotFoundError extends APIError {
   constructor(message: string) {
     super(StatusCode.ClientErrorNotFound, message);
+  }
+}
+
+export class InternalServerError extends APIError {
+  constructor(message: string) {
+    super(StatusCode.ServerErrorInternal, message);
   }
 }
 
@@ -39,8 +51,12 @@ export const throwAPIError = async (response: Response) => {
   };
 
   switch (response.status) {
+    case StatusCode.ClientErrorUnauthorized:
+      throw new UnauthorizedError(message);
     case StatusCode.ClientErrorNotFound:
       throw new NotFoundError(message);
+    case StatusCode.ServerErrorInternal:
+      throw new InternalServerError(message);
     default:
       throw new APIError(response.status, message);
   }
