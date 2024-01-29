@@ -1,6 +1,11 @@
 import { uuidv4 } from "decoders";
 import { useLocalStorage } from "usehooks-ts";
 
+const AGREEMENT_VERSION = 1;
+const AGREEMENT_KEY = `userAgreed.v${AGREEMENT_VERSION}`;
+
+export const useUserAgreed = () => useLocalStorage(AGREEMENT_KEY, false);
+
 export const USER_ID_KEY = "auth.userId";
 
 export const useUserId = () =>

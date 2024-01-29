@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import AgreementRequired from "~/client/components/AgreementRequired";
 import InitializationRequired from "~/client/components/InitializationRequired";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
@@ -21,11 +22,13 @@ root.render(
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <InitializationRequired>
-            <UserProvider>
-              <RouterProvider router={router} />
-            </UserProvider>
-          </InitializationRequired>
+          <AgreementRequired>
+            <InitializationRequired>
+              <UserProvider>
+                <RouterProvider router={router} />
+              </UserProvider>
+            </InitializationRequired>
+          </AgreementRequired>
         </QueryClientProvider>
       </ErrorBoundary>
     </RollbarProvider>
