@@ -6,7 +6,7 @@ import simulateLatency from "~/server/utils/simulateLatency";
 
 initializeApi();
 
-const apiServer = {
+const server = {
   getDatabaseExists: async () => {
     await simulateLatency();
 
@@ -22,6 +22,6 @@ const apiServer = {
   },
 };
 
-export type APIWorker = typeof apiServer;
+export type ServerWorker = typeof server;
 
-expose(apiServer);
+expose(server);
