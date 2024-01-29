@@ -55,6 +55,11 @@ jobs:
         env:
           GOOGLE_ANALYTICS_MEASUREMENT_ID:
             ${{ vars.GOOGLE_ANALYTICS_MEASUREMENT_ID }}
+          ROLLBAR_ACCESS_TOKEN: ${{ vars.ROLLBAR_ACCESS_TOKEN }}
+          SIMULATED_LATENCY_MILLISECONDS:
+            ${{ vars.SIMULATED_LATENCY_MILLISECONDS }}
+          SIMULATED_LATENCY_TOLERANCE_MILLISECONDS:
+            ${{ vars.SIMULATED_LATENCY_TOLERANCE_MILLISECONDS }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
