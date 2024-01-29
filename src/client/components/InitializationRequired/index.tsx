@@ -1,12 +1,11 @@
 import { useRollbar } from "@rollbar/react";
 import React, { useEffect, useState } from "react";
-import { useLocalStorage } from "usehooks-ts";
 import Interstitial from "~/client/components/Interstitial";
 import { NotFoundError } from "~/client/errors";
 import useAuthenticateMe from "~/client/hooks/api/useAuthenticateMe";
 import useCreateMe from "~/client/hooks/api/useCreateMe";
 import useInitializeDatabase from "~/client/hooks/useInitializeDatabase";
-import { USER_ID_KEY } from "~/client/storage";
+import { useUserId } from "~/client/storage";
 import { Content, LoadingIndicator } from "./styled";
 
 interface Props {
@@ -15,7 +14,7 @@ interface Props {
 
 const InitializationRequired = ({ children }: Props) => {
   const rollbar = useRollbar();
-  const [userId, setUserId] = useLocalStorage<string | null>(USER_ID_KEY, null);
+  const [userId, setUserId] = useUserId();
   const [loadingMessage, setLoadingMessage] = useState(
     "Connecting to the database…",
   );

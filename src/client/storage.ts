@@ -6,7 +6,7 @@ const AGREEMENT_KEY = `userAgreed.v${AGREEMENT_VERSION}`;
 
 export const useUserAgreed = () => useLocalStorage(AGREEMENT_KEY, false);
 
-export const USER_ID_KEY = "auth.userId";
+const USER_ID_KEY = "auth.userId";
 
 export const useUserId = () =>
   useLocalStorage<string | null>(USER_ID_KEY, null);
