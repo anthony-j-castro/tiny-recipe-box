@@ -6,7 +6,6 @@ module.exports = {
     "@anthony-j-castro/eslint-config",
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
-  plugins: ["sort-destructure-keys"],
   settings: {
     "import/resolver": {
       alias: {
