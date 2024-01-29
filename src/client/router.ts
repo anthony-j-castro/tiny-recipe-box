@@ -1,15 +1,14 @@
 import {
-  NotFoundRoute,
-  RootRoute,
-  Route,
-  Router,
   createBrowserHistory,
+  createRootRoute,
+  createRoute,
+  createRouter,
 } from "@tanstack/react-router";
 import App from "~/client/components/App";
 
-const rootRoute = new RootRoute();
+const rootRoute = createRootRoute({ notFoundComponent: App });
 
-const indexRoute = new Route({
+const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
   component: App,
@@ -17,16 +16,10 @@ const indexRoute = new Route({
 
 const routeTree = rootRoute.addChildren([indexRoute]);
 
-const notFoundRoute = new NotFoundRoute({
-  getParentRoute: () => rootRoute,
-  component: App,
-});
-
 const history = createBrowserHistory();
 
-const router = new Router({
+const router = createRouter({
   history,
-  notFoundRoute,
   routeTree,
 });
 
