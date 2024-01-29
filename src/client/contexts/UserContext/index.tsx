@@ -1,4 +1,5 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect } from "react";
+import analytics from "~/client/analytics";
 import Interstitial from "~/client/components/Interstitial";
 import useGetMe from "~/client/hooks/api/useGetMe";
 import { Content, LoadingIndicator } from "./styled";
@@ -15,6 +16,12 @@ interface Props {
 
 export const UserProvider = ({ children }: Props) => {
   const { data, isError, isPending } = useGetMe();
+
+  useEffect(() => {
+    if (data?.userId) {
+      analytics.identify(data.userId);
+    }
+  }, [data?.userId]);
 
   if (isPending) {
     return (
