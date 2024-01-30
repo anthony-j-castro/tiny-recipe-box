@@ -1,5 +1,6 @@
 import { StatusCode } from "status-code-enum";
 import { v4 as uuidv4 } from "uuid";
+import rollbar from "~/server/rollbar";
 import { RouteHandler } from "~/server/types";
 
 type CurrentUser = {
@@ -25,6 +26,16 @@ export const getMe: RouteHandler<CurrentUser> = async ({
     // means this user should be in the database.
     throw new Error("Authenticated user not found.");
   }
+
+  // This will attach the userId for the entire server. In a real server,
+  // this probably wouldn't make sense, but it's good enough for this site.
+  rollbar.configure({
+    payload: {
+      person: {
+        id: user.id,
+      },
+    },
+  });
 
   const currentUser = {
     createdAt: user.createdAt,
