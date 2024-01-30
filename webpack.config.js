@@ -8,7 +8,7 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 module.exports = {
   entry: "./src/client/index.tsx",
   output: {
-    filename: "main.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
   },

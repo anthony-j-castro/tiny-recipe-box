@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
+    "clean": "rm -rf build/*",
     "lint": "eslint .",
     "lint:ci": "eslint . --quiet",
     "prettier": "prettier . --write",
