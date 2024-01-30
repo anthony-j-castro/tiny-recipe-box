@@ -1,3 +1,4 @@
+import { useRollbar } from "@rollbar/react";
 import React, { createContext, useContext, useEffect } from "react";
 import analytics from "~/client/analytics";
 import Interstitial from "~/client/components/Interstitial";
@@ -15,13 +16,21 @@ interface Props {
 }
 
 export const UserProvider = ({ children }: Props) => {
+  const rollbar = useRollbar();
   const { data, isError, isPending } = useGetMe();
 
   useEffect(() => {
     if (data?.userId) {
       analytics.identify(data.userId);
+      rollbar.configure({
+        payload: {
+          person: {
+            id: data.userId,
+          },
+        },
+      });
     }
-  }, [data?.userId]);
+  }, [data?.userId, rollbar]);
 
   if (isPending) {
     return (
