@@ -5,11 +5,13 @@ import {
   nonEmptyString,
   nullable,
   numeric,
+  oneOf,
   positiveInteger,
   undefined_,
 } from "decoders";
 
 type Config = {
+  ENVIRONMENT: "development" | "production";
   GITHUB_COMMIT_SHA: string | null;
   GOOGLE_ANALYTICS_MEASUREMENT_ID: string | null;
   SIMULATED_LATENCY_MILLISECONDS: number;
@@ -18,6 +20,7 @@ type Config = {
 };
 
 const configDecoder: Decoder<Config> = exact({
+  ENVIRONMENT: oneOf(["development", "production"]),
   GITHUB_COMMIT_SHA: nullable(nonEmptyString),
   GOOGLE_ANALYTICS_MEASUREMENT_ID: nullable(nonEmptyString),
   ROLLBAR_ACCESS_TOKEN: either(nonEmptyString, undefined_),
@@ -26,6 +29,8 @@ const configDecoder: Decoder<Config> = exact({
 });
 
 const config = {
+  ENVIRONMENT:
+    process.env.NODE_ENV === "production" ? "production" : "development",
   GITHUB_COMMIT_SHA: process.env.GITHUB_SHA || null,
   GOOGLE_ANALYTICS_MEASUREMENT_ID:
     process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID || null,
