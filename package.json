@@ -19,7 +19,7 @@
     "@anthony-j-castro/prettier-config": "github:anthony-j-castro/prettier-config#semver:1.0.0",
     "@tanstack/eslint-plugin-query": "5.18.0",
     "@types/jest": "29.5.11",
-    "@types/react": "18.2.48",
+    "@types/react": "18.2.51",
     "@types/react-dom": "18.2.18",
     "@types/uuid": "9.0.8",
     "copy-webpack-plugin": "12.0.2",
