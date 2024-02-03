@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import analytics from "~/client/analytics";
+import { useAnalytics } from "use-analytics";
 import PageContent from "~/client/components//PageContent";
 import MonospacedText from "~/client/components/MonospacedText";
 import PageHeading from "~/client/components/PageHeading";
@@ -7,9 +7,11 @@ import { useUserContext } from "~/client/contexts/UserContext";
 import { Paragraph, Section, SectionHeading } from "./styled";
 
 const SettingsPage = () => {
+  const analytics = useAnalytics();
+
   useEffect(() => {
     analytics.page({ title: "Settings" });
-  }, []);
+  }, [analytics]);
 
   const { userId } = useUserContext();
 

@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import { AnalyticsProvider } from "use-analytics";
+import analytics from "~/client/analytics";
 import AgreementRequired from "~/client/components/AgreementRequired";
 import InitializationRequired from "~/client/components/InitializationRequired";
 import { UserProvider } from "~/client/contexts/UserContext";
@@ -23,11 +25,13 @@ root.render(
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <AgreementRequired>
-            <InitializationRequired>
-              <UserProvider>
-                <RouterProvider router={router} />
-              </UserProvider>
-            </InitializationRequired>
+            <AnalyticsProvider instance={analytics}>
+              <InitializationRequired>
+                <UserProvider>
+                  <RouterProvider router={router} />
+                </UserProvider>
+              </InitializationRequired>
+            </AnalyticsProvider>
           </AgreementRequired>
         </QueryClientProvider>
       </ErrorBoundary>

@@ -6,7 +6,14 @@ const webpack = require("webpack");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 module.exports = {
-  entry: "./src/client/index.tsx",
+  entry: {
+    main: {
+      import: path.resolve(__dirname, "./src/client/index.tsx"),
+    },
+    privacyPolicy: {
+      import: path.resolve(__dirname, "./src/client/privacy-policy.tsx"),
+    },
+  },
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "build"),
@@ -49,13 +56,25 @@ module.exports = {
           from: path.resolve(__dirname, "public"),
           to: path.resolve(__dirname, "build"),
           globOptions: {
-            ignore: [path.resolve(__dirname, "public", "index.html")],
+            ignore: [
+              path.resolve(__dirname, "public/index.html"),
+              path.resolve(__dirname, "public/privacy-policy.html"),
+            ],
           },
         },
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "public", "index.html"),
+      chunks: ["main"],
+      template: path.resolve(__dirname, "public/index.html"),
+      filename: "index.html",
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ["privacyPolicy"],
+      template: path.resolve(__dirname, "public/privacy-policy.html"),
+      filename: "privacy-policy.html",
+      inject: "body",
     }),
   ],
   devServer: {

@@ -5,23 +5,27 @@ import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import { Paragraph } from "./styled";
 
-const NotFoundPage = () => {
+interface Props {
+  isSandboxed?: boolean;
+}
+
+const PrivacyPolicyPage = ({ isSandboxed }: Props) => {
   const analytics = useAnalytics();
 
   useEffect(() => {
-    analytics.page({ title: "Not Found" });
+    analytics.page({ title: "Privacy Policy" });
   }, [analytics]);
 
   return (
-    <AppLayout>
+    <AppLayout isSandboxedNav={isSandboxed}>
       <PageContent>
-        <PageHeading>Page Not Found</PageHeading>
+        <PageHeading>Privacy Policy</PageHeading>
         <div>
-          <Paragraph>The requested page or resource was not found.</Paragraph>
+          <Paragraph>TBD.</Paragraph>
         </div>
       </PageContent>
     </AppLayout>
   );
 };
 
-export default NotFoundPage;
+export default PrivacyPolicyPage;
