@@ -30,14 +30,14 @@ const AgreementRequired = ({ children }: Props) => {
         </Paragraph>
         <Agreement>
           <Checkbox
-            data-cy="consent-checkbox"
+            data-cy="agreement-checkbox"
             store={checkbox}
           />{" "}
           I understand and accept the risk
         </Agreement>
         <ButtonsRow>
           <Button
-            data-cy="consent-submit"
+            data-cy="agreement-submit"
             disabled={isChecked !== true}
             onClick={() => {
               setUserAgreed(true);

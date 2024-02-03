@@ -1,10 +1,10 @@
 const SELECTORS = {
-  CHECKBOX: '[data-cy="consent-checkbox"]',
+  CHECKBOX: '[data-cy="agreement-checkbox"]',
   HOME_PAGE: '[data-cy="home-page"]',
-  SUBMIT: '[data-cy="consent-submit"]',
+  SUBMIT: '[data-cy="agreement-submit"]',
 };
 
-describe("The consent modal", () => {
+describe("The agreement modal", () => {
   it("appears then directs to the home page", () => {
     cy.visit("http://localhost:3000");
 
