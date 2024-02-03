@@ -5,8 +5,8 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import AppLayout from "~/client/components/AppLayout";
-import SettingsPage from "~/client/components/SettingsPage";
 import HomePage from "~/client/pages/HomePage";
+import SettingsPage from "~/client/pages/SettingsPage";
 
 const rootRoute = createRootRoute({
   component: AppLayout,
