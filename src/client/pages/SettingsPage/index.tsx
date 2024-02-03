@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import analytics from "~/client/analytics";
 import PageContent from "~/client/components//PageContent";
+import MonospacedText from "~/client/components/MonospacedText";
 import PageHeading from "~/client/components/PageHeading";
 import { useUserContext } from "~/client/contexts/UserContext";
-import { Paragraph, Section, SectionHeading, UserId } from "./styled";
+import { Paragraph, Section, SectionHeading } from "./styled";
 
 const SettingsPage = () => {
   useEffect(() => {
@@ -18,7 +19,7 @@ const SettingsPage = () => {
       <Section>
         <SectionHeading>User ID</SectionHeading>
         <div>
-          Your user ID: <UserId>{userId}</UserId>
+          Your user ID: <MonospacedText>{userId}</MonospacedText>
         </div>
         <Paragraph>
           Your user ID is a randomly assigned unique identifier that is sent

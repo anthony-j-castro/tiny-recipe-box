@@ -12,7 +12,3 @@ export const SectionHeading = styled.h2`
 export const Paragraph = styled.p`
   margin: 16px 0 0;
 `;
-
-export const UserId = styled.span`
-  font-family: ui-monospace, monospace;
-`;

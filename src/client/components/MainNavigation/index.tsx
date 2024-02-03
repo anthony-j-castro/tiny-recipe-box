@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
 import analytics from "~/client/analytics";
+import MonospacedText from "~/client/components/MonospacedText";
 import config from "~/config";
 import {
   AlphaPill,
   BottomSeparator,
-  CommitLink,
   List,
   NavLink,
   PrimaryNav,
@@ -58,7 +58,7 @@ const MainNavigation = ({ className }: Props) => {
               target="_blank"
               to={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
             >
-              Site Version: <CommitLink>{shaData.short}</CommitLink>
+              Site Version: <MonospacedText>{shaData.short}</MonospacedText>
             </VersionInfoLink>
           </>
         ) : null}

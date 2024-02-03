@@ -70,7 +70,3 @@ export const VersionInfoLink = styled(NavLink)`
   color: #818188;
   font-size: 12px;
 `;
-
-export const CommitLink = styled.span`
-  font-family: ui-monospace, monospace;
-`;
