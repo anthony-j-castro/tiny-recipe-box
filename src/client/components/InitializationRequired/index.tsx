@@ -78,7 +78,7 @@ const InitializationRequired = ({ children }: Props) => {
 
   if (isLoading) {
     return (
-      <Interstitial>
+      <Interstitial contentTestAttribute="initialization-modal">
         <Content>
           <LoadingIndicator />
           {loadingMessage}

@@ -9,11 +9,12 @@ import {
 
 interface Props {
   children: React.ReactNode;
+  contentTestAttribute?: string;
 }
 
-const Interstitial = ({ children }: Props) => (
+const Interstitial = ({ children, contentTestAttribute }: Props) => (
   <Wrapper>
-    <ContentContainer>
+    <ContentContainer data-cy={contentTestAttribute}>
       <AnimatedBackground data-background="true" />
       <Content>
         <Logo />
