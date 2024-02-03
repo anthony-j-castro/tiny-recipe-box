@@ -12,9 +12,7 @@ if (config.GOOGLE_ANALYTICS_MEASUREMENT_ID) {
   );
 }
 
-const analytics = Analytics({
+export const analyticsConfig = {
   app: "tinyrecipebox.com",
   plugins,
-});
-
-export default analytics;
+};
