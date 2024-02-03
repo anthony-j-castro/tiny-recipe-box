@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
-import analytics from "~/client/analytics";
+import { useAnalytics } from "use-analytics";
 import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import { Paragraph } from "./styled";
 
 const HomePage = () => {
+  const analytics = useAnalytics();
+
   useEffect(() => {
     analytics.page({ title: "Home" });
-  }, []);
+  }, [analytics]);
 
   return (
     <PageContent data-cy="home-page">

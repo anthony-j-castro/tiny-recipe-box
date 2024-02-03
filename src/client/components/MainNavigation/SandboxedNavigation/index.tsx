@@ -1,28 +1,23 @@
-import { Link } from "@tanstack/react-router";
 import React from "react";
-import { useAnalytics } from "use-analytics";
-import MonospacedText from "~/client/components/MonospacedText";
-import config from "~/config";
 import {
   AlphaPill,
   BottomSeparator,
   List,
-  NavLink,
   PrimaryNav,
   SecondaryNav,
   Sidebar,
   StyledLogo,
   TopSeparator,
-  VersionInfoLink,
-} from "./styled";
+} from "~/client/components/MainNavigation/styled";
+import MonospacedText from "~/client/components/MonospacedText";
+import config from "~/config";
+import { NavLink, VersionInfoLink } from "./styled";
 
 interface Props {
   className?: string;
 }
 
 const MainNavigation = ({ className }: Props) => {
-  const analytics = useAnalytics();
-
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
         long: config.GITHUB_COMMIT_SHA,
@@ -34,31 +29,34 @@ const MainNavigation = ({ className }: Props) => {
     <Sidebar className={className}>
       <PrimaryNav>
         <AlphaPill>α version</AlphaPill>
-        <Link to="/">
+        <a href="/">
           <StyledLogo />
-        </Link>
+        </a>
         <TopSeparator />
         <List>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink href="/">Home</NavLink>
           </li>
         </List>
       </PrimaryNav>
       <SecondaryNav>
         <List>
           <li>
-            <NavLink to="/settings">Settings</NavLink>
+            <NavLink
+              data-status="active"
+              href="/privacy-policy.html"
+            >
+              Privacy Policy
+            </NavLink>
           </li>
         </List>
         {shaData ? (
           <>
             <BottomSeparator />
             <VersionInfoLink
-              onClick={() => {
-                analytics.track("clicked_commit_link");
-              }}
+              href={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
+              rel="noreferrer"
               target="_blank"
-              to={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
             >
               Site Version: <MonospacedText>{shaData.short}</MonospacedText>
             </VersionInfoLink>

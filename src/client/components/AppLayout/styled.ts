@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MainNavigation from "~/client/components/MainNavigation";
+import SandboxedNavigation from "~/client/components/MainNavigation/SandboxedNavigation";
 
 export const Wrapper = styled.div`
   width: 100vw;
@@ -13,6 +14,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Nav = styled(MainNavigation)`
+  grid-area: navigation;
+  overflow: auto;
+`;
+
+export const SandboxedNav = styled(SandboxedNavigation)`
   grid-area: navigation;
   overflow: auto;
 `;
