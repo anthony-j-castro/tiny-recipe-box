@@ -2,12 +2,14 @@ import { Outlet } from "@tanstack/react-router";
 import * as React from "react";
 import { Content, Nav, Wrapper } from "./styled";
 
-const AppLayout = () => (
+interface Props {
+  children?: React.ReactNode;
+}
+
+const AppLayout = ({ children }: Props) => (
   <Wrapper>
     <Nav />
-    <Content>
-      <Outlet />
-    </Content>
+    <Content>{children ?? <Outlet />}</Content>
   </Wrapper>
 );
 

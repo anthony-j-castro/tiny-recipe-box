@@ -6,11 +6,12 @@ import {
 } from "@tanstack/react-router";
 import AppLayout from "~/client/components/AppLayout";
 import HomePage from "~/client/pages/HomePage";
+import NotFoundPage from "~/client/pages/NotFoundPage";
 import SettingsPage from "~/client/pages/SettingsPage";
 
 const rootRoute = createRootRoute({
   component: AppLayout,
-  notFoundComponent: AppLayout,
+  notFoundComponent: NotFoundPage,
 });
 
 const indexRoute = createRoute({
