@@ -84,6 +84,11 @@ module.exports = {
     port: 3000,
     static: {
       directory: path.resolve(__dirname, "build"),
+      staticOptions: {
+        // Mimic how GitHub allows you to omit the .html
+        // extension from a URL
+        extensions: ["html"],
+      },
     },
   },
 };
