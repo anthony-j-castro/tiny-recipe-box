@@ -28,3 +28,11 @@ jobs:
         run: npm run lint:ci
       - name: Run unit tests
         run: npm run test
+      - name: Build for Cypress
+        run: npm run build:cy
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          start: npm run serve:cy
+          wait-on: "http://localhost:3000"
