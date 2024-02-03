@@ -35,4 +35,18 @@ jobs:
         with:
           browser: chrome
           start: npm run serve:cy
-          wait-on: "http://localhost:3000"
+          wait-on: http://localhost:3000
+      - name: Upload Cypress screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore
