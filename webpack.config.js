@@ -10,8 +10,9 @@ module.exports = {
     main: {
       import: path.resolve(__dirname, "src/client/index.tsx"),
     },
-    privacyPolicy: {
+    "privacy-policy": {
       import: path.resolve(__dirname, "src/client/privacy-policy.tsx"),
+      filename: "public/[name].[contenthash].js",
     },
   },
   output: {
@@ -71,9 +72,9 @@ module.exports = {
       inject: "body",
     }),
     new HtmlWebpackPlugin({
-      chunks: ["privacyPolicy"],
+      chunks: ["privacy-policy"],
       template: path.resolve(__dirname, "public/privacy-policy.html"),
-      filename: "privacy-policy.html",
+      filename: "public/privacy-policy.html",
       inject: "body",
     }),
   ],
