@@ -38,6 +38,8 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Run unit tests
         run: npm run test
 
@@ -52,6 +54,8 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Build for Cypress
         run: npm run build:cy
       - name: Run Cypress tests
