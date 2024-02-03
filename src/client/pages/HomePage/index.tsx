@@ -10,7 +10,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <PageContent>
+    <PageContent data-cy="home-page">
       <PageHeading>Home</PageHeading>
       <div>
         <Paragraph>Welcome to Tiny Recipe Box!</Paragraph>

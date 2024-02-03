@@ -21,7 +21,7 @@ const AgreementRequired = ({ children }: Props) => {
 
   if (userAgreed === false) {
     return (
-      <Interstitial contentTestAttribute="consent">
+      <Interstitial>
         <Paragraph>Welcome to Tiny Recipe Box!</Paragraph>
         <Paragraph>
           This site is still in development and no existing functionality is
@@ -29,10 +29,15 @@ const AgreementRequired = ({ children }: Props) => {
           your own risk.
         </Paragraph>
         <Agreement>
-          <Checkbox store={checkbox} /> I understand and accept the risk
+          <Checkbox
+            data-cy="consent-checkbox"
+            store={checkbox}
+          />{" "}
+          I understand and accept the risk
         </Agreement>
         <ButtonsRow>
           <Button
+            data-cy="consent-submit"
             disabled={isChecked !== true}
             onClick={() => {
               setUserAgreed(true);
