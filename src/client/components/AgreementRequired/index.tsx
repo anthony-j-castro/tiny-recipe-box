@@ -21,7 +21,7 @@ const AgreementRequired = ({ children }: Props) => {
 
   if (userAgreed === false) {
     return (
-      <Interstitial>
+      <Interstitial contentTestAttribute="consent">
         <Paragraph>Welcome to Tiny Recipe Box!</Paragraph>
         <Paragraph>
           This site is still in development and no existing functionality is
