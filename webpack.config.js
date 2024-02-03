@@ -8,10 +8,10 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 module.exports = {
   entry: {
     main: {
-      import: path.resolve(__dirname, "./src/client/index.tsx"),
+      import: path.resolve(__dirname, "src/client/index.tsx"),
     },
     privacyPolicy: {
-      import: path.resolve(__dirname, "./src/client/privacy-policy.tsx"),
+      import: path.resolve(__dirname, "src/client/privacy-policy.tsx"),
     },
   },
   output: {
@@ -82,7 +82,7 @@ module.exports = {
     open: true,
     port: 3000,
     static: {
-      directory: path.join(__dirname, "build"),
+      directory: path.resolve(__dirname, "build"),
     },
   },
 };
