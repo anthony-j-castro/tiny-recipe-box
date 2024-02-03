@@ -4,17 +4,29 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-import App from "~/client/components/App";
+import AppLayout from "~/client/components/AppLayout";
+import HomePage from "~/client/pages/HomePage";
+import NotFoundPage from "~/client/pages/NotFoundPage";
+import SettingsPage from "~/client/pages/SettingsPage";
 
-const rootRoute = createRootRoute({ notFoundComponent: App });
+const rootRoute = createRootRoute({
+  component: AppLayout,
+  notFoundComponent: NotFoundPage,
+});
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: App,
+  component: HomePage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute]);
+const settingsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/settings",
+  component: SettingsPage,
+});
+
+const routeTree = rootRoute.addChildren([indexRoute, settingsRoute]);
 
 const history = createBrowserHistory();
 
