@@ -22,7 +22,7 @@
     "@anthony-j-castro/prettier-config": "github:anthony-j-castro/prettier-config#semver:1.0.0",
     "@tanstack/eslint-plugin-query": "5.18.1",
     "@types/jest": "29.5.12",
-    "@types/react": "18.2.51",
+    "@types/react": "18.2.54",
     "@types/react-dom": "18.2.18",
     "@types/use-analytics": "0.0.3",
     "@types/uuid": "9.0.8",
