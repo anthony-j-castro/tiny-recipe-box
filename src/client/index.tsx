@@ -8,6 +8,7 @@ import { AnalyticsProvider } from "use-analytics";
 import { analyticsConfig } from "~/client/analytics";
 import AgreementRequired from "~/client/components/AgreementRequired";
 import InitializationRequired from "~/client/components/InitializationRequired";
+import { ExtensionProvider } from "~/client/contexts/ExtensionContext";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
 import { rollbarConfig } from "~/shared/rollbar";
@@ -30,9 +31,11 @@ root.render(
           <AgreementRequired>
             <AnalyticsProvider instance={analytics}>
               <InitializationRequired>
-                <UserProvider>
-                  <RouterProvider router={router} />
-                </UserProvider>
+                <ExtensionProvider>
+                  <UserProvider>
+                    <RouterProvider router={router} />
+                  </UserProvider>
+                </ExtensionProvider>
               </InitializationRequired>
             </AnalyticsProvider>
           </AgreementRequired>
