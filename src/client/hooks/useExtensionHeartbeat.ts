@@ -26,9 +26,9 @@ const useExtensionHeartbeat = () =>
         sender: "web-app",
       });
 
-      const decodedResponse = pingResponse.verify(response);
+      const { extensionVersion } = pingResponse.verify(response);
 
-      return decodedResponse.extensionVersion;
+      return { version: extensionVersion };
     },
     refetchInterval: config.EXTENSION_HEARTBEAT_INTERVAL_MILLISECONDS,
     refetchIntervalInBackground: false,

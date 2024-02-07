@@ -55,7 +55,7 @@ const MainNavigation = ({ className }: Props) => {
           <li>
             <NavLink to="/browser-extension">
               Extension Status:
-              <ExtensionStatusDot status={extensionInfo.installationStatus} />
+              <ExtensionStatusDot status={extensionInfo.isInstalled} />
             </NavLink>
           </li>
         </List>

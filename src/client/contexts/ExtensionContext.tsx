@@ -1,12 +1,14 @@
 import React, { createContext, useContext } from "react";
 import useExtensionHeartbeat from "~/client/hooks/useExtensionHeartbeat";
 
-type Context = {
-  installationStatus: boolean | null;
-};
+type Context =
+  | { isInstalled: null; version: null }
+  | { isInstalled: true; version: string }
+  | { isInstalled: false; version: null };
 
 const ExtensionContext = createContext<Context>({
-  installationStatus: null,
+  isInstalled: null,
+  version: null,
 });
 
 interface Props {
@@ -16,10 +18,20 @@ interface Props {
 export const ExtensionProvider = ({ children }: Props) => {
   const { data, isError } = useExtensionHeartbeat();
 
-  const installationStatus = isError ? false : data !== undefined ? true : null;
+  const value: Context = isError
+    ? {
+        isInstalled: false,
+        version: null,
+      }
+    : data?.version !== undefined
+      ? {
+          isInstalled: true,
+          version: data.version,
+        }
+      : { isInstalled: null, version: null };
 
   return (
-    <ExtensionContext.Provider value={{ installationStatus }}>
+    <ExtensionContext.Provider value={value}>
       {children}
     </ExtensionContext.Provider>
   );
