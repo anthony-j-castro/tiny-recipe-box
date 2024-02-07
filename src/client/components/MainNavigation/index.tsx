@@ -53,7 +53,7 @@ const MainNavigation = ({ className }: Props) => {
             <NavLink to="/settings">Settings</NavLink>
           </li>
           <li>
-            <NavLink to="/settings">
+            <NavLink to="/browser-extension">
               Extension Status:
               <ExtensionStatusDot status={extensionInfo.installationStatus} />
             </NavLink>
