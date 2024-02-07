@@ -45,6 +45,7 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
+      EXTENSION_HEARTBEAT_INTERVAL_MILLISECONDS: null,
       GITHUB_SHA: null,
       GOOGLE_ANALYTICS_MEASUREMENT_ID: null,
       ROLLBAR_ACCESS_TOKEN: null,

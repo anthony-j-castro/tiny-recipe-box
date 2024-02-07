@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Decoder, constant, nonEmptyString, object } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
+import config from "~/config";
 
 type PongMessage = {
   extensionVersion: string;
@@ -29,8 +30,9 @@ const useExtensionHeartbeat = () =>
 
       return decodedResponse.extensionVersion;
     },
-    //refetchInterval: 1000,
-    //refetchIntervalInBackground: false,
+    refetchInterval: config.EXTENSION_HEARTBEAT_INTERVAL_MILLISECONDS,
+    refetchIntervalInBackground: false,
+    refetchOnWindowFocus: true,
   });
 
 export default useExtensionHeartbeat;
