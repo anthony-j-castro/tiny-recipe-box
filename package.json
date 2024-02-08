@@ -23,7 +23,7 @@
     "@tanstack/eslint-plugin-query": "5.18.1",
     "@types/chrome": "0.0.260",
     "@types/jest": "29.5.12",
-    "@types/react": "18.2.54",
+    "@types/react": "18.2.55",
     "@types/react-dom": "18.2.18",
     "@types/use-analytics": "0.0.3",
     "@types/uuid": "9.0.8",
