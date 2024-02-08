@@ -20,7 +20,7 @@ const ExtensionPage = () => {
       <div>
         {extensionInfo.isInstalled ? (
           <Paragraph>
-            Tiny Recipe Clipper Version:{" "}
+            Tiny Recipe Clipper detected version:{" "}
             <MonospacedText>{extensionInfo.version}</MonospacedText>
           </Paragraph>
         ) : (
