@@ -5,6 +5,7 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import AppLayout from "~/client/components/AppLayout";
+import ExtensionPage from "~/client/pages/ExtensionPage";
 import HomePage from "~/client/pages/HomePage";
 import NotFoundPage from "~/client/pages/NotFoundPage";
 import SettingsPage from "~/client/pages/SettingsPage";
@@ -26,7 +27,17 @@ const settingsRoute = createRoute({
   component: SettingsPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, settingsRoute]);
+const extensionRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/browser-extension",
+  component: ExtensionPage,
+});
+
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  settingsRoute,
+  extensionRoute,
+]);
 
 const history = createBrowserHistory();
 

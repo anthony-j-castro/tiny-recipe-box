@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import React from "react";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
+import { useExtensionContext } from "~/client/contexts/ExtensionContext";
 import config from "~/config";
+import ExtensionStatusDot from "./ExtensionStatusDot";
 import {
   AlphaPill,
   BottomSeparator,
@@ -22,6 +24,7 @@ interface Props {
 
 const MainNavigation = ({ className }: Props) => {
   const analytics = useAnalytics();
+  const extensionInfo = useExtensionContext();
 
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
@@ -48,6 +51,12 @@ const MainNavigation = ({ className }: Props) => {
         <List>
           <li>
             <NavLink to="/settings">Settings</NavLink>
+          </li>
+          <li>
+            <NavLink to="/browser-extension">
+              Extension Status:
+              <ExtensionStatusDot status={extensionInfo.isInstalled} />
+            </NavLink>
           </li>
         </List>
         {shaData ? (
