@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledLink } from "~/client/components/MainNavigation/NavLink/styled";
 
 export const Dot = styled.span<{ $status: boolean | null }>`
   display: inline-block;
@@ -14,7 +15,7 @@ export const Dot = styled.span<{ $status: boolean | null }>`
   border-radius: 50%;
   margin-left: 8px;
 
-  [data-status="active"] > & {
+  ${StyledLink}[data-status="active"] > & {
     border: 1px solid #ffffff;
   }
 `;
