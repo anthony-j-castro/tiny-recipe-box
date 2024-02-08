@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useAnalytics } from "use-analytics";
+import MonospacedText from "~/client/components/MonospacedText";
 import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
@@ -17,7 +18,17 @@ const ExtensionPage = () => {
     <PageContent>
       <PageHeading>Browser Extension</PageHeading>
       <div>
-        <Paragraph>Version: {extensionInfo.version}</Paragraph>
+        {extensionInfo.isInstalled ? (
+          <Paragraph>
+            Tiny Recipe Clipper Version:{" "}
+            <MonospacedText>{extensionInfo.version}</MonospacedText>
+          </Paragraph>
+        ) : (
+          <Paragraph>
+            You either don’t have Tiny Recipe Clipper installed or it is
+            disabled.
+          </Paragraph>
+        )}
       </div>
     </PageContent>
   );
