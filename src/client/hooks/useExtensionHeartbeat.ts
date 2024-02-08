@@ -3,12 +3,12 @@ import { Decoder, constant, nonEmptyString, object } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import config from "~/config";
 
-type PongMessage = {
+type HeartbeatResponseMessage = {
   extensionVersion: string;
   type: "PONG";
 };
 
-const pingResponse: Decoder<PongMessage> = object({
+const heartbeatResponse: Decoder<HeartbeatResponseMessage> = object({
   type: constant("PONG"),
   extensionVersion: nonEmptyString,
 });
@@ -26,7 +26,7 @@ const useExtensionHeartbeat = () =>
         sender: "web-app",
       });
 
-      const { extensionVersion } = pingResponse.verify(response);
+      const { extensionVersion } = heartbeatResponse.verify(response);
 
       return { version: extensionVersion };
     },
