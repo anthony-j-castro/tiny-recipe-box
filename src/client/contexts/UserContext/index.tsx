@@ -1,5 +1,5 @@
 import { useRollbar } from "@rollbar/react";
-import React, { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useAnalytics } from "use-analytics";
 import Interstitial from "~/client/components/Interstitial";
 import useGetMe from "~/client/hooks/api/useGetMe";

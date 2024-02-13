@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAnalytics } from "use-analytics";
 import AppLayout from "~/client/components/AppLayout";
 import PageContent from "~/client/components/PageContent";

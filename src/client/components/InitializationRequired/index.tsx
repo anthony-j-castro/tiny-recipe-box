@@ -1,5 +1,5 @@
 import { useRollbar } from "@rollbar/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Interstitial from "~/client/components/Interstitial";
 import { NotFoundError } from "~/client/errors";
 import useAuthenticateMe from "~/client/hooks/api/useAuthenticateMe";

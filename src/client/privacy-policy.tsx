@@ -1,6 +1,6 @@
 import Analytics from "analytics";
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import "modern-normalize";
 import "~/client/index.css";
 import { AnalyticsProvider } from "use-analytics";
@@ -8,12 +8,12 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const analytics = Analytics({});
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
+const root = createRoot(document.getElementById("root")!);
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <AnalyticsProvider instance={analytics}>
       <PrivacyPolicyPage isSandboxed />
     </AnalyticsProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 );
