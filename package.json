@@ -52,7 +52,7 @@
     "@rollbar/react": "0.11.2",
     "@tanstack/react-query": "5.18.1",
     "@tanstack/react-router": "1.16.0",
-    "analytics": "0.8.9",
+    "analytics": "0.8.11",
     "comlink": "4.4.1",
     "decoders": "2.4.0",
     "dexie": "3.2.5",
