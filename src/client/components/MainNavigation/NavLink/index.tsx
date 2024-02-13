@@ -1,4 +1,3 @@
-import * as React from "react";
 import { StyledLink } from "./styled";
 
 interface Props {

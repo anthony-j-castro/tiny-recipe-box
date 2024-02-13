@@ -2,8 +2,8 @@ import { ErrorBoundary, Provider as RollbarProvider } from "@rollbar/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 import Analytics from "analytics";
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { AnalyticsProvider } from "use-analytics";
 import { analyticsConfig } from "~/client/analytics";
 import AgreementRequired from "~/client/components/AgreementRequired";
@@ -21,10 +21,10 @@ const queryClient = new QueryClient({
 
 const analytics = Analytics(analyticsConfig);
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
+const root = createRoot(document.getElementById("root")!);
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
@@ -42,5 +42,5 @@ root.render(
         </QueryClientProvider>
       </ErrorBoundary>
     </RollbarProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 );

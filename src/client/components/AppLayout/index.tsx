@@ -1,5 +1,4 @@
 import { Outlet } from "@tanstack/react-router";
-import * as React from "react";
 import { Content, Nav, SandboxedNav, Wrapper } from "./styled";
 
 interface Props {

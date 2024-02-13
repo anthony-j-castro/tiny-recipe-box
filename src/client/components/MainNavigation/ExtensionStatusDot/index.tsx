@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Dot } from "./styled";
 
 interface Props {
