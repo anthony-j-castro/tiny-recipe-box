@@ -6,6 +6,10 @@ module.exports = {
     "@anthony-j-castro/eslint-config",
     "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
+  rules: {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+  },
   settings: {
     "import/resolver": {
       alias: {

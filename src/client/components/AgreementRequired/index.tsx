@@ -1,5 +1,4 @@
 import { useCheckboxStore } from "@ariakit/react";
-import React from "react";
 import {
   Agreement,
   ButtonsRow,

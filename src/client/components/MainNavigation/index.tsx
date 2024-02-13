@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import React from "react";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
