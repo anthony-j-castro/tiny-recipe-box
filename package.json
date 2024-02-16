@@ -60,7 +60,7 @@
     "modern-normalize": "2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rollbar": "2.26.2",
+    "rollbar": "2.26.3",
     "status-code-enum": "1.0.0",
     "styled-components": "6.1.8",
     "use-analytics": "1.1.0",
