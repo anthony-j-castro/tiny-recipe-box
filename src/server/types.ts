@@ -7,7 +7,7 @@ type ErrorResponseBody = {
 
 export type RouteHandlerResponse<T> = {
   status: StatusCode;
-  body?: T | ErrorResponseBody;
+  body?: ErrorResponseBody | T;
 };
 
 export type RouteHandler<T> = ({
