@@ -2,9 +2,9 @@ import { createContext, useContext } from "react";
 import useExtensionHeartbeat from "~/client/hooks/useExtensionHeartbeat";
 
 type Context =
+  | { isInstalled: false; version: null }
   | { isInstalled: null; version: null }
-  | { isInstalled: true; version: string }
-  | { isInstalled: false; version: null };
+  | { isInstalled: true; version: string };
 
 const ExtensionContext = createContext<Context>({
   isInstalled: null,
