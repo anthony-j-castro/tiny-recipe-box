@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { EXTENSION_ID } from "~/client/constants";
-import sleep from "~/server/utils/sleep";
+import sleep from "~/shared/utils/sleep";
 
 const timeout = async (ms: number) => {
   await sleep(ms);

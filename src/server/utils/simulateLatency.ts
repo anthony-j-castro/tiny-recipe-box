@@ -1,5 +1,5 @@
 import config from "~/config";
-import sleep from "~/server/utils/sleep";
+import sleep from "~/shared/utils/sleep";
 
 const simulateLatency = () => {
   const min = Math.ceil(
