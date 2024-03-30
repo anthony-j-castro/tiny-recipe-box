@@ -1,3 +1,5 @@
+import { useSearch } from "@tanstack/react-router";
+import { boolean, object } from "decoders";
 import { useEffect } from "react";
 import { useAnalytics } from "use-analytics";
 import PageContent from "~/client/components/PageContent";
@@ -6,6 +8,10 @@ import { useExtensionContext } from "~/client/contexts/ExtensionContext";
 import useImportRecipeFromExtension from "~/client/hooks/useImportRecipeFromExtension";
 import { DataBlock, Paragraph } from "./styled";
 
+const searchDecoder = object({
+  "from-extension": boolean,
+});
+
 const ImportRecipePage = () => {
   const analytics = useAnalytics();
 
@@ -13,17 +19,23 @@ const ImportRecipePage = () => {
     analytics.page({ title: "Import Recipe" });
   }, [analytics]);
 
+  const rawSearch = useSearch({ strict: false });
+  const parsedSearch = searchDecoder.value(rawSearch);
+  const isPageOpenedByExtension = parsedSearch?.["from-extension"] === true;
+
   const { isInstalled } = useExtensionContext();
 
   const { data, isError, isPending } = useImportRecipeFromExtension({
-    enabled: isInstalled === true,
+    enabled: isPageOpenedByExtension && isInstalled === true,
   });
 
   return (
     <PageContent>
       <PageHeading>Import Recipe</PageHeading>
       <div>
-        {isInstalled === null ? null : isInstalled === false ? (
+        {isInstalled === null ? null : isPageOpenedByExtension === false ? (
+          <Paragraph>Use the extension to import recipes.</Paragraph>
+        ) : isInstalled === false ? (
           <Paragraph>
             In order to import recipes, the extension must be installed and
             enabled.
