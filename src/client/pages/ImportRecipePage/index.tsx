@@ -33,13 +33,13 @@ const ImportRecipePage = () => {
     <PageContent>
       <PageHeading>Import Recipe</PageHeading>
       <div>
-        {isInstalled === null ? null : isPageOpenedByExtension === false ? (
-          <Paragraph>Use the extension to import recipes.</Paragraph>
-        ) : isInstalled === false ? (
+        {isInstalled === null ? null : isInstalled === false ? (
           <Paragraph>
             In order to import recipes, the extension must be installed and
             enabled.
           </Paragraph>
+        ) : isPageOpenedByExtension === false ? (
+          <Paragraph>Use the extension to import recipes.</Paragraph>
         ) : isPending ? (
           <Paragraph>Loading…</Paragraph>
         ) : isError ? (
