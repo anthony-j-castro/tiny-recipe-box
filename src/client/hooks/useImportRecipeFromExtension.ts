@@ -19,10 +19,14 @@ const timeout = async (ms: number) => {
   throw new Error("Request timed out.");
 };
 
-const useImportRecipeFromExtension = () =>
+const useImportRecipeFromExtension = ({
+  enabled,
+}: { enabled?: boolean } = {}) =>
   useQuery({
+    enabled,
     queryKey: ["import-recipe"],
     queryFn: async () => {
+      console.log("RUNNING");
       if (!window.chrome?.runtime) {
         throw new Error("Extension helpers do not exist.");
       }
