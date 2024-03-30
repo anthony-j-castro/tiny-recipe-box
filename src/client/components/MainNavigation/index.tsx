@@ -57,6 +57,9 @@ const MainNavigation = ({ className }: Props) => {
               <ExtensionStatusDot status={extensionInfo.isInstalled} />
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/import-recipe">Import Recipe</NavLink>
+          </li>
         </List>
         {shaData ? (
           <>
