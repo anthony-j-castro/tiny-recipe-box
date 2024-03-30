@@ -1,6 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
+import { Decoder, constant, exact } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
+
+type RecipeDataResponseMessage = {
+  sender: "service-worker";
+  type: "RECIPE_DATA";
+};
+
+const recipeDataResponseMessageDecoder: Decoder<RecipeDataResponseMessage> =
+  exact({
+    type: constant("RECIPE_DATA"),
+    sender: constant("service-worker"),
+  });
 
 const timeout = async (ms: number) => {
   await sleep(ms);
@@ -23,9 +35,9 @@ const useImportRecipeFromExtension = () =>
         timeout(10000),
       ]);
 
-      console.log("Response:", response);
+      const decodedResponse = recipeDataResponseMessageDecoder.verify(response);
 
-      return response;
+      return decodedResponse;
     },
   });
 
