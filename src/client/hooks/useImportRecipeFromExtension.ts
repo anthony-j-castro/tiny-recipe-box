@@ -26,7 +26,6 @@ const useImportRecipeFromExtension = ({
     enabled,
     queryKey: ["import-recipe"],
     queryFn: async () => {
-      console.log("RUNNING");
       if (!window.chrome?.runtime) {
         throw new Error("Extension helpers do not exist.");
       }
