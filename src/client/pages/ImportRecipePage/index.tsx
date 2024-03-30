@@ -20,10 +20,16 @@ const ImportRecipePage = () => {
     <PageContent>
       <PageHeading>Import Recipe</PageHeading>
       <div>
-        <Paragraph>Loading…</Paragraph>
-        <div>isPending: {JSON.stringify(isPending)}</div>
-        <div>isError: {JSON.stringify(isError)}</div>
-        <div>{JSON.stringify(data)}</div>
+        {isPending ? (
+          <Paragraph>Loading…</Paragraph>
+        ) : isError ? (
+          <Paragraph>
+            There was an error importing the recipe from the extension. Please
+            close this window and try again.
+          </Paragraph>
+        ) : (
+          <div>{JSON.stringify(data)}</div>
+        )}
       </div>
     </PageContent>
   );
