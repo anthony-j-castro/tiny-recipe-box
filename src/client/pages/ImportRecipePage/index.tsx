@@ -3,7 +3,7 @@ import { useAnalytics } from "use-analytics";
 import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import useImportRecipeFromExtension from "~/client/hooks/useImportRecipeFromExtension";
-import { Paragraph } from "./styled";
+import { DataBlock, Paragraph } from "./styled";
 
 const ImportRecipePage = () => {
   const analytics = useAnalytics();
@@ -12,9 +12,7 @@ const ImportRecipePage = () => {
     analytics.page({ title: "Import Recipe" });
   }, [analytics]);
 
-  const { data, error, isError, isPending } = useImportRecipeFromExtension();
-
-  console.log("error", error);
+  const { data, isError, isPending } = useImportRecipeFromExtension();
 
   return (
     <PageContent>
@@ -28,7 +26,7 @@ const ImportRecipePage = () => {
             close this window and try again.
           </Paragraph>
         ) : (
-          <div>{JSON.stringify(data)}</div>
+          <DataBlock>{JSON.stringify(data, undefined, 2)}</DataBlock>
         )}
       </div>
     </PageContent>
