@@ -9,7 +9,7 @@ import useImportRecipeFromExtension from "~/client/hooks/useImportRecipeFromExte
 import { DataBlock, Paragraph } from "./styled";
 
 const searchDecoder = object({
-  "from-extension": boolean,
+  enabled: boolean,
 });
 
 const ImportRecipePage = () => {
@@ -21,7 +21,7 @@ const ImportRecipePage = () => {
 
   const rawSearch = useSearch({ strict: false });
   const parsedSearch = searchDecoder.value(rawSearch);
-  const isPageOpenedByExtension = parsedSearch?.["from-extension"] === true;
+  const isPageOpenedByExtension = parsedSearch?.enabled === true;
 
   const { isInstalled } = useExtensionContext();
 
