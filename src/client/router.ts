@@ -7,6 +7,7 @@ import {
 import AppLayout from "~/client/components/AppLayout";
 import ExtensionPage from "~/client/pages/ExtensionPage";
 import HomePage from "~/client/pages/HomePage";
+import ImportRecipePage from "~/client/pages/ImportRecipePage";
 import NotFoundPage from "~/client/pages/NotFoundPage";
 import SettingsPage from "~/client/pages/SettingsPage";
 
@@ -33,10 +34,17 @@ const extensionRoute = createRoute({
   component: ExtensionPage,
 });
 
+const importRecipeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/import-recipe",
+  component: ImportRecipePage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   settingsRoute,
   extensionRoute,
+  importRecipeRoute,
 ]);
 
 const history = createBrowserHistory();
