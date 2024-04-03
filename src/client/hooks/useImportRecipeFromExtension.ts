@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, constant, exact } from "decoders";
+import { Decoder, constant, exact, nonEmptyString, nullable } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 
@@ -12,6 +12,12 @@ const recipeDataResponseMessageDecoder: Decoder<RecipeDataResponseMessage> =
   exact({
     type: constant("RECIPE_DATA"),
     sender: constant("service-worker"),
+    payload: exact({
+      recipe: exact({
+        title: nullable(nonEmptyString),
+        url: nonEmptyString,
+      }),
+    }),
   });
 
 const timeout = async (ms: number) => {
