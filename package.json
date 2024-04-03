@@ -24,7 +24,7 @@
     "@types/chrome": "0.0.263",
     "@types/jest": "29.5.12",
     "@types/react": "18.2.74",
-    "@types/react-dom": "18.2.23",
+    "@types/react-dom": "18.2.24",
     "@types/use-analytics": "0.0.3",
     "@types/uuid": "9.0.8",
     "copy-webpack-plugin": "12.0.2",
