@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, constant, exact, nonEmptyString, nullable } from "decoders";
+import { Decoder, constant, exact, nonEmptyString } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 
@@ -14,7 +14,7 @@ const recipeDataResponseMessageDecoder: Decoder<RecipeDataResponseMessage> =
     sender: constant("service-worker"),
     payload: exact({
       recipe: exact({
-        title: nullable(nonEmptyString),
+        title: nonEmptyString,
         url: nonEmptyString,
       }),
     }),
