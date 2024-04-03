@@ -4,7 +4,7 @@ export const Paragraph = styled.p`
   margin: 16px 0 0;
 `;
 
-export const DataBlock = styled.div`
+export const DataBlock = styled.pre`
   font-family: monospace;
   padding: 8px;
   border: 2px solid #4100b3;
