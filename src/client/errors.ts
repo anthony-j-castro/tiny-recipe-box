@@ -53,10 +53,13 @@ export const throwAPIError = async (response: Response) => {
   switch (response.status) {
     case StatusCode.ClientErrorUnauthorized:
       throw new UnauthorizedError(message);
+
     case StatusCode.ClientErrorNotFound:
       throw new NotFoundError(message);
+
     case StatusCode.ServerErrorInternal:
       throw new InternalServerError(message);
+
     default:
       throw new APIError(response.status, message);
   }
