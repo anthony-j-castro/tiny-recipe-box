@@ -1,12 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, nonEmptyArray, nonEmptyString, object } from "decoders";
+import {
+  Decoder,
+  constant,
+  nonEmptyArray,
+  nonEmptyString,
+  object,
+} from "decoders";
 import config from "~/config";
 
-type DeploymentsApiResponse = Array<{ sha: string }>;
+type DeploymentsApiResponse = Array<{
+  environment: "github-pages";
+  sha: string;
+}>;
 
 const deploymentsApiResponseDecoder: Decoder<DeploymentsApiResponse> =
   nonEmptyArray(
     object({
+      environment: constant("github-pages"),
       sha: nonEmptyString,
     }),
   );
