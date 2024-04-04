@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "~/client/components/Button";
 import Logo from "~/client/components/Logo";
 import Separator from "~/client/components/Separator";
 import BaseNavLink from "./NavLink";
@@ -66,7 +67,22 @@ export const BottomSeparator = styled(Separator)`
   margin: 8px 0;
 `;
 
+export const VersionInfo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const VersionInfoLink = styled(NavLink)`
+  flex: 1;
   color: #818188;
   font-size: 12px;
+`;
+
+export const ReloadButton = styled(Button)`
+  color: #818188;
+  background: transparent;
+
+  &:hover {
+    background-color: #dcdcde;
+  }
 `;

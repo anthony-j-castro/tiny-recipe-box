@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Decoder, nonEmptyArray, nonEmptyString, object } from "decoders";
+import config from "~/config";
 
 type DeploymentsApiResponse = Array<{ sha: string }>;
 
@@ -10,9 +11,9 @@ const deploymentsApiResponseDecoder: Decoder<DeploymentsApiResponse> =
     }),
   );
 
-const useLatestSiteVersion = () =>
+const useNewSiteVersionAvailable = () =>
   useQuery({
-    queryKey: ["latestSiteVersion"],
+    queryKey: ["newSiteVersionAvailable"],
     queryFn: async () => {
       const response = await fetch(
         `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments?${new URLSearchParams(
@@ -28,8 +29,8 @@ const useLatestSiteVersion = () =>
       const [lastDeployment] =
         deploymentsApiResponseDecoder.verify(responseJson);
 
-      return lastDeployment.sha;
+      return lastDeployment.sha !== config.GITHUB_COMMIT_SHA;
     },
   });
 
-export default useLatestSiteVersion;
+export default useNewSiteVersionAvailable;

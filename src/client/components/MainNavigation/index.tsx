@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
+import useNewSiteVersionAvailable from "~/client/hooks/useNewSiteVersionAvailable";
 import config from "~/config";
 import ExtensionStatusDot from "./ExtensionStatusDot";
 import {
@@ -10,10 +11,12 @@ import {
   List,
   NavLink,
   PrimaryNav,
+  ReloadButton,
   SecondaryNav,
   Sidebar,
   StyledLogo,
   TopSeparator,
+  VersionInfo,
   VersionInfoLink,
 } from "./styled";
 
@@ -24,6 +27,8 @@ interface Props {
 const MainNavigation = ({ className }: Props) => {
   const analytics = useAnalytics();
   const extensionInfo = useExtensionContext();
+
+  const { data: isNewSiteVersionAvailable } = useNewSiteVersionAvailable();
 
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
@@ -64,15 +69,28 @@ const MainNavigation = ({ className }: Props) => {
         {shaData ? (
           <>
             <BottomSeparator />
-            <VersionInfoLink
-              onClick={() => {
-                analytics.track("clicked_commit_link");
-              }}
-              target="_blank"
-              to={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
-            >
-              Site Version: <MonospacedText>{shaData.short}</MonospacedText>
-            </VersionInfoLink>
+            <VersionInfo>
+              <VersionInfoLink
+                onClick={() => {
+                  analytics.track("clicked_commit_link");
+                }}
+                target="_blank"
+                to={`https://github.com/anthony-j-castro/tiny-recipe-box/commit/${shaData.long}`}
+              >
+                Site Version: <MonospacedText>{shaData.short}</MonospacedText>
+              </VersionInfoLink>
+              {isNewSiteVersionAvailable ? (
+                <ReloadButton
+                  onClick={() => {
+                    analytics.track("clicked_reload_button");
+                    window.location.reload();
+                  }}
+                  title="Reload to get newest version"
+                >
+                  O
+                </ReloadButton>
+              ) : null}
+            </VersionInfo>
           </>
         ) : null}
       </SecondaryNav>
