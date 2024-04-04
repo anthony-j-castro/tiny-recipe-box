@@ -76,10 +76,13 @@ export const VersionInfoLink = styled(NavLink)`
   flex: 1;
   color: #818188;
   font-size: 12px;
+  line-height: 16px;
 `;
 
 export const ReloadButton = styled(Button)`
+  flex: 0;
   color: #818188;
+  padding: 8px;
   background: transparent;
 
   &:hover {
