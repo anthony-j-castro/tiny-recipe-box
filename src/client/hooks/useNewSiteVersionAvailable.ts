@@ -31,6 +31,9 @@ const useNewSiteVersionAvailable = () =>
 
       return lastDeployment.sha !== config.GITHUB_COMMIT_SHA;
     },
+    refetchInterval: 10 * 60 * 1000,
+    refetchIntervalInBackground: false,
+    refetchOnWindowFocus: true,
   });
 
 export default useNewSiteVersionAvailable;
