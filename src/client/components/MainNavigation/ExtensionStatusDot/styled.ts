@@ -1,21 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { StyledLink } from "~/client/components/MainNavigation/NavLink/styled";
 
-export const Dot = styled.span<{ $status: boolean | null }>`
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  background: ${(props) =>
-    props.$status === null
+export const Dot = styled.span<{ $status: boolean | null }>(
+  ({ $status, theme }) => css`
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: ${$status === null
       ? "transparent"
-      : props.$status
-        ? "#ccff00"
-        : "#ff3131"};
-  border: 1px solid #818188;
-  border-radius: 50%;
-  margin-left: 8px;
+      : $status
+        ? theme.colors.neonGreen
+        : theme.colors.red};
+    border: 1px solid ${theme.colors.darkGray};
+    border-radius: 50%;
+    margin-left: 8px;
 
-  ${StyledLink}[data-status="active"] > & {
-    border: 1px solid #ffffff;
-  }
-`;
+    ${StyledLink}[data-status="active"] > & {
+      border: 1px solid ${theme.colors.white};
+    }
+  `,
+);

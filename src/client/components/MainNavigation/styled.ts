@@ -1,45 +1,51 @@
-import styled, { keyframes } from "styled-components";
+import styled, { DefaultTheme, css, keyframes } from "styled-components";
 import Button from "~/client/components/Button";
 import Logo from "~/client/components/Logo";
 import Separator from "~/client/components/Separator";
 import BaseNavLink from "./NavLink";
 
-export const Sidebar = styled.nav`
-  min-width: 216px;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr min-content min-content;
-  gap: 0px 0px;
-  grid-template-areas:
-    "primary"
-    "secondary";
-  background-color: #f5f5f7;
-  padding: 8px;
-  border-right: 1px solid #dcdcde;
-`;
+export const Sidebar = styled.nav(
+  ({ theme }) => css`
+    min-width: 216px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr min-content min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+      "primary"
+      "secondary";
+    background-color: ${theme.colors.lightGray};
+    padding: 8px;
+    border-right: 1px solid ${theme.colors.gray};
+  `,
+);
 
-export const AlphaPill = styled.span`
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 10px;
-  background-color: #ccff00;
-  padding: 2px 4px;
-  border: 1px solid #bceb00;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  margin-left: 16px;
-  user-select: none;
-`;
+export const AlphaPill = styled.span(
+  ({ theme }) => css`
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    background-color: ${theme.colors.neonGreen};
+    padding: 2px 4px;
+    border: 1px solid ${theme.colors.darkNeonGreen};
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    user-select: none;
+  `,
+);
 
-export const StyledLogo = styled(Logo)`
-  display: block;
-  max-width: 100px;
-  color: #1d1d1f;
-  margin-bottom: 8px;
-  margin-left: 16px;
-`;
+export const StyledLogo = styled(Logo)(
+  ({ theme }) => css`
+    display: block;
+    max-width: 100px;
+    color: ${theme.colors.nearBlack};
+    margin-bottom: 8px;
+    margin-left: 16px;
+  `,
+);
 
 export const TopSeparator = styled(Separator)`
   margin-bottom: 8px;
@@ -72,35 +78,61 @@ export const VersionInfo = styled.div`
   align-items: center;
 `;
 
-export const VersionInfoLink = styled(NavLink)`
-  flex: 1;
-  color: #818188;
-  font-size: 12px;
-  line-height: 16px;
-`;
+export const VersionInfoLink = styled(NavLink)(
+  ({ theme }) => css`
+    flex: 1;
+    color: ${theme.colors.darkGray};
+    font-size: 12px;
+    line-height: 16px;
+  `,
+);
 
-const pulse = keyframes`
+const pulse = ({ theme }: { theme: DefaultTheme }) => keyframes`
   0% {
-    color: #818188;
+    color: ${theme.colors.darkGray};
   }
 
   10% {
-    color: #4100b3;
+    color: ${theme.colors.purple};
   }
 
   20%, 100% {
-    color: #818188;
+    color: ${theme.colors.darkGray};
   }
 `;
 
-export const ReloadButton = styled(Button)`
-  flex: 0;
-  color: #818188;
-  padding: 6px;
-  background: transparent;
-  animation: ${pulse} 5s linear infinite;
+const glow = ({ theme }: { theme: DefaultTheme }) => keyframes`
+  0% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
 
-  &:hover {
-    background-color: #dcdcde;
+  10% {
+    // The last 2 characters of an 8 character hex color
+    // is the alpha value.
+    // The 66 here represents 0.4.
+    filter: drop-shadow(0 0 4px ${theme.colors.purple}66);
+  }
+
+  20%, 100% {
+    filter: drop-shadow(0 0 0 transparent);
   }
 `;
+
+export const ReloadButton = styled(Button)(
+  ({ theme }) => css`
+    flex: 0;
+    color: ${theme.colors.darkGray};
+    padding: 6px;
+    background: transparent;
+    margin-left: 8px;
+    animation: ${pulse} 5s linear infinite;
+
+    &:hover {
+      background-color: ${theme.colors.gray};
+    }
+
+    & > svg {
+      animation: ${glow} 5s linear infinite;
+    }
+  `,
+);
