@@ -33,8 +33,11 @@ jobs:
           echo "Required workflow was not successful"
           exit 1
 
-  build:
+  build-and-deploy:
     needs: ready
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -62,14 +65,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
-
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
