@@ -35,8 +35,6 @@ jobs:
 
   build:
     needs: ready
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,7 +42,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: lts/*
           cache: npm
       - name: Setup Pages
         uses: actions/configure-pages@v5
