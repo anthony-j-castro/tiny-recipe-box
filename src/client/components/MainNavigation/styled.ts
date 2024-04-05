@@ -80,7 +80,7 @@ export const VersionInfoLink = styled(NavLink)`
 `;
 
 const pulse = keyframes`
-  from {
+  0% {
     color: #818188;
   }
 
@@ -88,7 +88,7 @@ const pulse = keyframes`
     color: #4100b3;
   }
 
-  20%, to {
+  20%, 100% {
     color: #818188;
   }
 `;
