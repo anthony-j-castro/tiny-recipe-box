@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Button from "~/client/components/Button";
 import Logo from "~/client/components/Logo";
 import Separator from "~/client/components/Separator";
@@ -79,11 +79,26 @@ export const VersionInfoLink = styled(NavLink)`
   line-height: 16px;
 `;
 
+const pulse = keyframes`
+  0% {
+    color: #818188;
+  }
+
+  10% {
+    color: #4100b3;
+  }
+
+  20%, 100% {
+    color: #818188;
+  }
+`;
+
 export const ReloadButton = styled(Button)`
   flex: 0;
   color: #818188;
-  padding: 8px;
+  padding: 6px;
   background: transparent;
+  animation: ${pulse} 5s linear infinite;
 
   &:hover {
     background-color: #dcdcde;

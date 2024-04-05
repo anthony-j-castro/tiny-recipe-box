@@ -88,7 +88,7 @@ const MainNavigation = ({ className }: Props) => {
                   }}
                   title="Reload to get newest version"
                 >
-                  <SyncProblemIcon sx={{ display: "block", fontSize: 16 }} />
+                  <SyncProblemIcon sx={{ display: "block", fontSize: 20 }} />
                 </ReloadButton>
               ) : null}
             </VersionInfo>
