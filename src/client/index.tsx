@@ -4,6 +4,7 @@ import { RouterProvider } from "@tanstack/react-router";
 import Analytics from "analytics";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ThemeProvider } from "styled-components";
 import { AnalyticsProvider } from "use-analytics";
 import { analyticsConfig } from "~/client/analytics";
 import AgreementRequired from "~/client/components/AgreementRequired";
@@ -11,6 +12,7 @@ import InitializationRequired from "~/client/components/InitializationRequired";
 import { ExtensionProvider } from "~/client/contexts/ExtensionContext";
 import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
+import theme from "~/client/theme";
 import { rollbarConfig } from "~/shared/rollbar";
 import "modern-normalize";
 import "~/client/index.css";
@@ -28,17 +30,19 @@ root.render(
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <AgreementRequired>
-            <AnalyticsProvider instance={analytics}>
-              <InitializationRequired>
-                <ExtensionProvider>
-                  <UserProvider>
-                    <RouterProvider router={router} />
-                  </UserProvider>
-                </ExtensionProvider>
-              </InitializationRequired>
-            </AnalyticsProvider>
-          </AgreementRequired>
+          <ThemeProvider theme={theme}>
+            <AgreementRequired>
+              <AnalyticsProvider instance={analytics}>
+                <InitializationRequired>
+                  <ExtensionProvider>
+                    <UserProvider>
+                      <RouterProvider router={router} />
+                    </UserProvider>
+                  </ExtensionProvider>
+                </InitializationRequired>
+              </AnalyticsProvider>
+            </AgreementRequired>
+          </ThemeProvider>
         </QueryClientProvider>
       </ErrorBoundary>
     </RollbarProvider>
