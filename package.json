@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@analytics/google-analytics": "1.0.7",
-    "@ariakit/react": "0.4.5",
+    "@ariakit/react": "0.4.6",
     "@mui/icons-material": "5.15.15",
     "@mui/material": "5.15.15",
     "@mui/styled-engine-sc": "6.0.0-alpha.18",
