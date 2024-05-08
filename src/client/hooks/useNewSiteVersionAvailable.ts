@@ -38,19 +38,19 @@ const useNewSiteVersionAvailable = () =>
   useQuery({
     queryKey: ["newSiteVersionAvailable"],
     queryFn: async () => {
-      const response = await fetch(
-        `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments?${new URLSearchParams(
-          {
-            environment: "github-pages",
-            per_page: "1",
-          },
-        )}`,
-      );
-
-      const responseJson = await response.json();
+      const deploymentsResponse = await (
+        await fetch(
+          `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments?${new URLSearchParams(
+            {
+              environment: "github-pages",
+              per_page: "1",
+            },
+          )}`,
+        )
+      ).json();
 
       const [lastDeployment] =
-        deploymentsApiResponseDecoder.verify(responseJson);
+        deploymentsApiResponseDecoder.verify(deploymentsResponse);
 
       if (lastDeployment.sha === config.GITHUB_COMMIT_SHA) {
         return false;
