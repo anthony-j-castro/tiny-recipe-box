@@ -49,16 +49,16 @@ const useNewSiteVersionAvailable = () =>
         )
       ).json();
 
-      const [lastDeployment] =
+      const [latestDeployment] =
         deploymentsApiResponseDecoder.verify(deploymentsResponse);
 
-      if (lastDeployment.sha === config.GITHUB_COMMIT_SHA) {
+      if (latestDeployment.sha === config.GITHUB_COMMIT_SHA) {
         return false;
       }
 
       const deploymentStatusResponse = await (
         await fetch(
-          `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments/${lastDeployment.id}/statuses?${new URLSearchParams(
+          `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments/${latestDeployment.id}/statuses?${new URLSearchParams(
             {
               per_page: "1",
             },
