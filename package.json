@@ -65,7 +65,7 @@
     "react-dom": "18.3.1",
     "rollbar": "2.26.4",
     "status-code-enum": "1.0.0",
-    "styled-components": "6.1.10",
+    "styled-components": "6.1.11",
     "use-analytics": "1.1.0",
     "usehooks-ts": "3.1.0",
     "uuid": "9.0.1"
