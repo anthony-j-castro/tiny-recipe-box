@@ -54,7 +54,7 @@
     "@mui/styled-engine-sc": "6.0.0-alpha.18",
     "@rollbar/react": "0.11.2",
     "@tanstack/react-query": "5.36.0",
-    "@tanstack/react-router": "1.32.5",
+    "@tanstack/react-router": "1.32.13",
     "analytics": "0.8.11",
     "comlink": "4.4.1",
     "decoders": "2.4.0",
