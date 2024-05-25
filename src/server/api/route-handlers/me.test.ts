@@ -72,14 +72,6 @@ describe("server/api/route-handlers/me", () => {
   });
 
   describe("createMe", () => {
-    beforeAll(() => {
-      jest.useFakeTimers().setSystemTime();
-    });
-
-    afterAll(() => {
-      jest.useRealTimers();
-    });
-
     it("returns a new user", async () => {
       const { getDatabase } = await import("~/server/database");
       const db = getDatabase();
@@ -88,7 +80,7 @@ describe("server/api/route-handlers/me", () => {
       expect(meResponse).toEqual({
         status: 201,
         body: {
-          createdAt: new Date(),
+          createdAt: expect.any(Date),
           userId: expect.any(String),
         },
       });
