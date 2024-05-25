@@ -9,5 +9,4 @@ module.exports = {
   roots: ["<rootDir>"],
   setupFiles: ["dotenv/config"],
   testEnvironment: "node",
-  testTimeout: 10000,
 };
