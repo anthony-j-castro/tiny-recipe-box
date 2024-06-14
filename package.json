@@ -68,6 +68,6 @@
     "styled-components": "6.1.11",
     "use-analytics": "1.1.0",
     "usehooks-ts": "3.1.0",
-    "uuid": "9.0.1"
+    "uuid": "10.0.0"
   }
 }
