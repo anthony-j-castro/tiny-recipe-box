@@ -10,6 +10,9 @@ updates:
       typescript-eslint:
         patterns:
           - "@typescript-eslint/*"
+      material-ui:
+        patterns:
+          - "@mui/*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
