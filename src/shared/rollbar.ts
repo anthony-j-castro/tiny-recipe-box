@@ -12,7 +12,7 @@ export const rollbarConfig: Rollbar.Configuration = {
       javascript: {
         code_version:
           config.ENVIRONMENT === "production"
-            ? config.GITHUB_COMMIT_SHA ?? undefined
+            ? (config.GITHUB_COMMIT_SHA ?? undefined)
             : undefined,
       },
     },
