@@ -14,7 +14,6 @@ import SettingsPage from "~/client/pages/SettingsPage";
 
 const rootRoute = createRootRoute({
   component: AppLayout,
-  notFoundComponent: NotFoundPage,
 });
 
 const indexRoute = createRoute({
@@ -67,6 +66,7 @@ const history = createBrowserHistory();
 const router = createRouter({
   history,
   routeTree,
+  defaultNotFoundComponent: NotFoundPage,
 });
 
 declare module "@tanstack/react-router" {
