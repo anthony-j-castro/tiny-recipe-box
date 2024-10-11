@@ -14,7 +14,6 @@ import { UserProvider } from "~/client/contexts/UserContext";
 import router from "~/client/router";
 import theme from "~/client/theme";
 import { rollbarConfig } from "~/shared/rollbar";
-import "modern-normalize";
 import "~/client/index.css";
 
 const queryClient = new QueryClient({

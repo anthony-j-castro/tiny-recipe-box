@@ -5,7 +5,6 @@ import { ThemeProvider } from "styled-components";
 import { AnalyticsProvider } from "use-analytics";
 import PrivacyPolicyPage from "~/client/pages/PrivacyPolicyPage";
 import theme from "~/client/theme";
-import "modern-normalize";
 import "~/client/index.css";
 
 const analytics = Analytics({});

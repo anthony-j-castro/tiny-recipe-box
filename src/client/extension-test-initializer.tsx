@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components";
 import { AnalyticsProvider } from "use-analytics";
 import ExtensionTestInitializerPage from "~/client/pages/ExtensionTestInitializerPage";
 import theme from "~/client/theme";
-import "modern-normalize";
 import "~/client/index.css";
 
 const queryClient = new QueryClient({
