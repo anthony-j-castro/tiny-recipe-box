@@ -21,7 +21,7 @@ const timeout = async (ms: number) => {
 const useInitializeE2ETest = ({ enabled }: { enabled?: boolean } = {}) =>
   useQuery({
     enabled,
-    queryKey: ["import-recipe"],
+    queryKey: ["initialize-e2e-test"],
     queryFn: async () => {
       if (!window.chrome?.runtime) {
         throw new Error("Extension helpers do not exist.");
