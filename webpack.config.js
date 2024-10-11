@@ -7,6 +7,13 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 module.exports = {
   entry: {
+    "extension-test-initializer": {
+      import: path.resolve(
+        __dirname,
+        "src/client/extension-test-initializer.tsx",
+      ),
+      filename: "public/[name].[contenthash].js",
+    },
     main: {
       import: path.resolve(__dirname, "src/client/index.tsx"),
     },
@@ -62,6 +69,7 @@ module.exports = {
             ignore: [
               path.resolve(__dirname, "public/index.html"),
               path.resolve(__dirname, "public/privacy-policy.html"),
+              path.resolve(__dirname, "public/extension-test-initializer.html"),
             ],
           },
         },
@@ -77,6 +85,15 @@ module.exports = {
       chunks: ["privacy-policy"],
       template: path.resolve(__dirname, "public/privacy-policy.html"),
       filename: "public/privacy-policy.html",
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ["extension-test-initializer"],
+      template: path.resolve(
+        __dirname,
+        "public/extension-test-initializer.html",
+      ),
+      filename: "public/extension-test-initializer.html",
       inject: "body",
     }),
   ],
