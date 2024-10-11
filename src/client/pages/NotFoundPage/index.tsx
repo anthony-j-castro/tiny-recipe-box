@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useAnalytics } from "use-analytics";
-import AppLayout from "~/client/components/AppLayout";
 import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import { Paragraph } from "./styled";
@@ -13,14 +12,12 @@ const NotFoundPage = () => {
   }, [analytics]);
 
   return (
-    <AppLayout>
-      <PageContent>
-        <PageHeading>Page Not Found</PageHeading>
-        <div>
-          <Paragraph>The requested page or resource was not found.</Paragraph>
-        </div>
-      </PageContent>
-    </AppLayout>
+    <PageContent>
+      <PageHeading>Page Not Found</PageHeading>
+      <div>
+        <Paragraph>The requested page or resource was not found.</Paragraph>
+      </div>
+    </PageContent>
   );
 };
 
