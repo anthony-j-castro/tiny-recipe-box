@@ -57,7 +57,7 @@
     "@tanstack/react-router": "1.64.0",
     "analytics": "0.8.13",
     "comlink": "4.4.1",
-    "decoders": "2.4.2",
+    "decoders": "2.5.0",
     "dexie": "4.0.8",
     "http-method-enum": "1.0.0",
     "modern-normalize": "3.0.1",
