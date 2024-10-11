@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
   to: string;
   className?: string;
-  onClick?: React.MouseEventHandler<"a">;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   target?: string;
 }
 
