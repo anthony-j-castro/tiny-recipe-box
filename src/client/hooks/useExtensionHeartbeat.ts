@@ -1,17 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, constant, nonEmptyString, object } from "decoders";
+import { Decoder, constant, exact, nonEmptyString } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import { getUserId } from "~/client/storage";
 import config from "~/config";
 
 type HeartbeatResponseMessage = {
-  extensionVersion: string;
+  payload: {
+    extensionVersion: string;
+  };
+  sender: "service-worker";
   type: "PONG";
 };
 
-const heartbeatResponse: Decoder<HeartbeatResponseMessage> = object({
+const heartbeatResponse: Decoder<HeartbeatResponseMessage> = exact({
   type: constant("PONG"),
-  extensionVersion: nonEmptyString,
+  sender: constant("service-worker"),
+  payload: exact({ extensionVersion: nonEmptyString }),
 });
 
 const useExtensionHeartbeat = () => {
@@ -33,7 +37,9 @@ const useExtensionHeartbeat = () => {
         },
       });
 
-      const { extensionVersion } = heartbeatResponse.verify(response);
+      const {
+        payload: { extensionVersion },
+      } = heartbeatResponse.verify(response);
 
       return { version: extensionVersion };
     },
