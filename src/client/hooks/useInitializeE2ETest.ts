@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, constant, exact } from "decoders";
+import { constant, exact, type Decoder } from "decoders";
 import { EXTENSION_ID, TEST_USER_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 

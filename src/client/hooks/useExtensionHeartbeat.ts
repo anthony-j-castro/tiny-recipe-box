@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Decoder, constant, exact, nonEmptyString } from "decoders";
+import { constant, exact, nonEmptyString, type Decoder } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import { getUserId } from "~/client/storage";
 import config from "~/config";

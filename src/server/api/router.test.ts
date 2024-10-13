@@ -1,7 +1,7 @@
 import { IDBKeyRange, indexedDB } from "fake-indexeddb";
 import HTTPMethod from "http-method-enum";
 import StatusCode from "status-code-enum";
-import { RouteHandler } from "~/server/types";
+import type { RouteHandler } from "~/server/types";
 
 describe("server/router", () => {
   beforeEach(async () => {

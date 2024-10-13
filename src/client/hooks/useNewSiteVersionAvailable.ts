@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  Decoder,
   constant,
   nonEmptyArray,
   nonEmptyString,
   object,
   positiveInteger,
   string,
+  type Decoder,
 } from "decoders";
 import config from "~/config";
 

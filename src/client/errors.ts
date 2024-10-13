@@ -1,4 +1,4 @@
-import { Decoder, object, string } from "decoders";
+import { object, string, type Decoder } from "decoders";
 import StatusCode from "status-code-enum";
 
 class BaseError extends Error {

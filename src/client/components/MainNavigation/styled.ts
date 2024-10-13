@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, css, keyframes } from "styled-components";
+import styled, { css, keyframes, type DefaultTheme } from "styled-components";
 import Button from "~/client/components/Button";
 import Logo from "~/client/components/Logo";
 import Separator from "~/client/components/Separator";

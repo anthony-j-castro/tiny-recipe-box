@@ -1,7 +1,7 @@
 import { StatusCode } from "status-code-enum";
 import { v4 as uuidv4 } from "uuid";
 import rollbar from "~/server/rollbar";
-import { RouteHandler } from "~/server/types";
+import type { RouteHandler } from "~/server/types";
 
 type CurrentUser = {
   createdAt: Date;

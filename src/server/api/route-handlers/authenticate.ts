@@ -1,5 +1,5 @@
 import { StatusCode } from "status-code-enum";
-import { RouteHandler } from "~/server/types";
+import type { RouteHandler } from "~/server/types";
 
 type UserId = {
   userId: string;
