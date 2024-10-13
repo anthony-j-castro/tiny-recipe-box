@@ -5,6 +5,7 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import AppLayout from "~/client/components/AppLayout";
+import DemoRecipePage from "~/client/pages/DemoRecipePage";
 import ExtensionPage from "~/client/pages/ExtensionPage";
 import HomePage from "~/client/pages/HomePage";
 import ImportRecipePage from "~/client/pages/ImportRecipePage";
@@ -39,11 +40,23 @@ const importRecipeRoute = createRoute({
   component: ImportRecipePage,
 });
 
+const sandboxRoutes = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/sandbox",
+});
+const demoRecipeRoute = createRoute({
+  getParentRoute: () => sandboxRoutes,
+  path: "/demo-recipe",
+  component: DemoRecipePage,
+});
+sandboxRoutes.addChildren([demoRecipeRoute]);
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   settingsRoute,
   extensionRoute,
   importRecipeRoute,
+  sandboxRoutes,
 ]);
 
 const history = createBrowserHistory();
