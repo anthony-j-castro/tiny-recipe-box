@@ -1,5 +1,5 @@
 import { either, jsonObject, undefined_ } from "decoders";
-import { HTTPMethod } from "http-method-enum";
+import type { HTTPMethod } from "http-method-enum";
 import { StatusCode } from "status-code-enum";
 import { getDatabase } from "~/server/database";
 import rollbar from "~/server/rollbar";

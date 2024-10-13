@@ -1,5 +1,5 @@
-import { StatusCode } from "status-code-enum";
-import { AppDatabase } from "~/server/database";
+import type { StatusCode } from "status-code-enum";
+import type { AppDatabase } from "~/server/database";
 
 type ErrorResponseBody = {
   message: string;
