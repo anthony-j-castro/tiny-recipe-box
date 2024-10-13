@@ -1,4 +1,4 @@
-import Dexie, { DexieOptions } from "dexie";
+import Dexie, { type DexieOptions } from "dexie";
 
 const DATABASE_NAME = "TinyRecipeBoxDB_";
 

@@ -1,9 +1,9 @@
 import { either, jsonObject, undefined_ } from "decoders";
-import { HTTPMethod } from "http-method-enum";
+import type { HTTPMethod } from "http-method-enum";
 import { StatusCode } from "status-code-enum";
 import { getDatabase } from "~/server/database";
 import rollbar from "~/server/rollbar";
-import { APIResponse, RouteHandler } from "~/server/types";
+import type { APIResponse, RouteHandler } from "~/server/types";
 import simulateLatency from "~/server/utils/simulateLatency";
 
 const PARAMETER = "([^/]*)";

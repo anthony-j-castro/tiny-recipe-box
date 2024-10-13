@@ -1,4 +1,4 @@
-import { Decoder, constant, exact, integer, string } from "decoders";
+import { constant, exact, integer, string, type Decoder } from "decoders";
 import { useEffect } from "react";
 import AppLayout from "~/client/components/AppLayout";
 import MonospacedText from "~/client/components/MonospacedText";

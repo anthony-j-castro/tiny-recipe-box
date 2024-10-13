@@ -1,4 +1,4 @@
-import Rollbar from "rollbar";
+import type Rollbar from "rollbar";
 import config from "~/config";
 
 export const rollbarConfig: Rollbar.Configuration = {

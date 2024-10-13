@@ -1,6 +1,6 @@
 import { object, uuidv4 } from "decoders";
 import StatusCode from "status-code-enum";
-import { RouteHandler } from "~/server/types";
+import type { RouteHandler } from "~/server/types";
 
 const AUTH_HEADER = "Tiny-Recipe-Box-User-ID";
 

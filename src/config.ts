@@ -1,5 +1,4 @@
 import {
-  Decoder,
   either,
   exact,
   nonEmptyString,
@@ -8,6 +7,7 @@ import {
   oneOf,
   positiveInteger,
   undefined_,
+  type Decoder,
 } from "decoders";
 
 type Config = {
