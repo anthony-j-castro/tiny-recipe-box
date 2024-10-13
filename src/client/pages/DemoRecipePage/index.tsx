@@ -6,9 +6,13 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { useEffect, useRef, useState } from "react";
 import { useWakeLock } from "react-screen-wake-lock";
 import { useAnalytics } from "use-analytics";
-import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
-import { ButtonsContainer, Container, Separator, ToggleButton } from "./styled";
+import {
+  ButtonsContainer,
+  PageContent,
+  Separator,
+  ToggleButton,
+} from "./styled";
 
 const ICON_OPTIONS = { fontSize: 24, marginRight: "8px" };
 
@@ -43,9 +47,9 @@ const DemoRecipePage = () => {
   }, [wakeLock]);
 
   return (
-    <PageContent>
+    <PageContent ref={containerRef}>
       <PageHeading>Demo Recipe</PageHeading>
-      <Container ref={containerRef}>
+      <div>
         <ButtonsContainer>
           <ToggleButton
             isSelected={isFullscreen && isWakeLockActive}
@@ -61,6 +65,7 @@ const DemoRecipePage = () => {
                 wakeLock.request();
               }
             }}
+            style={{ marginRight: "16px" }}
           >
             <MenuBookIcon sx={ICON_OPTIONS} />
             <span>Countertop mode</span>
@@ -77,6 +82,7 @@ const DemoRecipePage = () => {
                 containerRef.current?.requestFullscreen();
               }
             }}
+            style={{ marginRight: "8px" }}
           >
             {isFullscreen ? (
               <FullscreenExitIcon sx={ICON_OPTIONS} />
@@ -103,7 +109,7 @@ const DemoRecipePage = () => {
             <span>Screen Lock</span>
           </ToggleButton>
         </ButtonsContainer>
-      </Container>
+      </div>
     </PageContent>
   );
 };

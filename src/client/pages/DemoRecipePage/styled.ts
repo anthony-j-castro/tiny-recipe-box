@@ -1,10 +1,9 @@
 import { ToggleButton as BaseToggleButton } from "react-aria-components";
 import styled, { css } from "styled-components";
+import BasePageContent from "~/client/components/PageContent";
 import VerticalSeparator from "~/client/components/VerticalSeparator";
 
-export const Container = styled.div`
-  border: 5px solid purple;
-
+export const PageContent = styled(BasePageContent)`
   &:fullscreen {
     background: white;
     padding: 64px;
@@ -24,7 +23,6 @@ export const ToggleButton = styled(BaseToggleButton)(
     border: 1px solid ${theme.colors.gray};
     border-radius: 4px;
     outline-width: 0;
-    margin: 8px 8px 8px 0;
 
     &:hover {
       background: ${theme.colors.gray};
@@ -40,10 +38,6 @@ export const ToggleButton = styled(BaseToggleButton)(
       color: ${theme.colors.white};
       background: #4d4dff;
     }
-
-    :last-child {
-      margin-right: 0;
-    }
   `,
 );
 
@@ -51,5 +45,5 @@ export const Separator = styled(VerticalSeparator)`
   align-self: stretch;
   display: inline-block;
   height: auto;
-  margin-right: 8px;
+  margin-right: 16px;
 `;

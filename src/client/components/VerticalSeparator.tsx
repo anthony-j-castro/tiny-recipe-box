@@ -1,11 +1,13 @@
 import { useSeparator } from "react-aria";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Separator = styled.div`
-  background: gray;
-  width: 2px;
-  height: 100%;
-`;
+const Separator = styled.div(
+  ({ theme }) => css`
+    background: ${theme.colors.gray};
+    width: 2px;
+    height: 100%;
+  `,
+);
 
 interface Props {
   className?: string;
