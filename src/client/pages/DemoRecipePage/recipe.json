@@ -1,0 +1,86 @@
+{
+  "title": "Katharine Hepburn’s Brownies",
+  "attribution": "By The New York Times",
+  "url": "https://cooking.nytimes.com/recipes/10782-katharine-hepburns-brownies",
+  "yield": "12 brownies",
+  "time": {
+    "total": "About 45 minutes"
+  },
+  "ingredients": [
+    {
+      "id": "i-1",
+      "quantity": 1.5,
+      "unit": "cup",
+      "ingredient": "cocoa"
+    },
+    {
+      "id": "i-2",
+      "quantity": 1.5,
+      "unit": "cup",
+      "ingredient": "butter (1 stick)"
+    },
+    {
+      "id": "i-3",
+      "quantity": 2,
+      "unit": null,
+      "ingredient": "eggs"
+    },
+    {
+      "id": "i-4",
+      "quantity": 1,
+      "unit": "cup",
+      "ingredient": "sugar"
+    },
+    {
+      "id": "i-5",
+      "quantity": 0.25,
+      "unit": "cup",
+      "ingredient": "flour"
+    },
+    {
+      "id": "i-6",
+      "quantity": 1,
+      "unit": "cup",
+      "ingredient": "chopped or broken-up walnuts or pecans"
+    },
+    {
+      "id": "i-7",
+      "quantity": 1,
+      "unit": "teaspoon",
+      "ingredient": "vanilla"
+    },
+    {
+      "id": "i-8",
+      "quantity": 1,
+      "unit": "pinch",
+      "ingredient": "salt"
+    }
+  ],
+  "steps": [
+    {
+      "content": "Heat oven to 325 degrees.",
+      "ingredientHighlights": []
+    },
+    {
+      "content": "Melt butter in saucepan with cocoa and stir until smooth. Remove from heat and allow to cool for a few minutes, then transfer to a large bowl. Whisk in eggs, one at a time. Stir in vanilla.",
+      "ingredientHighlights": [
+        { "id": "i-1", "start": 29, "end": 34 },
+        { "id": "i-2", "start": 152, "end": 156 },
+        { "id": "i-7", "start": 181, "end": 188 }
+      ]
+    },
+    {
+      "content": "In a separate bowl, combine sugar, flour, nuts and salt. Add to the cocoa-butter mixture. Stir until just combined.",
+      "ingredientHighlights": [
+        { "id": "i-4", "start": 28, "end": 33 },
+        { "id": "i-5", "start": 35, "end": 40 },
+        { "id": "i-6", "start": 42, "end": 46 },
+        { "id": "i-8", "start": 72, "end": 76 }
+      ]
+    },
+    {
+      "content": "Pour into a greased 8 x 8-inch-square pan. Bake 30 to 35 minutes. Do not overbake; the brownies should be gooey. Let cool, then cut into bars.",
+      "ingredientHighlights": []
+    }
+  ]
+}

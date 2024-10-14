@@ -7,10 +7,14 @@ import { useEffect, useRef, useState } from "react";
 import { useWakeLock } from "react-screen-wake-lock";
 import { useAnalytics } from "use-analytics";
 import PageHeading from "~/client/components/PageHeading";
+import recipe from "./recipe.json";
 import {
   ButtonsContainer,
+  Grid,
+  IngredientsPanel,
   PageContent,
   Separator,
+  StepsPanel,
   ToggleButton,
 } from "./styled";
 
@@ -46,9 +50,14 @@ const DemoRecipePage = () => {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, [wakeLock]);
 
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+
+  const stepIngredients =
+    activeStep !== null ? recipe.steps[activeStep].ingredientHighlights : [];
+
   return (
     <PageContent ref={containerRef}>
-      <PageHeading>Demo Recipe</PageHeading>
+      <PageHeading>{recipe.title}</PageHeading>
       <div>
         <ButtonsContainer>
           <ToggleButton
@@ -109,6 +118,19 @@ const DemoRecipePage = () => {
             <span>Screen Lock</span>
           </ToggleButton>
         </ButtonsContainer>
+
+        <Grid>
+          <IngredientsPanel
+            activeStep={activeStep}
+            ingredients={recipe.ingredients}
+            stepIngredients={stepIngredients}
+          />
+          <StepsPanel
+            activeStep={activeStep}
+            onActiveStepChange={setActiveStep}
+            steps={recipe.steps}
+          />
+        </Grid>
       </div>
     </PageContent>
   );

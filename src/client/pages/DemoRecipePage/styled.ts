@@ -2,6 +2,8 @@ import { ToggleButton as BaseToggleButton } from "react-aria-components";
 import styled, { css } from "styled-components";
 import BasePageContent from "~/client/components/PageContent";
 import VerticalSeparator from "~/client/components/VerticalSeparator";
+import BaseIngredientsPanel from "./IngredientsPanel";
+import BaseStepsPanel from "./StepsPanel";
 
 export const PageContent = styled(BasePageContent)`
   &:fullscreen {
@@ -46,4 +48,21 @@ export const Separator = styled(VerticalSeparator)`
   display: inline-block;
   height: auto;
   margin-right: 16px;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: fit-content(200px) 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 32px;
+  grid-row-gap: 0px;
+  grid-template-areas: "ingredients steps";
+`;
+
+export const IngredientsPanel = styled(BaseIngredientsPanel)`
+  grid-area: ingredients;
+`;
+
+export const StepsPanel = styled(BaseStepsPanel)`
+  grid-area: steps;
 `;
