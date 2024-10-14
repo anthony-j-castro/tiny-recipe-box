@@ -13,6 +13,7 @@ export const Step = styled.li<{ $isActive?: boolean }>(
     font-size: 20px;
     border: 2px solid transparent;
     border-radius: 4px;
+    cursor: pointer;
     transition: border-color 100ms ease-in-out;
 
     ${$isActive &&

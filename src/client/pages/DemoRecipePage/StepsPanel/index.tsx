@@ -1,3 +1,4 @@
+import { useClickAnyWhere } from "usehooks-ts";
 import {
   HighlightedIngredient,
   Step,
@@ -20,6 +21,10 @@ interface Props {
 }
 
 const StepsPanel = ({ activeStep, onActiveStepChange, steps }: Props) => {
+  useClickAnyWhere(() => {
+    onActiveStepChange(null);
+  });
+
   const parsedSteps = steps.map(
     ({ content: step, ingredientHighlights: stepIngredients }) => {
       if (stepIngredients.length === 0) {
@@ -63,7 +68,8 @@ const StepsPanel = ({ activeStep, onActiveStepChange, steps }: Props) => {
           <Step
             $isActive={activeStep === i}
             key={i}
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               onActiveStepChange(i);
             }}
           >
