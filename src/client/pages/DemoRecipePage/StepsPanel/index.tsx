@@ -1,3 +1,11 @@
+import {
+  HighlightedIngredient,
+  Step,
+  StepContent,
+  StepNumber,
+  StepsList,
+} from "./styled";
+
 interface Props {
   activeStep: number | null;
   onActiveStepChange: (step: number | null) => void;
@@ -30,17 +38,14 @@ const StepsPanel = ({ activeStep, onActiveStepChange, steps }: Props) => {
         }
 
         stepStrings.push(
-          <span
-            key={stepIngredient.id}
-            style={{ background: "purple" }}
-          >
+          <HighlightedIngredient key={stepIngredient.id}>
             {step.substring(stepIngredient.start, stepIngredient.end)}
-          </span>,
+          </HighlightedIngredient>,
         );
 
         if (
           i === stepIngredients.length - 1 &&
-          stepIngredient.end < step.length - 1
+          stepIngredient.end < step.length
         ) {
           stepStrings.push(step.substring(stepIngredient.end));
         }
@@ -53,17 +58,20 @@ const StepsPanel = ({ activeStep, onActiveStepChange, steps }: Props) => {
   return (
     <div>
       <div>Steps</div>
-      {parsedSteps.map((step, i) => (
-        <div
-          key={i}
-          onClick={() => {
-            onActiveStepChange(i);
-          }}
-          style={{ background: activeStep === i ? "pink" : "transparent" }}
-        >
-          {step}
-        </div>
-      ))}
+      <StepsList>
+        {parsedSteps.map((step, i) => (
+          <Step
+            $isActive={activeStep === i}
+            key={i}
+            onClick={() => {
+              onActiveStepChange(i);
+            }}
+          >
+            <StepNumber>{i + 1}</StepNumber>
+            <StepContent>{step}</StepContent>
+          </Step>
+        ))}
+      </StepsList>
     </div>
   );
 };
