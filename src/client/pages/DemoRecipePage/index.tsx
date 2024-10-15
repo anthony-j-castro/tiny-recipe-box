@@ -50,6 +50,11 @@ const DemoRecipePage = () => {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, [wakeLock]);
 
+  const ingredients = recipe.ingredients.reduce(
+    (a, v) => ({ ...a, [v.id]: v }),
+    {},
+  );
+
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   const stepIngredients =
@@ -127,6 +132,7 @@ const DemoRecipePage = () => {
           />
           <StepsPanel
             activeStep={activeStep}
+            ingredients={ingredients}
             onActiveStepChange={setActiveStep}
             steps={recipe.steps}
           />

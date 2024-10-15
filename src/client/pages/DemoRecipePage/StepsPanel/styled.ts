@@ -1,3 +1,4 @@
+import { Button } from "react-aria-components";
 import styled, { css } from "styled-components";
 
 export const StepsList = styled.ul`
@@ -37,13 +38,14 @@ export const StepContent = styled.div`
   line-height: 1.25;
 `;
 
-export const HighlightedIngredient = styled.span(
+export const HighlightedIngredient = styled(Button)(
   ({ theme }) => css`
     display: inline-block;
     padding: 0 4px;
     background: ${theme.colors.lightGray};
     border: 1px solid ${theme.colors.gray};
     border-radius: 4px;
+    cursor: help;
     transition: background-color 100ms ease-in-out;
 
     &:hover {
