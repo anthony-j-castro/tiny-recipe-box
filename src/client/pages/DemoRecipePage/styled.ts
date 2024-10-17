@@ -1,68 +1,50 @@
-import { ToggleButton as BaseToggleButton } from "react-aria-components";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import BasePageContent from "~/client/components/PageContent";
-import VerticalSeparator from "~/client/components/VerticalSeparator";
+import BasePageHeading from "~/client/components/PageHeading";
 import BaseIngredientsPanel from "./IngredientsPanel";
 import BaseStepsPanel from "./StepsPanel";
 
 export const PageContent = styled(BasePageContent)`
   &:fullscreen {
+    display: flex;
+    justify-content: center;
     background: white;
-    padding: 64px;
   }
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-`;
-
-export const ToggleButton = styled(BaseToggleButton)(
-  ({ theme }) => css`
-    display: inline-flex;
-    align-items: center;
-    background: ${theme.colors.lightGray};
-    padding: 8px 12px;
-    border: 1px solid ${theme.colors.gray};
-    border-radius: 4px;
-    outline-width: 0;
-
-    &:hover {
-      background: ${theme.colors.gray};
-    }
-
-    &[data-focus-visible] {
-      outline-width: 2px;
-      outline-style: solid;
-      outline-offset: 2px;
-    }
-
-    &[data-selected] {
-      color: ${theme.colors.white};
-      background: #4d4dff;
-    }
-  `,
-);
-
-export const Separator = styled(VerticalSeparator)`
-  align-self: stretch;
-  display: inline-block;
-  height: auto;
-  margin-right: 16px;
-`;
-
-export const Grid = styled.div`
+export const PageContentInnerGrid = styled.div<{ $isFullscreen?: boolean }>`
   display: grid;
   grid-template-columns: fit-content(200px) 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto auto 1fr auto;
   grid-column-gap: 32px;
   grid-row-gap: 0px;
-  grid-template-areas: "ingredients steps";
+  grid-template-areas:
+    "title title"
+    "description description"
+    "left-panel steps"
+    "left-panel notes";
 `;
 
-export const IngredientsPanel = styled(BaseIngredientsPanel)`
-  grid-area: ingredients;
+export const PageHeading = styled(BasePageHeading)`
+  grid-area: title;
 `;
+
+export const Description = styled.div`
+  grid-area: description;
+`;
+
+export const LeftPanel = styled.div`
+  grid-area: left-panel;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const IngredientsPanel = styled(BaseIngredientsPanel)``;
 
 export const StepsPanel = styled(BaseStepsPanel)`
   grid-area: steps;
+`;
+
+export const Notes = styled.div`
+  grid-area: notes;
 `;
