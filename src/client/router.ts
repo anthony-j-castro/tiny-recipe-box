@@ -44,11 +44,13 @@ const sandboxRoutes = createRoute({
   getParentRoute: () => rootRoute,
   path: "/sandbox",
 });
+
 const demoRecipeRoute = createRoute({
   getParentRoute: () => sandboxRoutes,
   path: "/demo-recipe",
   component: DemoRecipePage,
 });
+
 sandboxRoutes.addChildren([demoRecipeRoute]);
 
 const routeTree = rootRoute.addChildren([
