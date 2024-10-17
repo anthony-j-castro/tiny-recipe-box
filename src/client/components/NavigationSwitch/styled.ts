@@ -1,6 +1,10 @@
 import { Switch } from "react-aria-components";
 import styled, { css } from "styled-components";
 
+const INDICATOR_WIDTH = 12;
+const INDICATOR_MARGIN = 1;
+const TRACK_BORDER_WIDTH = 1;
+
 export const StyledSwitch = styled(Switch)(
   ({ theme }) => css`
     display: flex;
@@ -8,20 +12,28 @@ export const StyledSwitch = styled(Switch)(
     justify-content: space-between;
 
     .indicator {
-      width: 28px;
-      height: 16px;
+      flex-shrink: 0;
+      width: ${INDICATOR_WIDTH * 2 +
+      INDICATOR_MARGIN * 2 +
+      TRACK_BORDER_WIDTH * 2}px;
+      height: ${INDICATOR_WIDTH +
+      INDICATOR_MARGIN * 2 +
+      TRACK_BORDER_WIDTH * 2}px;
       border: 1px solid ${theme.colors.darkGray};
       background: ${theme.colors.lightGray};
-      border-radius: 8px;
+      border-radius: ${(INDICATOR_WIDTH +
+        INDICATOR_MARGIN * 2 +
+        TRACK_BORDER_WIDTH * 2) /
+      2}px;
       margin-left: 8px;
       transition: background-color 150ms;
 
       &::before {
         content: "";
         display: block;
-        margin: 1px;
-        width: 12px;
-        height: 12px;
+        margin: ${INDICATOR_MARGIN}px;
+        width: ${INDICATOR_WIDTH}px;
+        height: ${INDICATOR_WIDTH}px;
         background: ${theme.colors.darkGray};
         border-radius: 50%;
         transition: all 150ms;
