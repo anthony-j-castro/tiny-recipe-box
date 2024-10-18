@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
+import { Key } from "ts-key-enum";
 import { useAnalytics } from "use-analytics";
+import clamp from "~/shared/utils/clamp";
 import recipe from "./recipe.json";
 import {
   Description,
@@ -26,6 +29,35 @@ const DemoRecipePage = () => {
   );
 
   const [activeStep, setActiveStep] = useState<number | null>(null);
+
+  useHotkeys([Key.ArrowDown, Key.ArrowRight], (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (activeStep === null) {
+      setActiveStep(0);
+
+      return;
+    }
+
+    setActiveStep(clamp(activeStep + 1, 0, recipe.steps.length - 1));
+  });
+
+  useHotkeys([Key.ArrowUp, Key.ArrowLeft], (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (activeStep !== null) {
+      setActiveStep(clamp(activeStep - 1, 0, recipe.steps.length - 1));
+    }
+  });
+
+  useHotkeys(["x"], (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setActiveStep(null);
+  });
 
   const stepIngredients =
     activeStep !== null ? recipe.steps[activeStep].ingredientHighlights : [];

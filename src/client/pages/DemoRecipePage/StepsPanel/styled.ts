@@ -15,7 +15,7 @@ export const Step = styled.li<{ $isActive?: boolean }>(
     border: 2px solid transparent;
     border-radius: 4px;
     cursor: pointer;
-    transition: border-color 100ms ease-in-out;
+    transition: border-color 100ms;
 
     ${$isActive &&
     css`
@@ -46,7 +46,7 @@ export const HighlightedIngredient = styled(Button)(
     border: 1px solid ${theme.colors.gray};
     border-radius: 4px;
     cursor: help;
-    transition: background-color 100ms ease-in-out;
+    transition: background-color 100ms;
 
     &:hover {
       background: ${theme.colors.gray};
