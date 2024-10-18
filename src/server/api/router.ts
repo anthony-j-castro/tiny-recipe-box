@@ -24,11 +24,11 @@ type RoutesMap = Partial<
 
 const routes: RoutesMap = {};
 
-export function defineRoute(
+export const defineRoute = (
   method: HTTPMethod,
   path: string,
   handler: RouteHandler<unknown>,
-): void {
+): void => {
   const pathParts = path.split("/");
 
   const parameters: string[] = [];
@@ -60,9 +60,9 @@ export function defineRoute(
     ...routes[method],
     [path]: { handler, regex: pathRegex, parameters },
   };
-}
+};
 
-export async function handleRequest({
+export const handleRequest = async ({
   body,
   headers,
   method,
@@ -72,7 +72,7 @@ export async function handleRequest({
   path: string;
   body?: unknown;
   headers?: HeadersInit | undefined;
-}): Promise<APIResponse> {
+}): Promise<APIResponse> => {
   await simulateLatency();
 
   try {
@@ -143,4 +143,4 @@ export async function handleRequest({
       body: JSON.stringify({ message: "An unknown error occurred." }),
     };
   }
-}
+};

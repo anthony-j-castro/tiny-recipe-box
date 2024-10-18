@@ -13,4 +13,5 @@ const theme = {
     red: "#ff3131",
   },
 };
+
 export default theme;

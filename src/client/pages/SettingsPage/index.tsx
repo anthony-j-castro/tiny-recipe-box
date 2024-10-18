@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAnalytics } from "use-analytics";
-import PageContent from "~/client/components//PageContent";
 import MonospacedText from "~/client/components/MonospacedText";
+import PageContent from "~/client/components/PageContent";
 import PageHeading from "~/client/components/PageHeading";
 import { useUserContext } from "~/client/contexts/UserContext";
 import { Paragraph, Section, SectionHeading } from "./styled";
