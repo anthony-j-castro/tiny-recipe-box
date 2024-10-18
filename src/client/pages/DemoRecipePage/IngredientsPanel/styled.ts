@@ -16,7 +16,7 @@ export const Ingredient = styled.li<{ $isActive?: boolean }>(
     font-size: 18px;
     padding: 4px 8px;
     border-radius: 4px;
-    margin: 0 0 8px -8px;
+    margin-bottom: 8px;
     transition: background-color 100ms;
 
     ${$isActive &&
