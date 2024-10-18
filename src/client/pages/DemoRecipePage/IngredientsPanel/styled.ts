@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+export const Section = styled.div`
+  max-height: calc(100vh - (36px * 2));
+  overflow: auto;
+`;
+
 export const IngredientsList = styled.ul`
   padding: 0;
   margin: 0;

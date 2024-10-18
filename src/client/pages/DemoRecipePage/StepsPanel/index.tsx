@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { DialogTrigger } from "react-aria-components";
 import { useClickAnyWhere } from "usehooks-ts";
 import IngredientPopover from "~/client/pages/DemoRecipePage/IngredientPopover";
@@ -40,6 +41,16 @@ const StepsPanel = ({
   steps,
   ingredients,
 }: Props) => {
+  const ref = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({
+      block: "end",
+      inline: "nearest",
+      behavior: "smooth",
+    });
+  }, [activeStep]);
+
   useClickAnyWhere(() => {
     onActiveStepChange(null);
   });
@@ -100,6 +111,7 @@ const StepsPanel = ({
               event.stopPropagation();
               onActiveStepChange(i);
             }}
+            ref={activeStep === i ? ref : null}
           >
             <StepNumber>{i + 1}</StepNumber>
             <StepContent>{step}</StepContent>

@@ -69,12 +69,14 @@ const DemoRecipePage = () => {
         <PageHeading>{recipe.title}</PageHeading>
         <Description>{recipe.description}</Description>
         <LeftPanel>
-          <IngredientsPanel
-            activeStep={activeStep}
-            ingredients={recipe.ingredients}
-            stepIngredients={stepIngredients}
-          />
-          <EquipmentPanel equipment={recipe.equipment} />
+          <div style={{ position: "sticky", top: 0 }}>
+            <IngredientsPanel
+              activeStep={activeStep}
+              ingredients={recipe.ingredients}
+              stepIngredients={stepIngredients}
+            />
+            <EquipmentPanel equipment={recipe.equipment} />
+          </div>
         </LeftPanel>
         <StepsPanel
           activeStep={activeStep}

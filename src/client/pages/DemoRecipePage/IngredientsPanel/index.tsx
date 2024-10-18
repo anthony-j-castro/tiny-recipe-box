@@ -1,5 +1,5 @@
 import SectionHeading from "~/client/pages/DemoRecipePage/SectionHeading";
-import { Ingredient, IngredientsList } from "./styled";
+import { Ingredient, IngredientsList, Section } from "./styled";
 
 type Ingredient = {
   id: string;
@@ -22,7 +22,7 @@ const IngredientsPanel = ({ ingredients, stepIngredients }: Props) => {
   const ids = stepIngredients.map((value) => value.id);
 
   return (
-    <div>
+    <Section>
       <SectionHeading>Ingredients</SectionHeading>
       <IngredientsList>
         {ingredients.map((ingredient, i) => (
@@ -34,7 +34,7 @@ const IngredientsPanel = ({ ingredients, stepIngredients }: Props) => {
           </Ingredient>
         ))}
       </IngredientsList>
-    </div>
+    </Section>
   );
 };
 
