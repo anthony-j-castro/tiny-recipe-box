@@ -10,14 +10,14 @@ const DisplaySettings = () => {
     wakeLock !== undefined && wakeLock.released === false;
 
   useEffect(() => {
-    function onFullscreenChange() {
+    const onFullscreenChange = () => {
       const newIsFullscreen = Boolean(document.fullscreenElement);
       setIsFullscreen(newIsFullscreen);
 
       if (!newIsFullscreen) {
         wakeLock.release();
       }
-    }
+    };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
 
