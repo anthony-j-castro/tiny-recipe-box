@@ -10,16 +10,17 @@ export const Step = styled.li<{ $isActive?: boolean }>(
   ({ $isActive }) => css`
     display: flex;
     padding: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     font-size: 20px;
-    border: 2px solid transparent;
-    border-radius: 4px;
+    border: 4px solid transparent;
+    border-radius: 8px;
     cursor: pointer;
     transition: border-color 100ms;
 
     ${$isActive &&
     css`
       border-color: #4d4dff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     `}
   `,
 );
@@ -27,7 +28,7 @@ export const Step = styled.li<{ $isActive?: boolean }>(
 export const StepNumber = styled.span`
   min-width: 32px;
   padding-right: 8px;
-  border-right: 2px solid #ff9551;
+  border-right: 2px solid #4d4dff;
   margin-right: 16px;
   text-align: right;
   font-weight: 700;

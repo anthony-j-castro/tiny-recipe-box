@@ -1,6 +1,7 @@
 import { DialogTrigger } from "react-aria-components";
 import { useClickAnyWhere } from "usehooks-ts";
 import IngredientPopover from "~/client/pages/DemoRecipePage/IngredientPopover";
+import SectionHeading from "~/client/pages/DemoRecipePage/SectionHeading";
 import {
   HighlightedIngredient,
   Step,
@@ -89,7 +90,7 @@ const StepsPanel = ({
 
   return (
     <div>
-      <div>Directions</div>
+      <SectionHeading>Directions</SectionHeading>
       <StepsList>
         {parsedSteps.map((step, i) => (
           <Step

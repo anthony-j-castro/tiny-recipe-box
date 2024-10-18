@@ -14,10 +14,10 @@ export const PageContent = styled(BasePageContent)`
 
 export const PageContentInnerGrid = styled.div<{ $isFullscreen?: boolean }>`
   display: grid;
-  grid-template-columns: fit-content(200px) 1fr;
+  grid-template-columns: fit-content(256px) 1fr;
   grid-template-rows: auto auto 1fr auto;
-  grid-column-gap: 32px;
-  grid-row-gap: 0px;
+  grid-column-gap: 48px;
+  grid-row-gap: 0;
   grid-template-areas:
     "title title"
     "description description"
@@ -31,6 +31,7 @@ export const PageHeading = styled(BasePageHeading)`
 
 export const Description = styled.div`
   grid-area: description;
+  margin-bottom: 32px;
 `;
 
 export const LeftPanel = styled.div`

@@ -2,10 +2,16 @@
   "title": "Katharine Hepburn’s Brownies",
   "attribution": "By The New York Times",
   "url": "https://cooking.nytimes.com/recipes/10782-katharine-hepburns-brownies",
+  "description": "Much like its author, this recipe is a no-fuss classic. It calls for just ¼ cup of flour, which yields an incredibly rich and gooey brownie, and it's super easy to make. So easy, in fact, that baking a batch of these might just become part of your weekend routine.",
   "yield": "12 brownies",
   "time": {
     "total": "About 45 minutes"
   },
+  "equipment": [
+    { "id": "e-1", "item": "saucepan" },
+    { "id": "e2", "item": "bowl" },
+    { "id": "e3", "item": "8 x 8-inch-square pan" }
+  ],
   "ingredients": [
     {
       "id": "i-1",

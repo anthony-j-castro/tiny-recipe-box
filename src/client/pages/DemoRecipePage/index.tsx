@@ -3,6 +3,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { Key } from "ts-key-enum";
 import { useAnalytics } from "use-analytics";
 import clamp from "~/shared/utils/clamp";
+import EquipmentPanel from "./EquipmentSection";
 import recipe from "./recipe.json";
 import {
   Description,
@@ -66,13 +67,14 @@ const DemoRecipePage = () => {
     <PageContent ref={containerRef}>
       <PageContentInnerGrid>
         <PageHeading>{recipe.title}</PageHeading>
-        <Description>Desc.</Description>
+        <Description>{recipe.description}</Description>
         <LeftPanel>
           <IngredientsPanel
             activeStep={activeStep}
             ingredients={recipe.ingredients}
             stepIngredients={stepIngredients}
           />
+          <EquipmentPanel equipment={recipe.equipment} />
         </LeftPanel>
         <StepsPanel
           activeStep={activeStep}

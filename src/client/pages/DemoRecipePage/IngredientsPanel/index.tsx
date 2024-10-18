@@ -1,3 +1,6 @@
+import SectionHeading from "~/client/pages/DemoRecipePage/SectionHeading";
+import { Ingredient, IngredientsList } from "./styled";
+
 type Ingredient = {
   id: string;
   ingredient: string;
@@ -20,17 +23,17 @@ const IngredientsPanel = ({ ingredients, stepIngredients }: Props) => {
 
   return (
     <div>
-      <div>Ingredients</div>
-      {ingredients.map((ingredient, i) => (
-        <div
-          key={i}
-          style={{
-            background: ids.includes(ingredient.id) ? "blue" : "transparent",
-          }}
-        >
-          {ingredient.quantity} {ingredient.unit} {ingredient.ingredient}
-        </div>
-      ))}
+      <SectionHeading>Ingredients</SectionHeading>
+      <IngredientsList>
+        {ingredients.map((ingredient, i) => (
+          <Ingredient
+            $isActive={ids.includes(ingredient.id)}
+            key={i}
+          >
+            {ingredient.quantity} {ingredient.unit} {ingredient.ingredient}
+          </Ingredient>
+        ))}
+      </IngredientsList>
     </div>
   );
 };
