@@ -2,10 +2,10 @@ import Dexie, { type DexieOptions } from "dexie";
 
 const DATABASE_NAME = "TinyRecipeBoxDB_";
 
-type User = {
+interface User {
   createdAt: Date;
   id: string;
-};
+}
 
 export class AppDatabase extends Dexie {
   users!: Dexie.Table<User, string>;

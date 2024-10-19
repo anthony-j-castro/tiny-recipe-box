@@ -4,13 +4,13 @@ import { EXTENSION_ID } from "~/client/constants";
 import { getUserId } from "~/client/storage";
 import config from "~/config";
 
-type HeartbeatResponseMessage = {
+interface HeartbeatResponseMessage {
   payload: {
     extensionVersion: string;
   };
   sender: "service-worker";
   type: "PONG";
-};
+}
 
 const heartbeatResponse: Decoder<HeartbeatResponseMessage> = exact({
   type: constant("PONG"),

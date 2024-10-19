@@ -8,13 +8,13 @@ import { EXTENSION_ID, TEST_USER_ID } from "~/client/constants";
 import useInitializeE2ETest from "~/client/hooks/useInitializeE2ETest";
 import { Container, LoadingIndicator, Message } from "./styled";
 
-type OpenUrlMessage = {
+interface OpenUrlMessage {
   payload: {
     url: string;
   };
   sender: "e2e-test";
   type: "OPEN_URL_FOR_E2E_TEST";
-};
+}
 
 const openUrlMessageDecoder: Decoder<OpenUrlMessage> = exact({
   sender: constant("e2e-test"),
@@ -22,13 +22,13 @@ const openUrlMessageDecoder: Decoder<OpenUrlMessage> = exact({
   payload: exact({ url: string }),
 });
 
-type SuccessMessage = {
+interface SuccessMessage {
   payload: {
     tabId: number;
   };
   sender: "service-worker";
   type: "OPEN_URL_FOR_E2E_TEST_SUCCESS";
-};
+}
 
 const successMessageDecoder: Decoder<SuccessMessage> = exact({
   sender: constant("service-worker"),

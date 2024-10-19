@@ -5,9 +5,9 @@ import Interstitial from "~/client/components/Interstitial";
 import useGetMe from "~/client/hooks/api/useGetMe";
 import { Content, LoadingIndicator } from "./styled";
 
-type Context = {
+interface Context {
   userId: string;
-};
+}
 
 const UserContext = createContext<Context | undefined>(undefined);
 

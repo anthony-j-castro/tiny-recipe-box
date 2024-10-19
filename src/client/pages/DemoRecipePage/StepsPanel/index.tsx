@@ -39,9 +39,9 @@ interface Props {
 
 const StepsPanel = ({
   activeStep,
+  ingredients,
   onActiveStepChange,
   steps,
-  ingredients,
 }: Props) => {
   const ref = useRef<HTMLLIElement>(null);
 

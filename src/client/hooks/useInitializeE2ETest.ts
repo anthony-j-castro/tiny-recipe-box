@@ -3,10 +3,10 @@ import { constant, exact, type Decoder } from "decoders";
 import { EXTENSION_ID, TEST_USER_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 
-type SuccessResponseMessage = {
+interface SuccessResponseMessage {
   sender: "service-worker";
   type: "SET_USER_ID_FOR_E2E_TEST_SUCCESS";
-};
+}
 
 const successResponseDecoder: Decoder<SuccessResponseMessage> = exact({
   sender: constant("service-worker"),

@@ -3,10 +3,10 @@ import { constant, exact, nonEmptyString, type Decoder } from "decoders";
 import { EXTENSION_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 
-type RecipeDataResponseMessage = {
+interface RecipeDataResponseMessage {
   sender: "service-worker";
   type: "RECIPE_DATA";
-};
+}
 
 const recipeDataResponseMessageDecoder: Decoder<RecipeDataResponseMessage> =
   exact({

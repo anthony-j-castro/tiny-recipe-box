@@ -1,12 +1,12 @@
 import SectionHeading from "~/client/pages/DemoRecipePage/SectionHeading";
 import { Ingredient, IngredientsList, Section } from "./styled";
 
-type Ingredient = {
+interface Ingredient {
   id: string;
   ingredient: string;
   quantity: number;
   unit: string | null;
-};
+}
 
 interface Props {
   activeStep: number | null;

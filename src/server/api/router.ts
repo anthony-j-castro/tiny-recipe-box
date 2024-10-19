@@ -12,13 +12,14 @@ const SLASH = "\\/";
 type RoutesMap = Partial<
   Record<
     HTTPMethod,
-    {
-      [path: string]: {
+    Record<
+      string,
+      {
         handler: RouteHandler<unknown>;
         parameters: string[];
         regex: string;
-      };
-    }
+      }
+    >
   >
 >;
 
