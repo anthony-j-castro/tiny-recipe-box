@@ -15,6 +15,7 @@ export const Step = styled.li<{ $isActive?: boolean }>(
     border: 4px solid transparent;
     border-radius: 8px;
     cursor: pointer;
+    scroll-margin-bottom: 32px;
     transition: border-color 100ms;
 
     ${$isActive &&
@@ -28,7 +29,7 @@ export const Step = styled.li<{ $isActive?: boolean }>(
 export const StepNumber = styled.span`
   min-width: 32px;
   padding-right: 8px;
-  border-right: 2px solid #4d4dff;
+  border-right: 3px solid #4d4dff;
   margin-right: 16px;
   text-align: right;
   font-weight: 700;
@@ -38,6 +39,14 @@ export const StepNumber = styled.span`
 export const StepContent = styled.div`
   line-height: 1.25;
 `;
+
+export const StepNotes = styled.div(
+  ({ theme }) => css`
+    font-size: 14px;
+    color: ${theme.colors.darkGray};
+    margin-top: 24px;
+  `,
+);
 
 export const HighlightedIngredient = styled(Button)(
   ({ theme }) => css`

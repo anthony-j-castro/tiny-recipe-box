@@ -7,6 +7,7 @@ import {
   HighlightedIngredient,
   Step,
   StepContent,
+  StepNotes,
   StepNumber,
   StepsList,
 } from "./styled";
@@ -32,6 +33,7 @@ interface Props {
       id: string;
       start: number;
     }>;
+    note?: string;
   }>;
 }
 
@@ -114,7 +116,12 @@ const StepsPanel = ({
             ref={activeStep === i ? ref : null}
           >
             <StepNumber>{i + 1}</StepNumber>
-            <StepContent>{step}</StepContent>
+            <StepContent>
+              <div>{step}</div>
+              {steps[i].note !== undefined ? (
+                <StepNotes>Notes: {steps[i].note}</StepNotes>
+              ) : null}
+            </StepContent>
           </Step>
         ))}
       </StepsList>
