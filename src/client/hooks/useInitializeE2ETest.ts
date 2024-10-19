@@ -18,9 +18,8 @@ const timeout = async (ms: number) => {
   throw new Error("Request timed out.");
 };
 
-const useInitializeE2ETest = ({ enabled }: { enabled?: boolean } = {}) =>
+const useInitializeE2ETest = () =>
   useQuery({
-    enabled,
     queryKey: ["initialize-e2e-test"],
     queryFn: async () => {
       if (!window.chrome?.runtime) {
