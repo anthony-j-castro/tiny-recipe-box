@@ -1,4 +1,4 @@
-export type Me = {
+export interface Me {
   createdAt: Date;
   userId: string;
-};
+}

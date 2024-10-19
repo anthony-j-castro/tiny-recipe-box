@@ -1,9 +1,9 @@
 import { StatusCode } from "status-code-enum";
 import type { RouteHandler } from "~/server/types";
 
-type UserId = {
+interface UserId {
   userId: string;
-};
+}
 
 export const authenticateMe: RouteHandler<UserId> = async ({ db }) => {
   const users = await db.users.toArray();

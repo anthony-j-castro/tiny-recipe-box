@@ -10,7 +10,7 @@ import {
   type Decoder,
 } from "decoders";
 
-type Config = {
+interface Config {
   ENVIRONMENT: "development" | "production";
   GITHUB_COMMIT_SHA: string | null;
   GOOGLE_ANALYTICS_MEASUREMENT_ID: string | null;
@@ -18,7 +18,7 @@ type Config = {
   SIMULATED_LATENCY_TOLERANCE_MILLISECONDS: number;
   EXTENSION_HEARTBEAT_INTERVAL_MILLISECONDS?: number | undefined;
   ROLLBAR_ACCESS_TOKEN?: string | undefined;
-};
+}
 
 const configDecoder: Decoder<Config> = exact({
   ENVIRONMENT: oneOf(["development", "production"]),

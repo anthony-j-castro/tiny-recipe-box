@@ -3,10 +3,10 @@ import { constant, exact, type Decoder } from "decoders";
 import { EXTENSION_ID, TEST_USER_ID } from "~/client/constants";
 import sleep from "~/shared/utils/sleep";
 
-type SuccessResponseMessage = {
+interface SuccessResponseMessage {
   sender: "service-worker";
   type: "SET_USER_ID_FOR_E2E_TEST_SUCCESS";
-};
+}
 
 const successResponseDecoder: Decoder<SuccessResponseMessage> = exact({
   sender: constant("service-worker"),
@@ -18,9 +18,8 @@ const timeout = async (ms: number) => {
   throw new Error("Request timed out.");
 };
 
-const useInitializeE2ETest = ({ enabled }: { enabled?: boolean } = {}) =>
+const useInitializeE2ETest = () =>
   useQuery({
-    enabled,
     queryKey: ["initialize-e2e-test"],
     queryFn: async () => {
       if (!window.chrome?.runtime) {

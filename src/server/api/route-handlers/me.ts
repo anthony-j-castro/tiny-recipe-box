@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import rollbar from "~/server/rollbar";
 import type { RouteHandler } from "~/server/types";
 
-type CurrentUser = {
+interface CurrentUser {
   createdAt: Date;
   userId: string;
-};
+}
 
 export const getMe: RouteHandler<CurrentUser> = async ({
   currentUserId,

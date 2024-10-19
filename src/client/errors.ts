@@ -35,9 +35,9 @@ export class InternalServerError extends APIError {
   }
 }
 
-type ErrorResponseBody = {
+interface ErrorResponseBody {
   message: string;
-};
+}
 
 const errorResponseDecoder: Decoder<ErrorResponseBody> = object({
   message: string,
