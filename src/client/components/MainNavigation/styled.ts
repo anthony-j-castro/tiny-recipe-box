@@ -63,6 +63,7 @@ export const PrimaryNav = styled.section`
 
 export const SecondaryNav = styled.section`
   grid-area: secondary;
+  margin-top: 32px;
 `;
 
 export const NavLink = styled(BaseNavLink)`

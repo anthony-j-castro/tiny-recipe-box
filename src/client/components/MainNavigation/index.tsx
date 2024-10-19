@@ -5,6 +5,7 @@ import MonospacedText from "~/client/components/MonospacedText";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
 import useNewSiteVersionAvailable from "~/client/hooks/useNewSiteVersionAvailable";
 import config from "~/config";
+import DisplaySettings from "./DisplaySettings";
 import ExtensionStatusDot from "./ExtensionStatusDot";
 import {
   AlphaPill,
@@ -53,6 +54,8 @@ const MainNavigation = ({ className }: Props) => {
         </List>
       </PrimaryNav>
       <SecondaryNav>
+        <DisplaySettings />
+        <BottomSeparator />
         <List>
           <li>
             <NavLink to="/settings">Settings</NavLink>
