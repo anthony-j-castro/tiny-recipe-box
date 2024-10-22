@@ -23,12 +23,12 @@ export const ExtensionProvider = ({ children }: Props) => {
         isInstalled: false,
         version: null,
       }
-    : data?.version !== undefined
-      ? {
+    : data?.version === undefined
+      ? { isInstalled: null, version: null }
+      : {
           isInstalled: true,
           version: data.version,
-        }
-      : { isInstalled: null, version: null };
+        };
 
   return (
     <ExtensionContext.Provider value={value}>

@@ -34,10 +34,8 @@ const DisplaySettings = () => {
             if (isEnabled) {
               window.document.documentElement.requestFullscreen();
               wakeLock.request();
-            } else {
-              if (document.fullscreenElement !== null) {
-                window.document.exitFullscreen();
-              }
+            } else if (document.fullscreenElement !== null) {
+              window.document.exitFullscreen();
               // wakeLock.release() is always called in the onFullscreenChange
               // handler, so we don't need to call it here.
             }
@@ -52,10 +50,8 @@ const DisplaySettings = () => {
           onChange={(isEnabled) => {
             if (isEnabled) {
               window.document.documentElement.requestFullscreen();
-            } else {
-              if (document.fullscreenElement !== null) {
-                window.document.exitFullscreen();
-              }
+            } else if (document.fullscreenElement !== null) {
+              window.document.exitFullscreen();
             }
           }}
         >

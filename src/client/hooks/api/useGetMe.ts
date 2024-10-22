@@ -32,7 +32,7 @@ const useGetMe = () => {
         const me = meResponseDecoder.verify(responseJson);
 
         return me;
-      } catch (error) {
+      } catch {
         throw new Error("Error fetching current user.");
       }
     },

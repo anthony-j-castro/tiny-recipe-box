@@ -35,7 +35,7 @@ const MainNavigation = ({ className }: Props) => {
   const shaData = config.GITHUB_COMMIT_SHA
     ? {
         long: config.GITHUB_COMMIT_SHA,
-        short: config.GITHUB_COMMIT_SHA.substring(0, 7),
+        short: config.GITHUB_COMMIT_SHA.slice(0, 7),
       }
     : undefined;
 

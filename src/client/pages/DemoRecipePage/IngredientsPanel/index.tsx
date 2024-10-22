@@ -19,7 +19,7 @@ interface Props {
 }
 
 const IngredientsPanel = ({ ingredients, stepIngredients }: Props) => {
-  const ids = stepIngredients.map((value) => value.id);
+  const ids = new Set(stepIngredients.map((value) => value.id));
 
   return (
     <Section>
@@ -27,7 +27,7 @@ const IngredientsPanel = ({ ingredients, stepIngredients }: Props) => {
       <IngredientsList>
         {ingredients.map((ingredient, i) => (
           <Ingredient
-            $isActive={ids.includes(ingredient.id)}
+            $isActive={ids.has(ingredient.id)}
             key={i}
           >
             {ingredient.quantity} {ingredient.unit} {ingredient.ingredient}

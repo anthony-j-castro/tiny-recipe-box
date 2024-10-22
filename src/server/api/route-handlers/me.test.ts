@@ -8,8 +8,8 @@ describe("server/api/route-handlers/me", () => {
 
     const { initializeDatabase } = await import("~/server/database");
     initializeDatabase({
-      indexedDB: indexedDB,
-      IDBKeyRange: IDBKeyRange,
+      indexedDB,
+      IDBKeyRange,
     });
   });
 

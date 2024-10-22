@@ -8,7 +8,7 @@ const useSafelyParseJsonResponse = () => {
       const responseJson = await response.json();
 
       return responseJson;
-    } catch (error) {
+    } catch {
       const responseText = await response.text();
 
       rollbar.error("Cannot parse response as JSON.", { body: responseText });

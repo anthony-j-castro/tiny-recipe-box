@@ -63,14 +63,17 @@ const ExtensionTestInitializerPage = () => {
 
         const decodedResponse = successMessageDecoder.verify(response);
 
-        window.postMessage({
-          type: "OPEN_URL_FOR_E2E_TEST_SUCCESS",
-          sender: "web-app",
-          payload: {
-            tabId: decodedResponse.payload.tabId,
-            url: message.payload.url,
+        window.postMessage(
+          {
+            type: "OPEN_URL_FOR_E2E_TEST_SUCCESS",
+            sender: "web-app",
+            payload: {
+              tabId: decodedResponse.payload.tabId,
+              url: message.payload.url,
+            },
           },
-        });
+          window.location.origin,
+        );
 
         return;
       }

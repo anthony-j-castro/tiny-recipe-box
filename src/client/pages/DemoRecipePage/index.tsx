@@ -24,9 +24,8 @@ const DemoRecipePage = () => {
     analytics.page({ title: "Demo Recipe" });
   }, [analytics]);
 
-  const ingredients = recipe.ingredients.reduce(
-    (a, v) => ({ ...a, [v.id]: v }),
-    {},
+  const ingredients = Object.fromEntries(
+    recipe.ingredients.map((v) => [v.id, v]),
   );
 
   const [activeStep, setActiveStep] = useState<number | null>(null);
@@ -61,7 +60,7 @@ const DemoRecipePage = () => {
   });
 
   const stepIngredients =
-    activeStep !== null ? recipe.steps[activeStep].ingredientHighlights : [];
+    activeStep === null ? [] : recipe.steps[activeStep].ingredientHighlights;
 
   return (
     <PageContent ref={containerRef}>

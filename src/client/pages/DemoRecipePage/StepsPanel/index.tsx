@@ -65,12 +65,12 @@ const StepsPanel = ({
 
       const stepStrings: React.ReactNode[] = [];
 
-      stepIngredients.forEach((stepIngredient, i) => {
+      for (const [i, stepIngredient] of stepIngredients.entries()) {
         if (i === 0 && stepIngredient.start > 0) {
-          stepStrings.push(step.substring(0, stepIngredient.start));
+          stepStrings.push(step.slice(0, Math.max(0, stepIngredient.start)));
         } else if (i > 0 && stepIngredient.start > stepIngredients[i - 1].end) {
           stepStrings.push(
-            step.substring(stepIngredients[i - 1].end, stepIngredient.start),
+            step.slice(stepIngredients[i - 1].end, stepIngredient.start),
           );
         }
 
@@ -79,7 +79,7 @@ const StepsPanel = ({
         stepStrings.push(
           <DialogTrigger key={stepIngredient.id}>
             <HighlightedIngredient>
-              {step.substring(stepIngredient.start, stepIngredient.end)}
+              {step.slice(stepIngredient.start, stepIngredient.end)}
             </HighlightedIngredient>
             <IngredientPopover placement="top">
               <div>
@@ -93,9 +93,9 @@ const StepsPanel = ({
           i === stepIngredients.length - 1 &&
           stepIngredient.end < step.length
         ) {
-          stepStrings.push(step.substring(stepIngredient.end));
+          stepStrings.push(step.slice(Math.max(0, stepIngredient.end)));
         }
-      });
+      }
 
       return stepStrings;
     },
@@ -118,9 +118,9 @@ const StepsPanel = ({
             <StepNumber>{i + 1}</StepNumber>
             <StepContent>
               <div>{step}</div>
-              {steps[i].note !== undefined ? (
+              {steps[i].note === undefined ? null : (
                 <StepNotes>Notes: {steps[i].note}</StepNotes>
-              ) : null}
+              )}
             </StepContent>
           </Step>
         ))}

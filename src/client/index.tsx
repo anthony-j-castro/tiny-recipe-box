@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
 
 const analytics = Analytics(analyticsConfig);
 
-const root = createRoot(document.getElementById("root")!);
+const root = createRoot(document.querySelector("#root")!);
 
 root.render(
   <StrictMode>

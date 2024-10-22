@@ -16,6 +16,6 @@ describe("The agreement modal", () => {
 
     // Timeout is set to 10s to give the initialization modal
     // time to render and disappear.
-    cy.get(SELECTORS.HOME_PAGE, { timeout: 10000 }).should("exist");
+    cy.get(SELECTORS.HOME_PAGE, { timeout: 10_000 }).should("exist");
   });
 });

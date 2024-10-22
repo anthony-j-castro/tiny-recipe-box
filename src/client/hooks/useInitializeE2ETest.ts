@@ -34,7 +34,7 @@ const useInitializeE2ETest = () =>
             userId: TEST_USER_ID,
           },
         }),
-        timeout(10000),
+        timeout(10_000),
       ]);
 
       const decodedResponse = successResponseDecoder.verify(response);
