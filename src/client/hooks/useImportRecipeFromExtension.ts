@@ -41,7 +41,7 @@ const useImportRecipeFromExtension = ({
           type: "RECIPE_IMPORTER_READY",
           sender: "web-app",
         }),
-        timeout(10000),
+        timeout(10_000),
       ]);
 
       const decodedResponse = recipeDataResponseMessageDecoder.verify(response);

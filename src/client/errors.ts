@@ -4,7 +4,7 @@ import StatusCode from "status-code-enum";
 class BaseError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = this.constructor.name;
+    this.name = "BaseError";
   }
 }
 
@@ -14,24 +14,28 @@ class APIError extends BaseError {
   constructor(status: StatusCode, message: string) {
     super(message);
     this.status = status;
+    this.name = "APIError";
   }
 }
 
 export class UnauthorizedError extends APIError {
   constructor(message: string) {
     super(StatusCode.ClientErrorUnauthorized, message);
+    this.name = "UnauthorizedError";
   }
 }
 
 export class NotFoundError extends APIError {
   constructor(message: string) {
     super(StatusCode.ClientErrorNotFound, message);
+    this.name = "NotFoundError";
   }
 }
 
 export class InternalServerError extends APIError {
   constructor(message: string) {
     super(StatusCode.ServerErrorInternal, message);
+    this.name = "InternalServerError";
   }
 }
 
@@ -51,16 +55,20 @@ export const throwAPIError = async (response: Response) => {
   };
 
   switch (response.status) {
-    case StatusCode.ClientErrorUnauthorized:
-      throw new UnauthorizedError(message);
-
-    case StatusCode.ClientErrorNotFound:
+    case StatusCode.ClientErrorNotFound: {
       throw new NotFoundError(message);
+    }
 
-    case StatusCode.ServerErrorInternal:
+    case StatusCode.ClientErrorUnauthorized: {
+      throw new UnauthorizedError(message);
+    }
+
+    case StatusCode.ServerErrorInternal: {
       throw new InternalServerError(message);
+    }
 
-    default:
+    default: {
       throw new APIError(response.status, message);
+    }
   }
 };

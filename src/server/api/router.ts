@@ -7,7 +7,7 @@ import type { APIResponse, RouteHandler } from "~/server/types";
 import simulateLatency from "~/server/utils/simulateLatency";
 
 const PARAMETER = "([^/]*)";
-const SLASH = "\\/";
+const SLASH = String.raw`\/`;
 
 type RoutesMap = Partial<
   Record<
@@ -39,17 +39,17 @@ export const defineRoute = (
     throw new Error('API path must begin with a "/".');
   }
 
-  pathParts.forEach((part, index) => {
+  for (const [index, part] of pathParts.entries()) {
     if (index > 0) {
       pathRegex += SLASH;
       if (part.startsWith(":")) {
         pathRegex += PARAMETER;
-        parameters.push(part.substring(1));
+        parameters.push(part.slice(1));
       } else {
         pathRegex += part;
       }
     }
-  });
+  }
 
   pathRegex += "$";
 
@@ -104,9 +104,9 @@ export const handleRequest = async ({
         }
 
         const params: Record<string, string> = {};
-        route.parameters.forEach((param, index) => {
+        for (const [index, param] of route.parameters.entries()) {
           params[param] = matches[index + 1];
-        });
+        }
 
         const parsedBody = either(jsonObject, undefined_).verify(body);
 
@@ -138,7 +138,7 @@ export const handleRequest = async ({
         message: `Cannot process ${method} request to ${path}.`,
       }),
     };
-  } catch (error) {
+  } catch {
     return {
       status: StatusCode.ServerErrorInternal,
       body: JSON.stringify({ message: "An unknown error occurred." }),

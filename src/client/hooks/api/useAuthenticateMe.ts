@@ -27,7 +27,7 @@ const useAuthenticateMe = () => {
         const { userId } = authenticateResponseDecoder.verify(responseJson);
 
         return userId;
-      } catch (error) {
+      } catch {
         throw new Error("Error authenticating user.");
       }
     },

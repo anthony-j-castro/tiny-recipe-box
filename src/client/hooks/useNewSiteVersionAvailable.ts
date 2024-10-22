@@ -38,36 +38,36 @@ const useNewSiteVersionAvailable = () =>
   useQuery({
     queryKey: ["newSiteVersionAvailable"],
     queryFn: async () => {
-      const deploymentsResponse = await (
-        await fetch(
-          `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments?${new URLSearchParams(
-            {
-              environment: "github-pages",
-              per_page: "1",
-            },
-          )}`,
-        )
-      ).json();
+      const deploymentsResponse = await fetch(
+        `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments?${new URLSearchParams(
+          {
+            environment: "github-pages",
+            per_page: "1",
+          },
+        )}`,
+      );
+      const deploymentsResponseJson = await deploymentsResponse.json();
 
-      const [latestDeployment] =
-        deploymentsApiResponseDecoder.verify(deploymentsResponse);
+      const [latestDeployment] = deploymentsApiResponseDecoder.verify(
+        deploymentsResponseJson,
+      );
 
       if (latestDeployment.sha === config.GITHUB_COMMIT_SHA) {
         return false;
       }
 
-      const deploymentStatusResponse = await (
-        await fetch(
-          `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments/${latestDeployment.id}/statuses?${new URLSearchParams(
-            {
-              per_page: "1",
-            },
-          )}`,
-        )
-      ).json();
+      const deploymentStatusResponse = await fetch(
+        `https://api.github.com/repos/anthony-j-castro/tiny-recipe-box/deployments/${latestDeployment.id}/statuses?${new URLSearchParams(
+          {
+            per_page: "1",
+          },
+        )}`,
+      );
+      const deploymentStatusResponseJson =
+        await deploymentStatusResponse.json();
 
       const [latestDeploymentStatus] =
-        deploymentStatusApiResponseDecoder.verify(deploymentStatusResponse);
+        deploymentStatusApiResponseDecoder.verify(deploymentStatusResponseJson);
 
       return latestDeploymentStatus.state === "success";
     },

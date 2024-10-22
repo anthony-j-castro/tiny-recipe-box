@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/consistent-function-scoping */
 import { IDBKeyRange, indexedDB } from "fake-indexeddb";
 import HTTPMethod from "http-method-enum";
 import StatusCode from "status-code-enum";
@@ -9,8 +10,8 @@ describe("server/router", () => {
 
     const { initializeDatabase } = await import("~/server/database");
     initializeDatabase({
-      indexedDB: indexedDB,
-      IDBKeyRange: IDBKeyRange,
+      indexedDB,
+      IDBKeyRange,
     });
   });
 

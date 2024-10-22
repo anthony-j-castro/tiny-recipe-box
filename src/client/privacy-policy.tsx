@@ -9,7 +9,7 @@ import "~/client/index.css";
 
 const analytics = Analytics({});
 
-const root = createRoot(document.getElementById("root")!);
+const root = createRoot(document.querySelector("#root")!);
 
 root.render(
   <StrictMode>

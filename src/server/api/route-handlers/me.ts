@@ -55,6 +55,6 @@ export const createMe: RouteHandler<CurrentUser> = async ({ db }) => {
 
   return {
     status: StatusCode.SuccessCreated,
-    body: { createdAt: createdAt, userId: id },
+    body: { createdAt, userId: id },
   };
 };

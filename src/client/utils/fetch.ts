@@ -1,10 +1,7 @@
 import assertIsHTTPMethod from "~/client/utils/assertIsHTTPMethod";
 import worker from "~/client/worker";
 
-const fetch = async (
-  resource: string,
-  init: RequestInit = { method: "GET" },
-) => {
+const fetch = async (resource: string, init: RequestInit = {}) => {
   const { body, headers, method = "GET" } = init;
 
   assertIsHTTPMethod(method);
