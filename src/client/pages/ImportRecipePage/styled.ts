@@ -10,5 +10,6 @@ export const DataBlock = styled.pre(
     padding: 8px;
     border: 2px solid ${theme.colors.purple};
     border-radius: 4px;
+    overflow: auto;
   `,
 );
