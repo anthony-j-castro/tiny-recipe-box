@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { SyncAlert as SyncAlertIcon } from "mdi-material-ui";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
@@ -12,6 +11,7 @@ import {
   BottomSeparator,
   List,
   NavLink,
+  NewVersionIcon,
   PrimaryNav,
   ReloadButton,
   SecondaryNav,
@@ -91,7 +91,7 @@ const MainNavigation = ({ className }: Props) => {
                   }}
                   title="Reload to get newest version"
                 >
-                  <SyncAlertIcon sx={{ display: "block", fontSize: 20 }} />
+                  <NewVersionIcon />
                 </ReloadButton>
               ) : null}
             </VersionInfo>

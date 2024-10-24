@@ -1,5 +1,6 @@
 import styled, { css, keyframes, type DefaultTheme } from "styled-components";
 import Button from "~/client/components/Button";
+import SyncAlertIcon from "~/client/components/icons/SyncAlertIcon";
 import Logo from "~/client/components/Logo";
 import Separator from "~/client/components/Separator";
 import BaseNavLink from "./NavLink";
@@ -137,3 +138,9 @@ export const ReloadButton = styled(Button)(
     }
   `,
 );
+
+export const NewVersionIcon = styled(SyncAlertIcon)`
+  display: block;
+  width: 20px;
+  height: 20px;
+`;
