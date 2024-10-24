@@ -1,5 +1,5 @@
-import SyncProblemIcon from "@mui/icons-material/SyncProblem";
 import { Link } from "@tanstack/react-router";
+import { SyncAlert as SyncAlertIcon } from "mdi-material-ui";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
@@ -91,7 +91,7 @@ const MainNavigation = ({ className }: Props) => {
                   }}
                   title="Reload to get newest version"
                 >
-                  <SyncProblemIcon sx={{ display: "block", fontSize: 20 }} />
+                  <SyncAlertIcon sx={{ display: "block", fontSize: 20 }} />
                 </ReloadButton>
               ) : null}
             </VersionInfo>
