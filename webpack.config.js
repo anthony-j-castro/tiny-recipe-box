@@ -46,7 +46,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@mui/styled-engine": "@mui/styled-engine-sc",
       "~": path.resolve(__dirname, "src"),
     },
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
