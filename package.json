@@ -57,7 +57,7 @@
     "change-case": "5.4.4",
     "comlink": "4.4.2",
     "decoders": "2.5.0",
-    "dexie": "4.0.9",
+    "dexie": "4.0.10",
     "http-method-enum": "1.0.0",
     "modern-normalize": "3.0.1",
     "react": "18.3.1",
