@@ -1,13 +1,9 @@
 import type { StatusCode } from "status-code-enum";
 import type { AppDatabase } from "~/server/database";
 
-interface ErrorResponseBody {
-  message: string;
-}
-
-export interface RouteHandlerResponse<T> {
+export interface APIResponse {
   status: StatusCode;
-  body?: ErrorResponseBody | T;
+  body?: string;
 }
 
 export type RouteHandler<T> = ({
@@ -24,7 +20,11 @@ export type RouteHandler<T> = ({
   payload?: unknown;
 }) => Promise<RouteHandlerResponse<T>>;
 
-export interface APIResponse {
+export interface RouteHandlerResponse<T> {
   status: StatusCode;
-  body?: string;
+  body?: ErrorResponseBody | T;
+}
+
+interface ErrorResponseBody {
+  message: string;
 }

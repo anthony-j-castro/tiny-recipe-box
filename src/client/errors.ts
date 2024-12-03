@@ -1,6 +1,10 @@
 import { object, string, type Decoder } from "decoders";
 import StatusCode from "status-code-enum";
 
+interface ErrorResponseBody {
+  message: string;
+}
+
 class BaseError extends Error {
   constructor(message: string) {
     super(message);
@@ -18,10 +22,10 @@ class APIError extends BaseError {
   }
 }
 
-export class UnauthorizedError extends APIError {
+export class InternalServerError extends APIError {
   constructor(message: string) {
-    super(StatusCode.ClientErrorUnauthorized, message);
-    this.name = "UnauthorizedError";
+    super(StatusCode.ServerErrorInternal, message);
+    this.name = "InternalServerError";
   }
 }
 
@@ -32,15 +36,11 @@ export class NotFoundError extends APIError {
   }
 }
 
-export class InternalServerError extends APIError {
+export class UnauthorizedError extends APIError {
   constructor(message: string) {
-    super(StatusCode.ServerErrorInternal, message);
-    this.name = "InternalServerError";
+    super(StatusCode.ClientErrorUnauthorized, message);
+    this.name = "UnauthorizedError";
   }
-}
-
-interface ErrorResponseBody {
-  message: string;
 }
 
 const errorResponseDecoder: Decoder<ErrorResponseBody> = object({
