@@ -30,7 +30,7 @@
     "copy-webpack-plugin": "12.0.2",
     "css-loader": "7.1.2",
     "cypress": "13.16.0",
-    "dotenv": "16.4.5",
+    "dotenv": "16.4.7",
     "eslint": "9.16.0",
     "eslint-import-resolver-alias": "1.1.2",
     "fake-indexeddb": "6.0.0",
