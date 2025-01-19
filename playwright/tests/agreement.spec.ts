@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("the homepage successfully loads", async ({ page }) => {
+test("The agreement modal appears then directs to the home page", async ({
+  page,
+}) => {
   const TEST_IDS = {
     CHECKBOX: "agreement-checkbox",
     HOME_PAGE: "home-page",
