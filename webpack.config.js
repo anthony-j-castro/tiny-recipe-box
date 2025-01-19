@@ -46,9 +46,10 @@ module.exports = {
     ],
   },
   resolve: {
+    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
     plugins: [
       new TsconfigPathsPlugin({
-        extensions: ["*"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       }),
     ],
   },
