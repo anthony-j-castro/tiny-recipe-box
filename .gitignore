@@ -7,10 +7,10 @@
 # Sensitive Files
 .env
 
-# Miscellaneous
-.DS_Store
-
 # Playwright
 /playwright/report/
 /playwright/test-results/
 /playwright/.cache/
+
+# Miscellaneous
+.DS_Store
