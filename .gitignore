@@ -7,10 +7,6 @@
 # Sensitive Files
 .env
 
-# Cypress
-cypress/screenshots
-cypress/videos
-
 # Miscellaneous
 .DS_Store
 
