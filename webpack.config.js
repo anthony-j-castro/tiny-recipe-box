@@ -1,6 +1,7 @@
 const path = require("node:path");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const webpack = require("webpack");
 
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
@@ -45,10 +46,11 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "src"),
-    },
-    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+    plugins: [
+      new TsconfigPathsPlugin({
+        extensions: ["*"],
+      }),
+    ],
   },
   plugins: [
     new webpack.EnvironmentPlugin({
