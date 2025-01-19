@@ -13,16 +13,18 @@
     "start": "webpack serve --mode development",
     "test": "jest",
     "typecheck": "tsc --noEmit",
-    "build:cy": "webpack --mode production",
-    "serve:cy": "serve -s build",
-    "cy:run": "cypress run"
+    "build:e2e": "webpack --mode production",
+    "serve:e2e": "serve -s build",
+    "playwright": "npx playwright test --ui"
   },
   "devDependencies": {
     "@anthony-j-castro/eslint-config": "github:anthony-j-castro/eslint-config#semver:2.1.1",
     "@anthony-j-castro/prettier-config": "github:anthony-j-castro/prettier-config#semver:1.0.0",
+    "@playwright/test": "1.49.1",
     "@tanstack/eslint-plugin-query": "5.62.16",
     "@types/chrome": "0.0.297",
     "@types/jest": "29.5.14",
+    "@types/node": "22.10.7",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "@types/use-analytics": "0.0.3",

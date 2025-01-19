@@ -12,7 +12,7 @@ const HomePage = () => {
   }, [analytics]);
 
   return (
-    <PageContent data-cy="home-page">
+    <PageContent data-testid="home-page">
       <PageHeading>Home</PageHeading>
       <div>
         <Paragraph>Welcome to Tiny Recipe Box!</Paragraph>

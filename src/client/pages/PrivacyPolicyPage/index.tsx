@@ -18,7 +18,7 @@ const PrivacyPolicyPage = ({ isSandboxed }: Props) => {
 
   return (
     <AppLayout isSandboxedNav={isSandboxed}>
-      <PageContent data-cy="privacy-policy-page">
+      <PageContent data-testid="privacy-policy-page">
         <PageHeading>Privacy Policy</PageHeading>
         <div>
           <Paragraph>TBD.</Paragraph>
