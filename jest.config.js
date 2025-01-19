@@ -9,4 +9,5 @@ module.exports = {
   roots: ["<rootDir>"],
   setupFiles: ["dotenv/config"],
   testEnvironment: "node",
+  testPathIgnorePatterns: ["playwright/"],
 };
