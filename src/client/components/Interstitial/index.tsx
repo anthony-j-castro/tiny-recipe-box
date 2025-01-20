@@ -13,7 +13,7 @@ interface Props {
 
 const Interstitial = ({ children, contentTestAttribute }: Props) => (
   <Wrapper>
-    <ContentContainer data-cy={contentTestAttribute}>
+    <ContentContainer data-testid={contentTestAttribute}>
       <AnimatedBackground data-background="true" />
       <Content>
         <Logo />

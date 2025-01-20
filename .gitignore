@@ -7,9 +7,10 @@
 # Sensitive Files
 .env
 
-# Cypress
-cypress/screenshots
-cypress/videos
+# Playwright
+/playwright/report/
+/playwright/test-results/
+/playwright/.cache/
 
 # Miscellaneous
 .DS_Store
