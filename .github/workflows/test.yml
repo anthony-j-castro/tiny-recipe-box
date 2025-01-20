@@ -29,7 +29,6 @@ jobs:
         run: npm run lint:ci
 
   unit-test:
-    needs: compile-and-lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -45,7 +44,6 @@ jobs:
         run: npm run test
 
   e2e-test:
-    needs: compile-and-lint
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
