@@ -61,6 +61,13 @@ jobs:
             ${{ vars.SIMULATED_LATENCY_MILLISECONDS }}
           SIMULATED_LATENCY_TOLERANCE_MILLISECONDS:
             ${{ vars.SIMULATED_LATENCY_TOLERANCE_MILLISECONDS }}
+      - name: Set source map variables
+        id: source_maps
+        run: |
+          echo "DATA_SOURCE_MAPS=$(find ./build/*.js.map | tr '\n' ' ')" >> $GITHUB_ENV
+          echo "DATA_SOURCE_MAPS_URLS=$(cd ./build && find *.js | sed -e 's#^#'$STATIC_URL_PREFIX'#' | tr '\n' ' ')"  >> $GITHUB_ENV
+        env:
+          STATIC_URL_PREFIX: "https://tinyrecipebox.com/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -74,6 +81,8 @@ jobs:
         with:
           environment: "production"
           version: ${{ github.sha }}
+          source_maps: ${{ steps.source_maps.env.DATA_SOURCE_MAPS }}
+          minified_urls: ${{ steps.source_maps.env.DATA_SOURCE_MAPS_URLS }}
           local_username: ${{ github.actor }}
         env:
           ROLLBAR_ACCESS_TOKEN: ${{ secrets.ROLLBAR_ACCESS_TOKEN }}
