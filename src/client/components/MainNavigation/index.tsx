@@ -9,6 +9,7 @@ import ExtensionStatusDot from "./ExtensionStatusDot";
 import {
   AlphaPill,
   BottomSeparator,
+  ExtensionStatusNavLink,
   List,
   NavLink,
   NewVersionIcon,
@@ -61,10 +62,10 @@ const MainNavigation = ({ className }: Props) => {
             <NavLink to="/settings">Settings</NavLink>
           </li>
           <li>
-            <NavLink to="/browser-extension">
-              Extension Status:
+            <ExtensionStatusNavLink to="/browser-extension">
+              Extension Status
               <ExtensionStatusDot status={extensionInfo.isInstalled} />
-            </NavLink>
+            </ExtensionStatusNavLink>
           </li>
           <li>
             <NavLink to="/import-recipe">Import Recipe</NavLink>

@@ -6,8 +6,9 @@ export const NavLink = styled.a(
     color: ${theme.colors.nearBlack};
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 4px 16px;
     border-radius: 4px;
+    margin-bottom: 4px;
 
     &:hover {
       background-color: ${theme.colors.gray};
@@ -24,5 +25,8 @@ export const VersionInfoLink = styled(NavLink)(
   ({ theme }) => css`
     color: ${theme.colors.darkGray};
     font-size: 12px;
+    line-height: 16px;
+    padding: 8px 16px;
+    margin: 0;
   `,
 );
