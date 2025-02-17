@@ -99,6 +99,7 @@ module.exports = {
       inject: "body",
     }),
   ],
+  devtool: "source-map",
   devServer: {
     historyApiFallback: true,
     open: true,
