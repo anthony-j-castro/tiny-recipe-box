@@ -10,6 +10,7 @@ export const rollbarConfig: Rollbar.Configuration = {
     environment: config.ENVIRONMENT,
     client: {
       javascript: {
+        source_map_enabled: true,
         code_version:
           config.ENVIRONMENT === "production"
             ? (config.GITHUB_COMMIT_SHA ?? undefined)
