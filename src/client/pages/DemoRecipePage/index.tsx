@@ -1,4 +1,3 @@
-import { useRollbar } from "@rollbar/react";
 import { useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Key } from "ts-key-enum";
@@ -18,7 +17,6 @@ import {
 } from "./styled";
 
 const DemoRecipePage = () => {
-  const rollbar = useRollbar();
   const analytics = useAnalytics();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -89,7 +87,7 @@ const DemoRecipePage = () => {
         <div>
           <button
             onClick={() => {
-              rollbar.error("Test error");
+              throw new Error("uncaught test error");
             }}
           >
             Force Rollbar Error
