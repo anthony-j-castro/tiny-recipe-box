@@ -61,13 +61,6 @@ jobs:
             ${{ vars.SIMULATED_LATENCY_MILLISECONDS }}
           SIMULATED_LATENCY_TOLERANCE_MILLISECONDS:
             ${{ vars.SIMULATED_LATENCY_TOLERANCE_MILLISECONDS }}
-      - name: Set source map variables
-        id: source_maps
-        run: |
-          echo "DATA_SOURCE_MAPS=$(find ./build/*.js.map | tr '\n' ' ')" >> $GITHUB_ENV
-          echo "DATA_SOURCE_MAPS_URLS=$(cd ./build && find *.js | sed -e 's#^#'$STATIC_URL_PREFIX'#' | tr '\n' ' ')"  >> $GITHUB_ENV
-        env:
-          STATIC_URL_PREFIX: "https://tinyrecipebox.com/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -75,6 +68,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Set source map variables
+        id: source_maps
+        run: |
+          echo "DATA_SOURCE_MAPS=$(find ./build/*.js.map | tr '\n' ' ')" >> $GITHUB_ENV
+          echo "DATA_SOURCE_MAPS_URLS=$(cd ./build && find *.js | sed -e 's#^#'$STATIC_URL_PREFIX'#' | tr '\n' ' ')"  >> $GITHUB_ENV
+        env:
+          STATIC_URL_PREFIX: "https://tinyrecipebox.com/"
       - name: Notify deploy to Rollbar
         uses: rollbar/github-deploy-action@2.1.2
         id: rollbar_deploy
