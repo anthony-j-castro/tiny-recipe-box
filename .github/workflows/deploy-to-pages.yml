@@ -61,7 +61,7 @@ jobs:
             ${{ vars.SIMULATED_LATENCY_MILLISECONDS }}
           SIMULATED_LATENCY_TOLERANCE_MILLISECONDS:
             ${{ vars.SIMULATED_LATENCY_TOLERANCE_MILLISECONDS }}
-      - name: Set source maps
+      - name: Set source map variables
         id: source_maps
         run: |
           echo "DATA_SOURCE_MAPS=$(find ./build/*.js.map | tr '\n' ' ')" >> $GITHUB_ENV
