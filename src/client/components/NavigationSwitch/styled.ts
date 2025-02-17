@@ -10,6 +10,9 @@ export const StyledSwitch = styled(Switch)(
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-weight: 500;
+    padding: 4px 8px 4px 16px;
+    border-radius: 4px;
 
     .indicator {
       flex-shrink: 0;
@@ -40,6 +43,10 @@ export const StyledSwitch = styled(Switch)(
       }
     }
 
+    &:hover {
+      background-color: ${theme.colors.gray};
+    }
+
     &[data-pressed] .indicator {
       border-color: ${theme.colors.purple};
 
@@ -49,6 +56,8 @@ export const StyledSwitch = styled(Switch)(
     }
 
     &[data-selected] {
+      background: ${theme.colors.lighterPurple};
+
       .indicator {
         border-color: ${theme.colors.purple};
         background: ${theme.colors.purple};

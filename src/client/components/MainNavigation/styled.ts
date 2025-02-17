@@ -75,6 +75,13 @@ export const BottomSeparator = styled(Separator)`
   margin: 8px 0;
 `;
 
+export const ExtensionStatusNavLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+`;
+
 export const VersionInfo = styled.div`
   display: flex;
   align-items: center;
@@ -86,6 +93,8 @@ export const VersionInfoLink = styled(NavLink)(
     color: ${theme.colors.darkGray};
     font-size: 12px;
     line-height: 16px;
+    padding: 8px 16px;
+    margin: 0;
   `,
 );
 

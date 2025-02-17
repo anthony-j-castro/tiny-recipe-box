@@ -6,8 +6,9 @@ export const StyledLink = styled(Link)(
     color: ${theme.colors.nearBlack};
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 4px 16px;
     border-radius: 4px;
+    margin-bottom: 4px;
 
     &:hover {
       background-color: ${theme.colors.gray};
