@@ -81,8 +81,8 @@ jobs:
         with:
           environment: "production"
           version: ${{ github.sha }}
-          source_maps: ${{ steps.source_maps.env.DATA_SOURCE_MAPS }}
-          minified_urls: ${{ steps.source_maps.env.DATA_SOURCE_MAPS_URLS }}
+          source_maps: ${{ env.DATA_SOURCE_MAPS }}
+          minified_urls: ${{ env.DATA_SOURCE_MAPS_URLS }}
           local_username: ${{ github.actor }}
         env:
           ROLLBAR_ACCESS_TOKEN: ${{ secrets.ROLLBAR_ACCESS_TOKEN }}
