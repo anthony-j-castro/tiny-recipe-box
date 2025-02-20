@@ -9,7 +9,7 @@ export default [
     ignores: ["build/*", "playwright/report/*", "playwright/test-results/*"],
   },
   {
-    files: ["eslint.config.js", "jest.config.js", "webpack.config.js"],
+    files: ["jest.config.js", "webpack.config.js"],
     languageOptions: {
       globals: {
         ...globals.node,
