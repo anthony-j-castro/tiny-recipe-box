@@ -76,9 +76,6 @@
     "uuid": "11.1.0"
   },
   "overrides": {
-    "@rollbar/react": {
-      "react": "$react"
-    },
     "react-screen-wake-lock": {
       "react": "$react"
     }
