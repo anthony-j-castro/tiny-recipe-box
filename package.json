@@ -63,7 +63,7 @@
     "modern-normalize": "3.0.1",
     "react": "19.0.0",
     "react-aria": "3.37.0",
-    "react-aria-components": "1.6.0",
+    "react-aria-components": "1.7.0",
     "react-dom": "19.0.0",
     "react-hotkeys-hook": "4.6.1",
     "react-screen-wake-lock": "3.0.3",
