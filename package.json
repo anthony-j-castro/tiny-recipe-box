@@ -65,7 +65,7 @@
     "react-aria": "3.38.1",
     "react-aria-components": "1.7.1",
     "react-dom": "19.1.0",
-    "react-hotkeys-hook": "4.6.1",
+    "react-hotkeys-hook": "4.6.2",
     "react-screen-wake-lock": "3.1.0",
     "rollbar": "2.26.4",
     "status-code-enum": "1.0.0",
