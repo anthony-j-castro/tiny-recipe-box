@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { TooltipTrigger } from "react-aria-components";
 import { useAnalytics } from "use-analytics";
 import MonospacedText from "~/client/components/MonospacedText";
+import Tooltip from "~/client/components/Tooltip";
 import { useExtensionContext } from "~/client/contexts/ExtensionContext";
 import useNewSiteVersionAvailable from "~/client/hooks/useNewSiteVersionAvailable";
 import config from "~/config";
@@ -85,15 +87,17 @@ const MainNavigation = ({ className }: Props) => {
                 Site Version: <MonospacedText>{shaData.short}</MonospacedText>
               </VersionInfoLink>
               {isNewSiteVersionAvailable ? (
-                <ReloadButton
-                  onClick={() => {
-                    analytics.track("clicked_reload_button");
-                    window.location.reload();
-                  }}
-                  title="Reload to get newest version"
-                >
-                  <NewVersionIcon />
-                </ReloadButton>
+                <TooltipTrigger>
+                  <ReloadButton
+                    onPress={() => {
+                      analytics.track("clicked_reload_button");
+                      window.location.reload();
+                    }}
+                  >
+                    <NewVersionIcon />
+                  </ReloadButton>
+                  <Tooltip>Reload to get newest version</Tooltip>
+                </TooltipTrigger>
               ) : null}
             </VersionInfo>
           </>

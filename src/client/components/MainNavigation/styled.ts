@@ -1,8 +1,8 @@
 import styled, { css, keyframes, type DefaultTheme } from "styled-components";
 import Button from "~/client/components/Button";
+import HorizontalSeparator from "~/client/components/HorizontalSeparator";
 import SyncAlertIcon from "~/client/components/icons/SyncAlertIcon";
 import Logo from "~/client/components/Logo";
-import Separator from "~/client/components/Separator";
 import BaseNavLink from "./NavLink";
 
 export const Sidebar = styled.nav(
@@ -48,7 +48,7 @@ export const StyledLogo = styled(Logo)(
   `,
 );
 
-export const TopSeparator = styled(Separator)`
+export const TopSeparator = styled(HorizontalSeparator)`
   margin-bottom: 8px;
 `;
 
@@ -71,7 +71,7 @@ export const NavLink = styled(BaseNavLink)`
   display: block;
 `;
 
-export const BottomSeparator = styled(Separator)`
+export const BottomSeparator = styled(HorizontalSeparator)`
   margin: 8px 0;
 `;
 

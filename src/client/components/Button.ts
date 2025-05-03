@@ -1,4 +1,4 @@
-import { Button as BaseButton } from "@ariakit/react";
+import { Button as BaseButton } from "react-aria-components";
 import styled, { css } from "styled-components";
 
 const Button = styled(BaseButton)(

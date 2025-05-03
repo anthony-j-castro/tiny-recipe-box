@@ -1,11 +1,11 @@
-import { useCheckboxStore } from "@ariakit/react";
+import { useState } from "react";
 import {
   Agreement,
   ButtonsRow,
-  Checkbox,
   Paragraph,
 } from "~/client/components/AgreementRequired/styled";
 import Button from "~/client/components/Button";
+import Checkbox from "~/client/components/Checkbox";
 import Interstitial from "~/client/components/Interstitial";
 import { useUserAgreed } from "~/client/storage";
 
@@ -15,8 +15,7 @@ interface Props {
 
 const AgreementRequired = ({ children }: Props) => {
   const [userAgreed, setUserAgreed] = useUserAgreed();
-  const checkbox = useCheckboxStore({ defaultValue: false });
-  const { value: isChecked } = checkbox.useState();
+  const [isChecked, setIsChecked] = useState(false);
 
   if (userAgreed === false) {
     return (
@@ -30,15 +29,16 @@ const AgreementRequired = ({ children }: Props) => {
         <Agreement>
           <Checkbox
             data-testid="agreement-checkbox"
-            store={checkbox}
+            isSelected={isChecked}
+            onChange={setIsChecked}
           />{" "}
           I understand and accept the risk
         </Agreement>
         <ButtonsRow>
           <Button
             data-testid="agreement-submit"
-            disabled={isChecked !== true}
-            onClick={() => {
+            isDisabled={isChecked !== true}
+            onPress={() => {
               setUserAgreed(true);
             }}
           >
