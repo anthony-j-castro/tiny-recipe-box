@@ -37,8 +37,8 @@ const AgreementRequired = ({ children }: Props) => {
         <ButtonsRow>
           <Button
             data-testid="agreement-submit"
-            disabled={isChecked !== true}
-            onClick={() => {
+            isDisabled={isChecked !== true}
+            onPress={() => {
               setUserAgreed(true);
             }}
           >
