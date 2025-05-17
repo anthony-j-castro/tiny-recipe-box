@@ -51,7 +51,7 @@
   "dependencies": {
     "@analytics/google-analytics": "1.1.0",
     "@rollbar/react": "0.12.1",
-    "@tanstack/react-query": "5.75.7",
+    "@tanstack/react-query": "5.76.1",
     "@tanstack/react-router": "1.120.5",
     "analytics": "0.8.16",
     "change-case": "5.4.4",
