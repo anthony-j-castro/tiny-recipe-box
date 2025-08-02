@@ -21,7 +21,7 @@
     "@anthony-j-castro/eslint-config": "github:anthony-j-castro/eslint-config#v4.2.0",
     "@anthony-j-castro/prettier-config": "github:anthony-j-castro/prettier-config#v1.1.2",
     "@playwright/test": "1.54.2",
-    "@tanstack/eslint-plugin-query": "5.81.2",
+    "@tanstack/eslint-plugin-query": "5.83.1",
     "@types/chrome": "0.1.1",
     "@types/jest": "30.0.0",
     "@types/node": "22.16.5",
@@ -51,7 +51,7 @@
   "dependencies": {
     "@analytics/google-analytics": "1.1.0",
     "@rollbar/react": "1.0.0",
-    "@tanstack/react-query": "5.83.0",
+    "@tanstack/react-query": "5.84.1",
     "@tanstack/react-router": "1.130.2",
     "analytics": "0.8.16",
     "change-case": "5.4.4",
