@@ -58,7 +58,7 @@ jobs:
           SIMULATED_LATENCY_TOLERANCE_MILLISECONDS:
             ${{ vars.SIMULATED_LATENCY_TOLERANCE_MILLISECONDS }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./build
       - name: Deploy to GitHub Pages
