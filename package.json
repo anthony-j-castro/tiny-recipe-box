@@ -24,7 +24,7 @@
     "@tanstack/eslint-plugin-query": "5.83.1",
     "@types/chrome": "0.1.4",
     "@types/jest": "30.0.0",
-    "@types/node": "22.17.2",
+    "@types/node": "22.18.0",
     "@types/react": "19.1.11",
     "@types/react-dom": "19.1.7",
     "@types/use-analytics": "0.0.3",
