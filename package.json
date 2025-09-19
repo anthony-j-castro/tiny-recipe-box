@@ -32,7 +32,7 @@
     "copy-webpack-plugin": "13.0.1",
     "css-loader": "7.1.2",
     "dotenv": "17.2.2",
-    "eslint": "9.35.0",
+    "eslint": "9.36.0",
     "fake-indexeddb": "6.2.2",
     "globals": "16.4.0",
     "html-webpack-plugin": "5.6.4",
