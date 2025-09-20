@@ -72,6 +72,6 @@
     "ts-key-enum": "2.0.13",
     "use-analytics": "1.1.0",
     "usehooks-ts": "3.1.1",
-    "uuid": "11.1.0"
+    "uuid": "13.0.0"
   }
 }
