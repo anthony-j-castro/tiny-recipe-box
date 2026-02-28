@@ -52,7 +52,7 @@
     "@analytics/google-analytics": "1.1.0",
     "@rollbar/react": "1.0.0",
     "@tanstack/react-query": "5.90.21",
-    "@tanstack/react-router": "1.132.2",
+    "@tanstack/react-router": "1.163.3",
     "analytics": "0.8.19",
     "change-case": "5.4.4",
     "comlink": "4.4.2",
