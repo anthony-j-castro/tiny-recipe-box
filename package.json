@@ -40,7 +40,7 @@
     "prettier": "3.6.2",
     "serve": "14.2.5",
     "style-loader": "4.0.0",
-    "ts-jest": "29.4.4",
+    "ts-jest": "29.4.6",
     "ts-loader": "9.5.4",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.9.3",
