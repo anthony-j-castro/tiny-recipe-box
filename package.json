@@ -51,6 +51,7 @@
   "dependencies": {
     "@analytics/google-analytics": "1.1.0",
     "@rollbar/react": "1.0.0",
+    "@tanstack/react-hotkeys": "0.3.1",
     "@tanstack/react-query": "5.90.21",
     "@tanstack/react-router": "1.132.2",
     "analytics": "0.8.19",
@@ -64,12 +65,10 @@
     "react-aria": "3.46.0",
     "react-aria-components": "1.15.1",
     "react-dom": "19.2.4",
-    "react-hotkeys-hook": "5.1.0",
     "react-screen-wake-lock": "3.1.1",
     "rollbar": "2.26.5",
     "status-code-enum": "1.0.0",
     "styled-components": "6.1.19",
-    "ts-key-enum": "2.0.13",
     "use-analytics": "1.1.0",
     "usehooks-ts": "3.1.1",
     "uuid": "11.1.0"

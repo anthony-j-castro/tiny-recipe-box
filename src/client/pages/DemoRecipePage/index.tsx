@@ -1,6 +1,5 @@
+import { useHotkey } from "@tanstack/react-hotkeys";
 import { useEffect, useRef, useState } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
-import { Key } from "ts-key-enum";
 import { useAnalytics } from "use-analytics";
 import clamp from "~/shared/utils/clamp";
 import EquipmentPanel from "./EquipmentSection";
@@ -30,10 +29,13 @@ const DemoRecipePage = () => {
 
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
-  useHotkeys([Key.ArrowDown, Key.ArrowRight], (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const selectPreviousStep = () => {
+    if (activeStep !== null) {
+      setActiveStep(clamp(activeStep - 1, 0, recipe.steps.length - 1));
+    }
+  };
 
+  const selectNextStep = () => {
     if (activeStep === null) {
       setActiveStep(0);
 
@@ -41,21 +43,15 @@ const DemoRecipePage = () => {
     }
 
     setActiveStep(clamp(activeStep + 1, 0, recipe.steps.length - 1));
-  });
+  };
 
-  useHotkeys([Key.ArrowUp, Key.ArrowLeft], (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  useHotkey("ArrowUp", selectPreviousStep);
+  useHotkey("ArrowLeft", selectPreviousStep);
 
-    if (activeStep !== null) {
-      setActiveStep(clamp(activeStep - 1, 0, recipe.steps.length - 1));
-    }
-  });
+  useHotkey("ArrowDown", selectNextStep);
+  useHotkey("ArrowRight", selectNextStep);
 
-  useHotkeys(["x"], (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  useHotkey("X", () => {
     setActiveStep(null);
   });
 
