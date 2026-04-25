@@ -68,7 +68,7 @@
     "react-screen-wake-lock": "3.1.1",
     "rollbar": "2.26.5",
     "status-code-enum": "1.0.0",
-    "styled-components": "6.1.19",
+    "styled-components": "6.4.1",
     "use-analytics": "1.1.0",
     "usehooks-ts": "3.1.1",
     "uuid": "11.1.0"
