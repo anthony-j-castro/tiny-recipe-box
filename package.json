@@ -35,7 +35,7 @@
     "eslint": "9.36.0",
     "fake-indexeddb": "6.2.5",
     "globals": "17.6.0",
-    "html-webpack-plugin": "5.6.6",
+    "html-webpack-plugin": "5.6.8",
     "jest": "30.4.1",
     "prettier": "3.6.2",
     "serve": "14.2.6",
